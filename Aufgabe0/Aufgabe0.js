@@ -10,7 +10,7 @@ document.addEventListener ('DOMContentLoaded', function () {
 var name = prompt("Please enter your name");
 
 if (name != null) {
-    document.getElementById("demo").innerHTML =
+    document.getElementById("name").innerHTML =
     "Hej " + name + "!";
 }
 });
