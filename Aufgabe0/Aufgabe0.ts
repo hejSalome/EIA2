@@ -1,7 +1,6 @@
-
 document.addEventListener ('DOMContentLoaded', function () {
-var name = prompt("Please enter your name");
-
+var name: string = prompt("Please enter your name");
+   
 if (name != null) {
     document.getElementById("name").innerHTML =
     "Hej " + name + "!";
