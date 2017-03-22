@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var hello = "Hej";
     if (name != null) {
         document.getElementById("name").innerHTML =
-            hello + name + "!";
+            hello + " " + name + "!";
     }
 });
 //# sourceMappingURL=Aufgabe0.js.map
