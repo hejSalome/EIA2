@@ -39,4 +39,4 @@ function placeDiv(_color, _x, _y, _width, _height) {
     s.left = _x + "px";
     s.top = _y + "px";
 }
-//# sourceMappingURL=tracecode.js.map
+//# sourceMappingURL=codeA1.js.map
