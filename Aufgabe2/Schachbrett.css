@@ -2,7 +2,7 @@
 .board {
 	height: 80px;
 	width: 80px;
-	boarder: 1px solid black;
+	border: 1px solid #74828A;
 }
 
 .white {
