@@ -1,3 +1,11 @@
+//Aufgabe: Aufgabe 2
+//Name: Salome Weiﬂer
+//Matrikel: 254669
+//Datum: 02.04.2017
+//    
+//Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+
+
 document.addEventListener("DOMContentLoaded", function(): void {
     let rice: number = 1;
     let line: number = 0;
