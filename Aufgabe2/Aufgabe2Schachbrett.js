@@ -30,4 +30,4 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(element);
     }
 });
-//# sourceMappingURL=Schachbrett.js.map
+//# sourceMappingURL=Aufgabe2Schachbrett.js.map
