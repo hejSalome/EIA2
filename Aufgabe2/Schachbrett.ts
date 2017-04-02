@@ -17,13 +17,6 @@ document.addEventListener('DOMContentLoaded', function(): void {
         else {
             element.className = "board black";
         }  
-        
-       
-//        if (i == 9,25,41,57) 
-//        i%2 == 0 : element.className ="board black";
-//        i%2 == 1 : element.className ="board white";
-        
-        
         rice = rice * 2;
         document.body.appendChild(element);
      
