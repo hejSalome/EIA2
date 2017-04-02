@@ -1,20 +1,31 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
     let rice = 1;
-    //   function placeDivs (): void { 
+    let line = 0;
     for (let i = 0; i < 64; i++) {
         let element = document.createElement("div");
-        element.textContent = rice.toString();
-        //        
-        //         if (i % 8 == 0) {
-        //            element.className += "clear";
-        //            }
-        console.log("i");
-        if (i % 2 == 0) {
-            element.className = "board white";
+        element.textContent = rice.toString(); //rice Number to String
+        // n�chste Reihe nach 8.Feld
+        if (i % 8 == 0) {
+            line = line + 1;
+        }
+        // Farbewechsel nach jeder Reihe  
+        if (line % 2 == 0) {
+            if (i % 2 != 0) {
+                element.className = "board white";
+            }
+            else {
+                element.className = "board black";
+            }
         }
         else {
-            element.className = "board black";
+            if (i % 2 != 0) {
+                element.className = "board black";
+            }
+            else {
+                element.className = "board white";
+            }
         }
+        // Multiplikation Reis pro Feld
         rice = rice * 2;
         document.body.appendChild(element);
     }
