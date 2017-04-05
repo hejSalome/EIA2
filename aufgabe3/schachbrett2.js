@@ -1,0 +1,1 @@
+//# sourceMappingURL=schachbrett2.js.map
