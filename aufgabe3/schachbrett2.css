@@ -1,0 +1,27 @@
+
+.board {
+	height: 80px;
+	width: 80px;
+	margin: auto;
+	text-align: center;
+	font-size:15pt;
+	border: 1px solid #74828A;
+	float: left;
+	position: relative;
+	color: orange;
+}
+
+
+
+.white {
+	background: white;
+}
+
+.black {
+	background: black;
+}
+
+
+.board:nth-Child(8n+1) {
+	clear: both;
+}
