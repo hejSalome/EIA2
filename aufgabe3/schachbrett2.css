@@ -1,4 +1,6 @@
-
+body {
+	width: 1024px;
+}
 .board {
 	height: 80px;
 	width: 80px;
@@ -24,4 +26,17 @@
 
 .board:nth-Child(8n+1) {
 	clear: both;
+}
+
+#div {tabindex="1";
+}
+
+#box {
+display: none;
+position: absolute;
+padding: .5em 1em;
+background-color: white;
+border: black solid 2px;
+z-index: 1;
+white-space: pre;
 }
