@@ -61,29 +61,3 @@ document.addEventListener("DOMContentLoaded", function(): void {
        
 });
 
-//var divList = document.getElementsByTagName("div");
-//    for (var i_1 = 0; i_1 < 9; i_1++) {
-//        divList[i_1].addEventListener("click", function () {
-//            this.classList.toggle("status");
-//            showSummeKoerner();
-//        });
-//    }
-    function showRiceSum() {
-        var statusDivs = document.getElementsByClassName("status");
-        var riceSum= 0;
-        if (statusDivs.length == 0) {
-            document.getElementById("box").style.display = "none";
-        }
-        else {
-            document.getElementById("box").style.display = "inline-block";
-        }
-        for (var b= 0; b < statusDivs.length; b++) {
-            riceSum += Number(statusDivs[b].textContent);
-            document.getElementById("box").textContent = "Summe der selektierten Reiskörner:" + "\r\n" + "Dezimal: " + riceSum.toString() + "\r\n" + "Hexadezimal: " + riceSum.toString(16);
-        }
-    }
-
-document.addEventListener("mousemove", function (Event) {
-    document.getElementById("box").style.left = (Event.clientX + 10) + "px";
-    document.getElementById("box").style.top = (Event.clientY + 10) + "px";
-});
