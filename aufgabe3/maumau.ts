@@ -78,7 +78,7 @@ function findEmpty(): HTMLDivElement {
         }
     }
 
-    return null; //wenn kein Inhalt, also die forSchleife null-Inhalt fand, dann wird die Arraynummer vom Handkartenstapel zum füllen bereit gestellt, Zeile22/23
+    return null; // falls keine Karte auf Hand, Arry ist gleich null, Platz für neue Karten
 }
 
 function addfiledeck(_event: Event): void {

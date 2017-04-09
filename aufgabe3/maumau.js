@@ -68,7 +68,7 @@ function findEmpty() {
             return hand[i];
         }
     }
-    return null; //wenn kein Inhalt, also die forSchleife null-Inhalt fand, dann wird die Arraynummer vom Handkartenstapel zum f�llen bereit gestellt, Zeile22/23
+    return null; // falls keine Karte auf Hand, Arry ist gleich null, Platz f�r neue Karten
 }
 function addfiledeck(_event) {
     let element = _event.target;
