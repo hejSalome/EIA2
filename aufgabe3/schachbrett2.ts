@@ -1,13 +1,13 @@
 //Aufgabe: Aufgabe 3
-//Name: Salome Weiﬂer
+//Name: Salome Wei√üer
 //Matrikel: 254669
 //Datum: 08.04.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert. 
 
-
+namespace aufgabe3_schachbrett {  
 document.addEventListener("DOMContentLoaded", function(): void {
-    let rice: number = 1;
+  let rice: number = 1;
     let line: number = 0;
 
 
@@ -15,13 +15,13 @@ document.addEventListener("DOMContentLoaded", function(): void {
 
         let element: HTMLElement = document.createElement("div");
         element.textContent = rice.toString(); //rice Number to String
-        // n‰chste Reihe nach 8.Feld
+        // n√§chste Reihe nach 8.Feld
         if (i % 8 == 0) {
             line = line + 1;
         }
         // Farbewechsel nach jeder Reihe  
         if (line % 2 == 0) {
-            if (i % 2 != 0) {                             // 0 Modulo 2 w‰re auch 0!
+            if (i % 2 != 0) {                             // 0 Modulo 2 w√§re auch 0!
                 element.className = "board white";
             }
             else {
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function(): void {
 
     let divList: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
     let status: boolean = false;
-    // Click Event f¸r Farbwechsel der K‰stchen und urspr¸nglicher Zustand herstellen durch den zweiten Klick
+    // Click Event f√ºr Farbwechsel der K√§stchen und urspr√ºnglicher Zustand herstellen durch den zweiten Klick
     for (let a: number = 0; a < 8; a++) {
         divList[a].addEventListener("click", newColor);
         function newColor(): void {
@@ -53,13 +53,35 @@ document.addEventListener("DOMContentLoaded", function(): void {
             }
             else {
             divList[a].style.backgroundColor = "green";
-                   status = false;
+                   
         }
          }   
     }
-    
-    //div box erstellen, an Cursor gekoppelt
-    
-       
-});
-
+//    
+//    //div box erstellen, an Cursor gekoppelt
+//   document.addEventListener = function(): mathSum{
+//        let divList: string = document.getElementsByTagName("div");
+//       let a: number = 0;
+//        divList[a].addEventListener("click", mathSum);
+//            divList[a].classList.toggle("status");
+//            let divSelected: string = document.getElementsByClassName("status");
+//            let box: number = 0;
+//            if (divSelected.length == 0)
+//                document.getElementById("box").style.display = "none";
+//            else {
+//                document.getElementById("box").style.display = "block";
+//                for (let a: number = 0; a < divSeleceted.length; a++) {
+//                    box += Number(divSelected[a].textContent);
+//                    document.getElementById("box").innerText = "rice: " + box + "\r" + "rice: " + box.toString();
+//                }
+//          
+//      
+//    };
+//    for (var x: number = 0; x < 8; x++) {
+//        mathSum(x);
+//    }
+//    document.addEventListener("mousemove", mouse);
+//        document.getElementById("box").style.left = (Event.clientX + 10) + "px";
+//        document.getElementById("box").style.top = (Event.clientY + 10) + "px";
+//    });  
+//}

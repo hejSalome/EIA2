@@ -30,13 +30,15 @@ body {
 
 #div {tabindex="1";
 }
-
+.status {
+	
+}
 #box {
-display: none;
 position: absolute;
-padding: .5em 1em;
-background-color: white;
+background-color: green;
 border: black solid 2px;
-z-index: 1;
-white-space: pre;
+z-index: 1000;
+text-align: center;
+height: 50px;
+width: 50px;
 }

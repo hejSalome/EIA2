@@ -5,7 +5,7 @@
 //    
 //Dieser Code wurde mit Hilfe von Janett Stüwe, Nadine Malinowski und Valentine Deinert gelöst. 
 
-
+namespace aufgabe3_maumau {
 let deck: HTMLElement;  // HTML div Elemente
 let cards: string[];    // alle Karten in ein Array
 let hand: NodeListOf<HTMLDivElement>;  // Zugriff auf diese div Elemente auf Hand
@@ -85,4 +85,5 @@ function addfiledeck(_event: Event): void {
     let element: HTMLDivElement = <HTMLDivElement>_event.target;
     file.textContent = element.textContent; 
     element.textContent = "";
+}
 }
