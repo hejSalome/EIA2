@@ -3,7 +3,8 @@
 //Matrikel: 254669
 //Datum: 08.04.2017
 //    
-//Dieser Code wurde mit Hilfe von Janett Stüwe, Nadine Malinowski und Valentine Deinert gelöst. 
+//Dieser Code wurde mit Hilfe von Janett Stüwe, Nadine Malinowski und Valentine Deinert gelöst. Ich kann ihn nachvollziehen doch große Teile davon habe ich nicht selbst gelöst. 
+//Das verbinden der einzelnen Aktivitäten bereitet mir noch große Schwierigkeiten und das benennen der Vorgänge. 
 
 namespace aufgabe3_maumau {
 let deck: HTMLElement;  // HTML div Elemente

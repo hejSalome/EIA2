@@ -3,7 +3,8 @@
 //Matrikel: 254669
 //Datum: 08.04.2017
 //    
-//Dieser Code wurde mit Hilfe von Janett St�we, Nadine Malinowski und Valentine Deinert gel�st. 
+//Dieser Code wurde mit Hilfe von Janett St�we, Nadine Malinowski und Valentine Deinert gel�st. Ich kann ihn nachvollziehen doch gro�e Teile davon habe ich nicht selbst gel�st. 
+//Das verbinden der einzelnen Aktivit�ten bereitet mir noch gro�e Schwierigkeiten und das benennen der Vorg�nge. 
 var aufgabe3_maumau;
 (function (aufgabe3_maumau) {
     let deck; // HTML div Elemente
