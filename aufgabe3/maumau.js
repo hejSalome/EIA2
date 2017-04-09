@@ -11,10 +11,40 @@ let file;
 document.addEventListener("DOMContentLoaded", function () {
     deck = document.getElementById("startdeck"); //auf Boxen zugreifen 
     deck.addEventListener("click", addcardshand);
-    cards = ["Herz7", "Herz8", "Herz9", "Herz10", "HerzBube", "HerzDame", "HerzKoenig", "HerzAss",
-        "Piek7", "Piek8", "Piek9", "Piek10", "PiekBube", "PiekDame", "PiekKoenig", "PiekAss",
-        "Kreuz7", "Kreuz8", "Kreuz9", "Kreuz10", "KreuzBube", "KreuzDame", "KreuzKoenig", "KreuzAss",
-        "Karo7", "Karo8", "Karo9", "Karo10", "KaroBube", "KaroDame", "KaroKoenig", "KaroAss"];
+    cards = [
+        "Karo7",
+        "Karo8",
+        "Karo9",
+        "Karo10",
+        "KaroBube",
+        "KaroDame",
+        "KaroKoenig",
+        "KaroAss",
+        "Herz7",
+        "Herz8",
+        "Herz9",
+        "Herz10",
+        "HerzBube",
+        "HerzDame",
+        "HerzKoenig",
+        "HerzAss",
+        "Piek7",
+        "Piek8",
+        "Piek9",
+        "Piek10",
+        "PiekBube",
+        "PiekDame",
+        "PiekKoenig",
+        "PiekAss",
+        "Kreuz7",
+        "Kreuz8",
+        "Kreuz9",
+        "Kreuz10",
+        "KreuzBube",
+        "KreuzDame",
+        "KreuzKoenig",
+        "KreuzAss"
+    ];
     hand = document.getElementsByClassName("cardshand");
     for (let x = 0; x < hand.length; x++) {
         hand[x].addEventListener("click", addfiledeck);
