@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     file = document.getElementById("filedeck");
 });
+// Karten auf der Hand hinzuf�gen 
 function addcardshand() {
     let randomCard = cards.splice(Math.round(Math.random() * (cards.length - 1)), 1)[0]; //auf eine Karte zugreifen diese nehmen und genau diese aus dem Stapel/ Array l�schen
     let freeHand = findEmpty(); // bis zu 5 Karten aufnehmen, siehe unten

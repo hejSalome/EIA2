@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function(): void {
     file = <HTMLDivElement>document.getElementById("filedeck");
 
 });
-
+// Karten auf der Hand hinzufügen 
 function addcardshand(): void {
 
     let randomCard: string = cards.splice(Math.round(Math.random() * (cards.length - 1)), 1)[0]; //auf eine Karte zugreifen diese nehmen und genau diese aus dem Stapel/ Array löschen
