@@ -43,10 +43,9 @@ document.addEventListener("DOMContentLoaded", function(): void {
 
     let divList: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
     let status: boolean = false;
-
+    // Click Event für Farbwechsel der Kästchen und ursprünglicher Zustand herstellen durch den zweiten Klick
     for (let a: number = 0; a < 8; a++) {
         divList[a].addEventListener("click", newColor);
-
         function newColor(): void {
             if (status == false) {
                 divList[a].style.backgroundColor = "orange";
@@ -54,10 +53,13 @@ document.addEventListener("DOMContentLoaded", function(): void {
             }
             else {
             divList[a].style.backgroundColor = "green";
-                   status = true;
+                   status = false;
         }
          }   
     }
+    
+    //div box erstellen, an Cursor gekoppelt
+    
        
 });
 

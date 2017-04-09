@@ -1,0 +1,24 @@
+
+div {
+	height: 180px;
+    width: 120px;
+    color: white;
+    border: 1px solid black;
+    text-align: center;
+    float: left;
+    background-color: black;
+}
+
+
+#startdeck {
+	margin: 10px 10px 10px 10px;
+}
+
+.filedeck {
+
+}
+
+.cardshand {
+	margin-left: 5px;
+	margin-top: 250px;
+}

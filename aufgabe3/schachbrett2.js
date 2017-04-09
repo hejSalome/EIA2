@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let divList = document.getElementsByTagName("div");
     let status = false;
+    // Click Event f�r Farbwechsel der K�stchen und urspr�nglicher Zustand herstellen durch den zweiten Klick
     for (let a = 0; a < 8; a++) {
         divList[a].addEventListener("click", newColor);
         function newColor() {
@@ -46,9 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else {
                 divList[a].style.backgroundColor = "green";
-                status = true;
+                status = false;
             }
         }
     }
+    //div box erstellen, an Cursor gekoppelt
 });
 //# sourceMappingURL=schachbrett2.js.map
