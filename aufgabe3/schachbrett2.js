@@ -3,7 +3,7 @@
 //Matrikel: 254669
 //Datum: 08.04.2017
 //    
-//Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+//Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert. 
 document.addEventListener("DOMContentLoaded", function () {
     let rice = 1;
     let line = 0;

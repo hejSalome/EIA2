@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function(): void {
      "KreuzKoenig", 
      "KreuzAss"
      ];
+    
     hand = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("cardshand");
     for (let x: number = 0; x < hand.length; x++) {
         hand[x].addEventListener("click", addfiledeck);
