@@ -1,3 +1,10 @@
+//Aufgabe: Aufgabe 4
+//Name: Salome Weiﬂer
+//Matrikel: 254669
+//Datum: 23.04.2017
+//    
+//Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+
 namespace aufgabe4_blumenwiese {
     window.addEventListener("load", init);
     let canvas: HTMLCanvasElement;
