@@ -29,10 +29,10 @@ namespace aufgabe4_blumenwiese {
         //verschiedene Farben
         let colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
         // 30 Blumen
-        for (let i: number = 0; i < 30; i++) {
+        for (let i: number = 0; i < 50; i++) {
             //ausgewählter Bereich
-            let randomX: number = (Math.random() * (720 - 1)) + 300;
-            let randomY: number = (Math.random() * (500 - 325)) + 200;
+            let randomX: number = (Math.random() * (720 - 550)) + 650;
+            let randomY: number = (Math.random() * (500 - 250)) + 310;
             let randomColor: string = colors[Math.floor(Math.random() * colors.length)];
             let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
             
@@ -42,7 +42,7 @@ namespace aufgabe4_blumenwiese {
             
             console.log("X ist " + randomX, "Y ist " + randomY, randomTulip);
             if (randomTulip == 1) {
-                drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221" /*, 0.5*/);
+                drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221", 0.98);
             }
             else {
                 drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
@@ -170,23 +170,23 @@ namespace aufgabe4_blumenwiese {
 
     function drawFlowers(): void {
         
-        drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18" /*, 0.5*/);
-        drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18" /*,1*/);
+        drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18", 1);
+        drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18", 1);
         drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B" );
         drawFlower2(590, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(675, 535, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        drawTulip(280, 505, "#295E10", "#666666", "#741221", "#3F0C18"/*,1*/);
-        drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18"/*,1*/);
+        drawTulip(280, 505, "#295E10", "#666666", "#741221", "#3F0C18", 1);
+        drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18", 1);
         drawFlower2(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
        
     }
 
-    function drawTulip(_x: number, _y: number, _colorStem: string, _colorLeaf: string, _colorBlossom: string, _colorInner: string /*, scale: number*/): void {
+    function drawTulip(_x: number, _y: number, _colorStem: string, _colorLeaf: string, _colorBlossom: string, _colorInner: string, scale: number): void {
         // stem
         
-//        crc2.scale(scale, scale);
+        crc2.scale(scale, scale);
         
         crc2.beginPath();
         crc2.strokeStyle = _colorStem;
