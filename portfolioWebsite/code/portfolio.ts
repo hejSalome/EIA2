@@ -46,7 +46,6 @@ namespace code_portfolio {
 //            function plusDivs(n: number): void {
 //                showDivs(slideIndex += n);
 //            }
-
 //            function showDivs(n: number): void {
 //                let i: number;
 //                x = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("mySlides");
