@@ -1,7 +1,7 @@
 //Aufgabe: Aufgabe 5
 //Name: Salome Wei�er
 //Matrikel: 254669
-//Datum: 23.04.2017
+//Datum: 30.04.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 var aufgabe5_blumenwiese;
