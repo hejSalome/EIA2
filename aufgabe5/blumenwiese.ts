@@ -1,20 +1,22 @@
-//Aufgabe: Aufgabe 4
+//Aufgabe: Aufgabe 5
 //Name: Salome Weißer
 //Matrikel: 254669
 //Datum: 23.04.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe4_blumenwiese {
+namespace aufgabe5_blumenwiese {
     window.addEventListener("load", init);
     let canvas: HTMLCanvasElement;
     let crc2: CanvasRenderingContext2D;
     console.log("Hallo");
     let flowersize: number = 16;
-    
-
+    let backgroundImage: ImageData;
+    //Arrays für Position der Bienen
+    let x: number[] = [];
+    let y: number[] = [];
+    let n: number = 10;  //10 Bienen
     function init(): void {
-
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         crc2 = canvas.getContext("2d");
@@ -33,6 +35,7 @@ namespace aufgabe4_blumenwiese {
         drawFlowers();
         drawTree(0, 300, "#BD721F", "#1A6E22");
         drawTreeB(0, 225, "#BD721F", "#1A6E22");
+        drawBienenkorb(0, 500, "#FF0000");
         //Bereich mit zufälliger Blume 
         //verschiedene Farben
         let colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
@@ -43,11 +46,9 @@ namespace aufgabe4_blumenwiese {
             let randomY: number = (Math.random() * (500 - 250)) + 310;
             let randomColor: string = colors[Math.floor(Math.random() * colors.length)];
             let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
-            
             //berechnug von scale
             // je größer randomY desto größer Skalierungsfaktor
-//            let scale: number;
-            
+            //            let scal            
             console.log("X ist " + randomX, "Y ist " + randomY, randomTulip);
             if (randomTulip == 1) {
                 drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221", 0.98);
@@ -55,9 +56,50 @@ namespace aufgabe4_blumenwiese {
             else {
                 drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
             }
-        }
-    }
 
+            backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
+        }
+        //Startposition der Bienen
+        for (var i: number = 0; i < n; i++) {
+            x[i] = 270;
+            y[i] = 712;
+        }
+        window.setTimeout(animate, 50);
+        //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
+        canvas.addEventListener("click", createBiene);
+        canvas.addEventListener("touch", createBiene);
+    }
+    //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird 
+    function createBiene(_event: Event): void {
+        x.push(270);
+        y.push(712);
+        n = n + 1;
+        drawBiene(270, 712);
+    }
+    function animate(): void {
+        console.log("Animate called");
+        crc2.putImageData(backgroundImage, 0, 0);
+        // Schleife für Bewegung der Bienen, Zug nach links
+        for (let i: number = 0; i < n; i++) {
+            x[i] += Math.random() * 4 - 3.5;
+            y[i] += Math.random() * 4 - 4;
+       // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
+            if (x[i] < 0) {
+                x[i] = 1200;
+            }
+            if (x[i] > 1200) {
+                x[i] = 0;
+            }
+            if (y[i] < 0) {
+                y[i] = 820;
+            }
+            if (y[i] > 820) {
+                y[i] = 0;
+            }
+            drawBiene(x[i], y[i]); 
+        }
+        window.setTimeout(animate, 50);
+    }
     //Sky
     function drawSky(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
@@ -67,7 +109,6 @@ namespace aufgabe4_blumenwiese {
         crc2.closePath();
     }
     console.log(drawSky);
-
     //grassland
     function drawGrassland(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
@@ -76,7 +117,6 @@ namespace aufgabe4_blumenwiese {
         crc2.stroke();
         crc2.closePath();
     }
-
     //sun
     function drawSun(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
@@ -175,12 +215,10 @@ namespace aufgabe4_blumenwiese {
         crc2.fill();
         crc2.stroke();
     }
-
     function drawFlowers(): void {
-        
         drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18", 1);
         drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18", 1);
-        drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B" );
+        drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(590, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(675, 535, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
@@ -188,14 +226,10 @@ namespace aufgabe4_blumenwiese {
         drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18", 1);
         drawFlower2(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-       
     }
-
     function drawTulip(_x: number, _y: number, _colorStem: string, _colorLeaf: string, _colorBlossom: string, _colorInner: string, scale: number): void {
         // stem
-        
         crc2.scale(scale, scale);
-        
         crc2.beginPath();
         crc2.strokeStyle = _colorStem;
         crc2.moveTo(_x - 2, _y);
@@ -337,7 +371,6 @@ namespace aufgabe4_blumenwiese {
         crc2.fill();
         crc2.closePath();
     }
-
     function drawTree(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
         crc2.beginPath();
         crc2.fillStyle = _colorBranch;
@@ -364,9 +397,6 @@ namespace aufgabe4_blumenwiese {
         crc2.quadraticCurveTo(_x + 100, _y - 36, _x + 90, _y - 35);
         crc2.stroke();
         crc2.fill();
-
-
-
     }
     function drawTreeB(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
         crc2.beginPath();
@@ -379,9 +409,9 @@ namespace aufgabe4_blumenwiese {
         crc2.quadraticCurveTo(_x + 50, _y - 30, _x + 25, _y - 28);
         crc2.quadraticCurveTo(_x + 24, _y - 30, _x + 27, _y - 50);
         crc2.quadraticCurveTo(_x + 28, _y - 72, _x + 25, _y - 75);
-        crc2.quadraticCurveTo(_x + 26, _y - 65, _x + 24, _y - 50);   
+        crc2.quadraticCurveTo(_x + 26, _y - 65, _x + 24, _y - 50);
         crc2.quadraticCurveTo(_x + 22, _y - 38, _x + 20, _y - 27);
-        crc2.quadraticCurveTo(_x + 15, _y - 23, _x, _y);  
+        crc2.quadraticCurveTo(_x + 15, _y - 23, _x, _y);
         crc2.stroke();
         crc2.fill();
         crc2.closePath();
@@ -389,24 +419,128 @@ namespace aufgabe4_blumenwiese {
         crc2.fillStyle = _colorLeaf;
         crc2.strokeStyle = _colorLeaf;
         crc2.moveTo(_x + 65, _y - 45);
-        crc2.quadraticCurveTo(_x + 62, _y - 55, _x + 78, _y - 65); 
-        crc2.quadraticCurveTo(_x + 77, _y - 52, _x + 65, _y - 45); 
+        crc2.quadraticCurveTo(_x + 62, _y - 55, _x + 78, _y - 65);
+        crc2.quadraticCurveTo(_x + 77, _y - 52, _x + 65, _y - 45);
         crc2.moveTo(_x + 25, _y - 75);
-        crc2.quadraticCurveTo(_x + 20, _y - 79, _x + 26, _y - 98); 
-        crc2.quadraticCurveTo(_x + 32, _y - 80, _x + 25, _y - 75); 
+        crc2.quadraticCurveTo(_x + 20, _y - 79, _x + 26, _y - 98);
+        crc2.quadraticCurveTo(_x + 32, _y - 80, _x + 25, _y - 75);
         crc2.stroke();
         crc2.fill();
     }
-//    drawGrass( 710, 500, "#295E10");
-//    function drawGrass(_x: number, _y: number, _colorStem: string): void {
-//        crc2.beginPath();
-//        crc2.strokeStyle = _colorStem;
-//        crc2.moveTo(_x - 2, _y);
-//        crc2.quadraticCurveTo(_x - 2, _y - 33, _x, _y - 50);
-//        crc2.lineTo(_x, _y - 50);
-//        crc2.quadraticCurveTo(_x - 1, _y - 50, _x, _y);
-//        crc2.lineTo(_x - 2, _y);
-//        crc2.stroke();
-//        crc2.closePath();
-//        }
+    function drawBienenkorb(_x: number, _y: number, _fillStyle: string): void {
+        //Holzablage
+        crc2.beginPath();
+        crc2.fillStyle = "#753C1E";
+        crc2.fillRect(_x + 25, _y, 175, - 15);
+        crc2.fill();
+        crc2.closePath();
+        //Korbreihen
+        crc2.beginPath();
+        crc2.fillStyle = "#B2380B";
+        crc2.strokeStyle = "#753C1E";
+        crc2.moveTo(_x + 40, _y);
+        crc2.quadraticCurveTo(_x + 30, _y - 12.5, _x + 40, _y - 25);
+        crc2.lineTo(_x + 185, _y - 25);
+        crc2.quadraticCurveTo(_x + 195, _y - 12.5, _x + 185, _y);
+        crc2.lineTo(_x + 25, _y);
+
+        crc2.moveTo(_x + 45, _y - 25);
+        crc2.quadraticCurveTo(_x + 37.5, _y - 37.5, _x + 45, _y - 50);
+        crc2.lineTo(_x + 180, _y - 50);
+        crc2.quadraticCurveTo(_x + 187.5, _y - 37.5, _x + 180, _y - 25);
+        crc2.lineTo(_x + 45, _y - 25);
+
+        crc2.moveTo(_x + 50, _y - 50);
+        crc2.quadraticCurveTo(_x + 40, _y - 62.5, _x + 50, _y - 75);
+        crc2.lineTo(_x + 175, _y - 75);
+        crc2.quadraticCurveTo(_x + 185, _y - 62.5, _x + 175, _y - 50);
+        crc2.lineTo(_x + 50, _y - 50);
+
+        crc2.moveTo(_x + 60, _y - 75);
+        crc2.quadraticCurveTo(_x + 50, _y - 85.5, _x + 60, _y - 100);
+        crc2.lineTo(_x + 165, _y - 100);
+        crc2.quadraticCurveTo(_x + 175, _y - 85.5, _x + 165, _y - 75);
+        crc2.lineTo(_x + 60, _y - 75);
+
+        crc2.moveTo(_x + 75, _y - 100);
+        crc2.quadraticCurveTo(_x + 65, _y - 112.5, _x + 75, _y - 125);
+        crc2.lineTo(_x + 150, _y - 125);
+        crc2.quadraticCurveTo(_x + 160, _y - 112.5, _x + 150, _y - 100);
+        crc2.lineTo(_x + 60, _y - 100);
+
+        crc2.fill();
+        crc2.stroke();
+        crc2.closePath();
+        //Eingang
+        crc2.beginPath();
+        crc2.fillStyle = "#423732";
+        crc2.moveTo(_x + 180, _y - 50);
+        crc2.quadraticCurveTo(_x + 187.5, _y - 37.5, _x + 180, _y - 25);
+        crc2.lineTo(_x + 170, _y - 25);
+        crc2.lineTo(_x + 170, _y - 50);
+        crc2.lineTo(_x + 180, _y - 50);
+        crc2.fill();
+        crc2.closePath();
+    }
+    function drawBiene(_x: number, _y: number): void {
+        //Körper
+        crc2.beginPath();
+        crc2.fillStyle = "#000000";
+        crc2.moveTo(_x + 12, _y + 7);
+        crc2.quadraticCurveTo(_x + 33, _y, _x + 36, _y + 15);
+        crc2.lineTo(_x + 40, _y + 15);
+        crc2.lineTo(_x + 36, _y + 17.5);
+        crc2.quadraticCurveTo(_x + 30, _y + 30, _x + 10, _y + 20);
+        crc2.lineTo(_x + 10, _y + 15);
+        crc2.fill();
+        crc2.closePath();
+        //Kopf
+        crc2.beginPath();
+        crc2.fillStyle = "#FFD200"; //yellow
+        crc2.arc(_x + 7, _y + 15, 10, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+        //Augen
+        crc2.beginPath();
+        crc2.fillStyle = "#000000";
+        crc2.arc(_x + 3, _y + 13, 2, 0, 2 * Math.PI);
+        crc2.arc(_x + 9, _y + 13, 2, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+        //Mund
+        crc2.beginPath();
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x + 3, _y + 17);
+        crc2.quadraticCurveTo(_x + 6, _y + 21, _x + 9, _y + 17);
+        crc2.stroke();
+        crc2.closePath();
+        //Flügel
+        crc2.beginPath();
+        crc2.strokeStyle = "#000000";
+        crc2.fillStyle = "#BDEBF7";
+        crc2.moveTo(_x + 19, _y + 12);
+        crc2.quadraticCurveTo(_x + 35, _y, _x + 37, _y + 5);
+        crc2.lineTo(_x + 39, _y + 12);
+        crc2.quadraticCurveTo(_x + 21, _y + 19, _x + 19, _y + 17);
+        crc2.stroke();
+        crc2.fill();
+        crc2.closePath();
+         //Fühler
+        crc2.beginPath();
+        crc2.moveTo(_x + 4, _y + 8);
+        crc2.strokeStyle = "#000000";
+        crc2.lineTo(_x + 1, _y + 2);
+        crc2.closePath();
+        crc2.stroke();
+     
+        crc2.beginPath();
+        crc2.moveTo(_x + 10, _y + 9);
+        crc2.strokeStyle = "#000000";
+        crc2.lineTo(_x + 5, _y + 3);
+        crc2.closePath();
+        crc2.stroke();
+
+    }
+
 }
+
