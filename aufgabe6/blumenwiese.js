@@ -12,6 +12,7 @@ var aufgabe6_blumenwiese;
     console.log("Hallo");
     let flowersize = 16;
     let backgroundImage;
+    let colorBees = ["yellow", "orange", "red"];
     let bees = [];
     let n = 10; //10 Bienen
     function init() {
@@ -58,28 +59,11 @@ var aufgabe6_blumenwiese;
         }
         //Startposition der Bienen
         for (let i = 0; i < n; i++) {
-            let d;
-            let random = Math.round(Math.random());
-            if (random == 1) {
-                d = true;
-            }
-            if (random == 0) {
-                d = false;
-            }
-            let b = { x: 0, y: 0, color: " ", direction: d };
+            let b = { x: 0, y: 0, color: " " };
             b.x = 270;
             b.y = 712;
-            b.color = "yellow";
+            b.color = colorBees[Math.floor(Math.random() * colorBees.length)];
             bees[i] = b;
-        }
-        //Funktion die ausgef�hrt wird wenn auf das Canvas geklickt wird
-        function createNewBee() {
-            let newBee = { x: 270, y: 712, color: "yellow", direction: true };
-            newBee.x = 270;
-            newBee.y = 712;
-            newBee.color = "orange";
-            n = n + 1;
-            drawBiene(270, 712, " ", false);
         }
         window.setTimeout(animate, 50);
         //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
@@ -107,9 +91,18 @@ var aufgabe6_blumenwiese;
             if (b.y > 820) {
                 b.y = 0;
             }
-            drawBiene(b.x, b.y, b.color, b.direction);
+            drawBiene(b.x, b.y, b.color);
         }
         window.setTimeout(animate, 50);
+    }
+    //Funktion die ausgef�hrt wird wenn auf das Canvas geklickt wird
+    function createNewBee(_event) {
+        let randomColorBees = colorBees[Math.floor(Math.random() * colorBees.length)];
+        let newBee = { x: 270, y: 712, color: " " };
+        newBee.x = 270;
+        newBee.y = 712;
+        newBee.color = randomColorBees;
+        n++;
     }
     //Sky
     function drawSky(_x, _y, _fillColor) {
@@ -485,7 +478,7 @@ var aufgabe6_blumenwiese;
         crc2.fill();
         crc2.closePath();
     }
-    function drawBiene(_x, _y, _color, _direction) {
+    function drawBiene(_x, _y, _color) {
         //K�rper
         crc2.beginPath();
         crc2.fillStyle = "#000000";
@@ -499,7 +492,7 @@ var aufgabe6_blumenwiese;
         crc2.closePath();
         //Kopf
         crc2.beginPath();
-        crc2.fillStyle = "#FFD200"; //yellow
+        crc2.fillStyle = _color; //yellow
         crc2.arc(_x + 7, _y + 15, 10, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();

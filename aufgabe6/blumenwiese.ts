@@ -12,6 +12,7 @@ namespace aufgabe6_blumenwiese {
     console.log("Hallo");
     let flowersize: number = 16;
     let backgroundImage: ImageData;
+    let colorBees: string[] = ["yellow", "orange", "red"];
     interface BeeData {
         x: number;  //Position
         y: number;  //Position
@@ -76,21 +77,11 @@ namespace aufgabe6_blumenwiese {
             let b: BeeData = { x: 0, y: 0, color: " " };
             b.x = 270;
             b.y = 712;
-            b.color = "yellow";
+            b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             bees[i] = b;
         }
 
 
-        //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
-        function createNewBee(_event: Event): void {
-            let colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
-            let randomColorBees: string = colors[Math.floor(Math.random() * colors.length)];
-            let newBee: BeeData = { x: 270, y: 712, color: randomColorBees };
-            newBee.x = 270;
-            newBee.y = 712;
-            newBee.color = randomColorBees;
-            n++;
-        
         window.setTimeout(animate, 50);
         //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
         canvas.addEventListener("click", createNewBee);
@@ -120,11 +111,18 @@ namespace aufgabe6_blumenwiese {
                 b.y = 0;
             }
 
-            drawBiene(b.x, b.y, b.color, b.direction);
+            drawBiene(b.x, b.y, b.color);
         }
         window.setTimeout(animate, 50);
 
     }
+    //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
+    function createNewBee(): void {
+        bees.push = ({x: 270, y: 712, color: "#FFEF00" });
+        n++;
+
+    }
+
     //Sky
     function drawSky(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
@@ -507,10 +505,10 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.closePath();
     }
-    function drawBiene(_x: number, _y: number, _color: randomColorBees, _direction: boolean): void {
+    function drawBiene(_x: number, _y: number, _color: string): void {
         //Körper
         crc2.beginPath();
-        crc2.fillStyle = "#000000";
+        crc2.fillStyle = _color;
         crc2.moveTo(_x + 12, _y + 7);
         crc2.quadraticCurveTo(_x + 33, _y, _x + 36, _y + 15);
         crc2.lineTo(_x + 40, _y + 15);
@@ -521,7 +519,7 @@ namespace aufgabe6_blumenwiese {
         crc2.closePath();
         //Kopf
         crc2.beginPath();
-        crc2.fillStyle = _color; //yellow
+        crc2.fillStyle = "yellow" ; //yellow
         crc2.arc(_x + 7, _y + 15, 10, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
