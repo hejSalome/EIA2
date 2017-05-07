@@ -7,7 +7,7 @@ var aufgabe6_interface;
         switch (action) {
             case "n":
             case "N":
-                var input = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 oder 1) und Kommentar");
+                var input = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 fuer maennlich oder 1 fuer weiblich) und Kommentar");
                 alert(saveData(input));
                 break;
             case "a":
@@ -21,10 +21,37 @@ var aufgabe6_interface;
         }
     }
     function saveData(_input) {
-        return "Hier fehlt noch der richtige Code...";
+        let studi; //Student welcher die Daten aus dem String enth�lt
+        let infoArr = _input.split(","); //Array mit den Informationen �ber Student, wird aufgesplittet, jede Info getrennt
+        studi = {
+            matrikel: parseInt(infoArr[0]),
+            name: infoArr[1],
+            firstname: infoArr[2],
+            age: parseInt(infoArr[3]),
+            sex: parseInt(infoArr[4]) == 1,
+            comment: infoArr[5]
+        };
+        students.push(studi); //pushe die Daten aus s in die students-kartei damit ein neuer "Student" entsteht
+        let gender;
+        if (parseInt(infoArr[4]) == 1) {
+            gender = "m�nnlich";
+        }
+        else {
+            gender = "weiblich";
+        }
+        //Ausgabe
+        return "Deine eingegebenen Daten:\n" + "\nMatrikelnr.: " + studi.matrikel + "\nName: " + studi.name + "," + studi.firstname + "\nAlter: " + studi.age + "\nGeschlecht: " + gender + "\nKommentar: " + studi.comment;
     }
     function queryData(_matrikel) {
-        return "Hier fehlt noch der richtige Code...";
+        let studi;
+        for (let i = 0; i < students.length; i++) {
+            if (students[i].matrikel == _matrikel) {
+                return "Gespeicherte Daten zu folgender Matrikelnr.: " + students[i].matrikel + "\n\nName: " + students[i].name + "," + students[i].firstname + "\nAlter:" + students[i].age + "\nGeschlecht:" + students[i].sex + "\nKommentar:" + students[i].comment;
+            }
+            else {
+                return "Diese Matrikelnummer ist nicht vorhanden.";
+            } //wenn Matrikelnumer falsch, dann weiter zum n�chsten Student 
+        }
     }
 })(aufgabe6_interface || (aufgabe6_interface = {}));
 //# sourceMappingURL=interface.js.map
