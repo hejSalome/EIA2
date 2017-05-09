@@ -1,11 +1,11 @@
-//Aufgabe: Aufgabe 6b
+//Aufgabe: Aufgabe 7
 //Name: Salome Weiﬂer
 //Matrikel: 254669
-//Datum: 05.05.2017
+//Datum: 10.05.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe6_blumenwiese {
+namespace aufgabe7_ooblumenwiese {
     window.addEventListener("load", init);
     let canvas: HTMLCanvasElement;
     let crc2: CanvasRenderingContext2D;

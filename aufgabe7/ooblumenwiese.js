@@ -1,31 +1,21 @@
-//Aufgabe: Aufgabe 6b
-//Name: Salome Weißer
+//Aufgabe: Aufgabe 7
+//Name: Salome Weiï¿½er
 //Matrikel: 254669
-//Datum: 05.05.2017
+//Datum: 10.05.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-
-namespace aufgabe6_blumenwiese {
+var aufgabe7_ooblumenwiese;
+(function (aufgabe7_ooblumenwiese) {
     window.addEventListener("load", init);
-    let canvas: HTMLCanvasElement;
-    let crc2: CanvasRenderingContext2D;
+    let canvas;
+    let crc2;
     console.log("Hallo");
-    let flowersize: number = 16;
-    let backgroundImage: ImageData;
-    let colorBee: string[] = ["yellow", "orange", "red"];
-    interface BeeData {
-        x: number;  //Position
-        y: number;  //Position
-        color: string;
-    }
-    let bees: BeeData[] = [];
-
-
-    let n: number = 10;  //10 Bienen
-
-    function init(): void {
-
-
+    let flowersize = 16;
+    let backgroundImage;
+    let colorBee = ["yellow", "orange", "red"];
+    let bees = [];
+    let n = 10; //10 Bienen
+    function init() {
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         crc2 = canvas.getContext("2d");
@@ -45,20 +35,18 @@ namespace aufgabe6_blumenwiese {
         drawTree(0, 300, "#BD721F", "#1A6E22");
         drawTreeB(0, 225, "#BD721F", "#1A6E22");
         drawBienenkorb(0, 500, "#FF0000");
-
-        //Bereich mit zufälliger Blume 
+        //Bereich mit zufï¿½lliger Blume 
         //verschiedene Farben
-        let colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
+        let colors = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
         // 30 Blumen
-        for (let i: number = 0; i < 50; i++) {
-            //ausgewählter Bereich
-            let randomX: number = (Math.random() * (720 - 550)) + 650;
-            let randomY: number = (Math.random() * (500 - 250)) + 310;
-            let randomColor: string = colors[Math.floor(Math.random() * colors.length)];
-            let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
-
+        for (let i = 0; i < 50; i++) {
+            //ausgewï¿½hlter Bereich
+            let randomX = (Math.random() * (720 - 550)) + 650;
+            let randomY = (Math.random() * (500 - 250)) + 310;
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            let randomTulip = Math.floor((Math.random() * 2)) + 1;
             //berechnug von scale
-            // je größer randomY desto größer Skalierungsfaktor
+            // je grï¿½ï¿½er randomY desto grï¿½ï¿½er Skalierungsfaktor
             //            let scal            
             console.log("X ist " + randomX, "Y ist " + randomY, randomTulip);
             if (randomTulip == 1) {
@@ -67,39 +55,31 @@ namespace aufgabe6_blumenwiese {
             else {
                 drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
             }
-
             backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
         }
-
-
         //Startposition der Bienen
-    
-        for (let i: number = 0; i < n; i++) {
-            let b: BeeData = { x: 0, y: 0, color: " " };
-            let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
+        for (let i = 0; i < n; i++) {
+            let b = { x: 0, y: 0, color: " " };
+            let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
             b.x = 270;
             b.y = 712;
             b.color = randomColorBee;
             bees[i] = b;
         }
-
-
         window.setTimeout(animate, 50);
         //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
         canvas.addEventListener("click", createNewBee);
         canvas.addEventListener("touch", createNewBee);
     }
-
-
-    function animate(): void {
+    function animate() {
         console.log("Animate called");
         crc2.putImageData(backgroundImage, 0, 0);
-        // Schleife für Bewegung der Bienen, Zug nach links
-        for (let i: number = 0; i < n; i++) {
-            let b: BeeData = bees[i];
+        // Schleife fï¿½r Bewegung der Bienen, Zug nach links
+        for (let i = 0; i < n; i++) {
+            let b = bees[i];
             b.x += Math.random() * 4 - 3.5;
             b.y += Math.random() * 4 - 4;
-            // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
+            // wenn Biene Canvas verlï¿½sst, dann Einflug auf gegenï¿½berliegender Seite
             if (b.x < 0) {
                 b.y = 1200;
             }
@@ -112,25 +92,22 @@ namespace aufgabe6_blumenwiese {
             if (b.y > 820) {
                 b.y = canvas.height;
             }
-
             drawBiene(b.x, b.y, b.color);
         }
         window.setTimeout(animate, 50);
-
     }
-    //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
-    function createNewBee(): void {
-        let be: BeeData = ({ x: 270, y: 712, color: " " });
-        let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
+    //Funktion die ausgefï¿½hrt wird wenn auf das Canvas geklickt wird
+    function createNewBee() {
+        let be = ({ x: 270, y: 712, color: " " });
+        let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
         be.x = 270;
         be.y = 712;
         be.color = randomColorBee;
         bees.push(be);
         n++;
     }
-
     //Sky
-    function drawSky(_x: number, _y: number, _fillColor: string): void {
+    function drawSky(_x, _y, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = "#65B4FF";
         crc2.fillRect(0, 0, canvas.width, 175);
@@ -139,7 +116,7 @@ namespace aufgabe6_blumenwiese {
     }
     console.log(drawSky);
     //grassland
-    function drawGrassland(_x: number, _y: number, _fillColor: string): void {
+    function drawGrassland(_x, _y, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = "#34B21A";
         crc2.fillRect(0, 175, canvas.width, canvas.height);
@@ -147,7 +124,7 @@ namespace aufgabe6_blumenwiese {
         crc2.closePath();
     }
     //sun
-    function drawSun(_x: number, _y: number, _fillColor: string): void {
+    function drawSun(_x, _y, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = "#FCC631";
         crc2.arc(500, 75, 25, 0 * Math.PI, 2 * Math.PI);
@@ -155,7 +132,7 @@ namespace aufgabe6_blumenwiese {
         crc2.closePath();
     }
     //mountain range
-    function drawMountainA(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawMountainA(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -167,7 +144,7 @@ namespace aufgabe6_blumenwiese {
         crc2.stroke();
         //draw a mountain around the coordinates (_x, _y);
     }
-    function drawMountainB(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawMountainB(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -178,7 +155,7 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.stroke();
     }
-    function drawMountainC(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawMountainC(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -189,7 +166,7 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.stroke();
     }
-    function drawMountainD(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawMountainD(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -202,7 +179,7 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.stroke();
     }
-    function drawMountainE(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawMountainE(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -213,7 +190,7 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.stroke();
     }
-    function drawMountainF(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawMountainF(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -226,7 +203,7 @@ namespace aufgabe6_blumenwiese {
         crc2.stroke();
     }
     //river
-    function drawRiver(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawRiver(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -244,7 +221,7 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.stroke();
     }
-    function drawFlowers(): void {
+    function drawFlowers() {
         drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18", 1);
         drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18", 1);
         drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
@@ -256,7 +233,7 @@ namespace aufgabe6_blumenwiese {
         drawFlower2(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
     }
-    function drawTulip(_x: number, _y: number, _colorStem: string, _colorLeaf: string, _colorBlossom: string, _colorInner: string, scale: number): void {
+    function drawTulip(_x, _y, _colorStem, _colorLeaf, _colorBlossom, _colorInner, scale) {
         // stem
         crc2.scale(scale, scale);
         crc2.beginPath();
@@ -267,7 +244,6 @@ namespace aufgabe6_blumenwiese {
         crc2.quadraticCurveTo(_x - 1, _y - 50, _x, _y);
         crc2.stroke();
         crc2.closePath();
-
         //blossom
         crc2.beginPath();
         crc2.fillStyle = _colorBlossom;
@@ -286,7 +262,7 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.closePath();
     }
-    function drawFlower2(_x: number, _y: number, _colorStem: string, _colorLeaf: string, _colorBlossom: string, _colorInner: string): void {
+    function drawFlower2(_x, _y, _colorStem, _colorLeaf, _colorBlossom, _colorInner) {
         // stem
         crc2.beginPath();
         crc2.strokeStyle = _colorStem;
@@ -333,7 +309,6 @@ namespace aufgabe6_blumenwiese {
         crc2.arc(_x - 14, _y - 96, 2, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
-
         //blossom stem middle
         crc2.beginPath();
         crc2.strokeStyle = _colorInner;
@@ -366,7 +341,6 @@ namespace aufgabe6_blumenwiese {
         crc2.arc(_x + 6, _y - 91, 2, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
-
         //blossom stem right
         crc2.beginPath();
         crc2.strokeStyle = _colorInner;
@@ -400,7 +374,7 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.closePath();
     }
-    function drawTree(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
+    function drawTree(_x, _y, _colorBranch, _colorLeaf) {
         crc2.beginPath();
         crc2.fillStyle = _colorBranch;
         crc2.strokeStyle = _colorBranch;
@@ -427,7 +401,7 @@ namespace aufgabe6_blumenwiese {
         crc2.stroke();
         crc2.fill();
     }
-    function drawTreeB(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
+    function drawTreeB(_x, _y, _colorBranch, _colorLeaf) {
         crc2.beginPath();
         crc2.fillStyle = _colorBranch;
         crc2.strokeStyle = _colorBranch;
@@ -456,11 +430,11 @@ namespace aufgabe6_blumenwiese {
         crc2.stroke();
         crc2.fill();
     }
-    function drawBienenkorb(_x: number, _y: number, _fillStyle: string): void {
+    function drawBienenkorb(_x, _y, _fillStyle) {
         //Holzablage
         crc2.beginPath();
         crc2.fillStyle = "#753C1E";
-        crc2.fillRect(_x + 25, _y, 175, - 15);
+        crc2.fillRect(_x + 25, _y, 175, -15);
         crc2.fill();
         crc2.closePath();
         //Korbreihen
@@ -472,31 +446,26 @@ namespace aufgabe6_blumenwiese {
         crc2.lineTo(_x + 185, _y - 25);
         crc2.quadraticCurveTo(_x + 195, _y - 12.5, _x + 185, _y);
         crc2.lineTo(_x + 25, _y);
-
         crc2.moveTo(_x + 45, _y - 25);
         crc2.quadraticCurveTo(_x + 37.5, _y - 37.5, _x + 45, _y - 50);
         crc2.lineTo(_x + 180, _y - 50);
         crc2.quadraticCurveTo(_x + 187.5, _y - 37.5, _x + 180, _y - 25);
         crc2.lineTo(_x + 45, _y - 25);
-
         crc2.moveTo(_x + 50, _y - 50);
         crc2.quadraticCurveTo(_x + 40, _y - 62.5, _x + 50, _y - 75);
         crc2.lineTo(_x + 175, _y - 75);
         crc2.quadraticCurveTo(_x + 185, _y - 62.5, _x + 175, _y - 50);
         crc2.lineTo(_x + 50, _y - 50);
-
         crc2.moveTo(_x + 60, _y - 75);
         crc2.quadraticCurveTo(_x + 50, _y - 85.5, _x + 60, _y - 100);
         crc2.lineTo(_x + 165, _y - 100);
         crc2.quadraticCurveTo(_x + 175, _y - 85.5, _x + 165, _y - 75);
         crc2.lineTo(_x + 60, _y - 75);
-
         crc2.moveTo(_x + 75, _y - 100);
         crc2.quadraticCurveTo(_x + 65, _y - 112.5, _x + 75, _y - 125);
         crc2.lineTo(_x + 150, _y - 125);
         crc2.quadraticCurveTo(_x + 160, _y - 112.5, _x + 150, _y - 100);
         crc2.lineTo(_x + 60, _y - 100);
-
         crc2.fill();
         crc2.stroke();
         crc2.closePath();
@@ -511,8 +480,8 @@ namespace aufgabe6_blumenwiese {
         crc2.fill();
         crc2.closePath();
     }
-    function drawBiene(_x: number, _y: number, _color: string): void {
-        //Körper
+    function drawBiene(_x, _y, _color) {
+        //Kï¿½rper
         crc2.beginPath();
         crc2.fillStyle = _color;
         crc2.moveTo(_x + 12, _y + 7);
@@ -543,7 +512,7 @@ namespace aufgabe6_blumenwiese {
         crc2.quadraticCurveTo(_x + 6, _y + 21, _x + 9, _y + 17);
         crc2.stroke();
         crc2.closePath();
-        //Flügel
+        //Flï¿½gel
         crc2.beginPath();
         crc2.strokeStyle = "#000000";
         crc2.fillStyle = "#BDEBF7";
@@ -554,22 +523,19 @@ namespace aufgabe6_blumenwiese {
         crc2.stroke();
         crc2.fill();
         crc2.closePath();
-        //Fühler
+        //Fï¿½hler
         crc2.beginPath();
         crc2.moveTo(_x + 4, _y + 8);
         crc2.strokeStyle = "#000000";
         crc2.lineTo(_x + 1, _y + 2);
         crc2.closePath();
         crc2.stroke();
-
         crc2.beginPath();
         crc2.moveTo(_x + 10, _y + 9);
         crc2.strokeStyle = "#000000";
         crc2.lineTo(_x + 5, _y + 3);
         crc2.closePath();
         crc2.stroke();
-
     }
-
-}
-
+})(aufgabe7_ooblumenwiese || (aufgabe7_ooblumenwiese = {}));
+//# sourceMappingURL=ooblumenwiese.js.map
