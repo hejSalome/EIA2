@@ -5,17 +5,15 @@
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe7_ooblumenwiese {
+namespace aufgabe7_classesOoBlumenwiese {
     window.addEventListener("load", init);
     let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
+    let bees: BeeData[] = [];
     console.log("Hallo");
     let flowersize: number = 16;
     let backgroundImage: ImageData;
     let colorBee: string[] = ["yellow", "orange", "red"];
-    let bees: BeeData[] = [];
-
-
     let n: number = 10;  //10 Bienen
 
     function init(): void {
