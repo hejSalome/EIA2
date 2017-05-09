@@ -13,12 +13,13 @@ namespace aufgabe6_interface {
 
     while (!stop) {
         var action: string = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
+        //prompt: Dialogfenster mit Eingabefeld, mit Ok- Button und mit Abbruch - Button
 
         switch (action) {
             case "n":
             case "N":
                 var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 fuer maennlich oder 1 fuer weiblich) und Kommentar");
-                alert(saveData(input));
+                alert(saveData(input)); //alert: gibt Text im Dialogfenster aus; in diesem Fall was in saveData steht 
                 break;
             case "a":
             case "A":

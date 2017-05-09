@@ -77,7 +77,7 @@ namespace aufgabe6_blumenwiese {
             let b: BeeData = { x: 0, y: 0, color: " " };
             b.x = 270;
             b.y = 712;
-            b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            b.color = "yellow";
             bees[i] = b;
         }
 
@@ -118,9 +118,12 @@ namespace aufgabe6_blumenwiese {
     }
     //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
     function createNewBee(): void {
-        bees.push = ({x: 270, y: 712, color: "#FFEF00" });
+        let be: BeeData = ({ x: 270, y: 712, color: "yellow" });
+        be.x = 270;
+        be.y = 712;
+        be.color = "yellow";
+        be.push(bees);
         n++;
-
     }
 
     //Sky
@@ -519,7 +522,7 @@ namespace aufgabe6_blumenwiese {
         crc2.closePath();
         //Kopf
         crc2.beginPath();
-        crc2.fillStyle = "yellow" ; //yellow
+        crc2.fillStyle = "yellow"; //yellow
         crc2.arc(_x + 7, _y + 15, 10, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
