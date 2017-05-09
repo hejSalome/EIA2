@@ -13,7 +13,7 @@ namespace aufgabe7_classesOoBlumenwiese {
     console.log("Hallo");
     let flowersize: number = 16;
     let backgroundImage: ImageData;
-    let colorBee: string[] = ["yellow", "orange", "red"];
+    export let colorBee: string[] = ["yellow", "orange", "red"];
     let n: number = 10;  //10 Bienen
 
     function init(): void {
@@ -72,7 +72,6 @@ namespace aufgabe7_classesOoBlumenwiese {
             let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
             b.x = 270;
             b.y = 712;
-            b.color = randomColorBee;
             bees[i] = b;
         }
 
