@@ -33,7 +33,7 @@ namespace aufgabe6_interface {
     }
 
     function saveData(_input: string): string {
-        let studi: StudentData; //Student welcher die Daten aus dem String enthölt
+        let studi: StudentData; //Student welcher die Daten aus dem String enthält
         let infoArr: string[] = _input.split(","); //Array mit den Informationen über Student, wird aufgesplittet, jede Info getrennt
         studi = {
             matrikel: parseInt(infoArr[0]), //parseInt liest string ein und liefert Nummer 
@@ -44,7 +44,7 @@ namespace aufgabe6_interface {
             comment: infoArr[5]
         };
 
-        students.push(studi);  //pushe die Daten aus s in die students-kartei damit ein neuer "Student" entsteht
+        students.push(studi);  //pushe die Daten aus studi in die students-kartei damit ein neuer "Student" entsteht
 
         let gender: string;
         if (parseInt(infoArr[4]) == 1) {   //Wenn die sex-info in der 4. Schublade == 1 eingetippt wurde, dann ist er männlich

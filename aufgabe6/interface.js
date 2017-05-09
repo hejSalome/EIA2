@@ -32,7 +32,7 @@ var aufgabe6_interface;
             sex: parseInt(infoArr[4]) == 1,
             comment: infoArr[5]
         };
-        students.push(studi); //pushe die Daten aus s in die students-kartei damit ein neuer "Student" entsteht
+        students.push(studi); //pushe die Daten aus studi in die students-kartei damit ein neuer "Student" entsteht
         let gender;
         if (parseInt(infoArr[4]) == 1) {
             gender = "m�nnlich";

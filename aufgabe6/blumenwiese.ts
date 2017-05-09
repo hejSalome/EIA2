@@ -122,7 +122,7 @@ namespace aufgabe6_blumenwiese {
         be.x = 270;
         be.y = 712;
         be.color = "yellow";
-        be.push(bees);
+        bees.push(be);
         n++;
     }
 

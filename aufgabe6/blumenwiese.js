@@ -62,7 +62,7 @@ var aufgabe6_blumenwiese;
             let b = { x: 0, y: 0, color: " " };
             b.x = 270;
             b.y = 712;
-            b.color = colorBees[Math.floor(Math.random() * colorBees.length)];
+            b.color = "yellow";
             bees[i] = b;
         }
         window.setTimeout(animate, 50);
@@ -96,12 +96,12 @@ var aufgabe6_blumenwiese;
         window.setTimeout(animate, 50);
     }
     //Funktion die ausgef�hrt wird wenn auf das Canvas geklickt wird
-    function createNewBee(_event) {
-        let randomColorBees = colorBees[Math.floor(Math.random() * colorBees.length)];
-        let newBee = { x: 270, y: 712, color: " " };
-        newBee.x = 270;
-        newBee.y = 712;
-        newBee.color = randomColorBees;
+    function createNewBee() {
+        let be = ({ x: 270, y: 712, color: "yellow" });
+        be.x = 270;
+        be.y = 712;
+        be.color = "yellow";
+        bees.push(be);
         n++;
     }
     //Sky
@@ -481,7 +481,7 @@ var aufgabe6_blumenwiese;
     function drawBiene(_x, _y, _color) {
         //K�rper
         crc2.beginPath();
-        crc2.fillStyle = "#000000";
+        crc2.fillStyle = _color;
         crc2.moveTo(_x + 12, _y + 7);
         crc2.quadraticCurveTo(_x + 33, _y, _x + 36, _y + 15);
         crc2.lineTo(_x + 40, _y + 15);
@@ -492,7 +492,7 @@ var aufgabe6_blumenwiese;
         crc2.closePath();
         //Kopf
         crc2.beginPath();
-        crc2.fillStyle = _color; //yellow
+        crc2.fillStyle = "yellow"; //yellow
         crc2.arc(_x + 7, _y + 15, 10, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
