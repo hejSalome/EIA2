@@ -8,16 +8,11 @@
 namespace aufgabe7_ooblumenwiese {
     window.addEventListener("load", init);
     let canvas: HTMLCanvasElement;
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
     console.log("Hallo");
     let flowersize: number = 16;
     let backgroundImage: ImageData;
     let colorBee: string[] = ["yellow", "orange", "red"];
-    interface BeeData {
-        x: number;  //Position
-        y: number;  //Position
-        color: string;
-    }
     let bees: BeeData[] = [];
 
 
@@ -73,7 +68,7 @@ namespace aufgabe7_ooblumenwiese {
 
 
         //Startposition der Bienen
-    
+
         for (let i: number = 0; i < n; i++) {
             let b: BeeData = { x: 0, y: 0, color: " " };
             let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
