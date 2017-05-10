@@ -1,27 +1,20 @@
-//Aufgabe: Aufgabe 6b
+//Aufgabe: Aufgabe 7
 //Name: Salome Weißer
 //Matrikel: 254669
-//Datum: 05.05.2017
+//Datum: 10.05.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe6_blumenwiese {
+namespace aufgabe7_blumenwiese {
 
     window.addEventListener("load", init);
 
     let canvas: HTMLCanvasElement;
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
     let flowersize: number = 16;
     let backgroundImage: ImageData;
     let colorBee: string[] = ["yellow", "orange", "red"];
     let bees: BeeData[] = [];
-
-    interface BeeData {
-        x: number;  //Position
-        y: number;  //Position
-        color: string;
-        direction: boolean;
-    }
 
     function init(): void {
 
@@ -62,8 +55,7 @@ namespace aufgabe6_blumenwiese {
             else  //Entgegengesetzte Richtung 
                 directionModifier = -1;
 
-            b.x += (Math.random() * 4 - 3.5) * directionModifier;
-            b.y += Math.random() * 4 - 4;
+            b.move();
 
 
             // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
