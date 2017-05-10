@@ -1,5 +1,5 @@
 //Aufgabe: Aufgabe 6b
-//Name: Salome Weißer
+//Name: Salome Weiï¿½er
 //Matrikel: 254669
 //Datum: 05.05.2017
 //    
@@ -17,11 +17,12 @@ namespace aufgabe6_blumenwiese {
         x: number;  //Position
         y: number;  //Position
         color: string;
+        //Hier fehlt ein zweites, zusÃ¤tzliches Attribut z.B. die Fluggeschwindigkeit der Bienen
     }
     let bees: BeeData[] = [];
 
 
-    let n: number = 10;  //10 Bienen
+    let n: number = 10;  //10 Bienen <-- n werden wir nur noch in der init-Methode benÃ¶tigen
 
     function init(): void {
 
@@ -46,21 +47,21 @@ namespace aufgabe6_blumenwiese {
         drawTreeB(0, 225, "#BD721F", "#1A6E22");
         drawBienenkorb(0, 500, "#FF0000");
 
-        //Bereich mit zufälliger Blume 
+        //Bereich mit zufï¿½lliger Blume 
         //verschiedene Farben
         let colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
         // 30 Blumen
         for (let i: number = 0; i < 50; i++) {
-            //ausgewählter Bereich
+            //ausgewï¿½hlter Bereich
             let randomX: number = (Math.random() * (720 - 550)) + 650;
             let randomY: number = (Math.random() * (500 - 250)) + 310;
             let randomColor: string = colors[Math.floor(Math.random() * colors.length)];
             let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
 
             //berechnug von scale
-            // je größer randomY desto größer Skalierungsfaktor
+            // je grï¿½ï¿½er randomY desto grï¿½ï¿½er Skalierungsfaktor
             //            let scal            
-            console.log("X ist " + randomX, "Y ist " + randomY, randomTulip);
+            console.log("X ist " + randomX, "Y ist " + randomY, randomTulip); //Nicht mehr benÃ¶tigte console.logs bitte lÃ¶schen
             if (randomTulip == 1) {
                 drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221", 0.98);
             }
@@ -72,9 +73,12 @@ namespace aufgabe6_blumenwiese {
         }
 
 
-        //Startposition der Bienen
-    
-        for (let i: number = 0; i < n; i++) {
+
+        //Startposition der Bienen <--- Der Kommentar ist jetzt irrefÃ¼hrend, da jetzt hier nicht mehr nur Positionen erzeugen, sondern Bienen, die auch noch andere Attribute haben.
+
+        or (let i: number = 0; i < n; i++) {
+
+            //Der folgende Block ist nicht mehr nÃ¶tig, hier kann auch createNewBee aufgerufen werden, das vermeidet Codedopplungen.
             let b: BeeData = { x: 0, y: 0, color: " " };
             let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
             b.x = 270;
@@ -94,14 +98,16 @@ namespace aufgabe6_blumenwiese {
     function animate(): void {
         console.log("Animate called");
         crc2.putImageData(backgroundImage, 0, 0);
-        // Schleife für Bewegung der Bienen, Zug nach links
-        for (let i: number = 0; i < n; i++) {
+        // Schleife fï¿½r Bewegung der Bienen, Zug nach links
+        for (let i: number = 0; i < n; i++) { //hier kann statt n die LÃ¤nge des bee-Arrays verwendet werden
             let b: BeeData = bees[i];
+
+            //FÃ¼r den Fall der Fluggeschwindigkeit kÃ¶nnte hier dann der jeweilige Wert fÃ¼r diese Biene ausgelesen und verwendet werden.
             b.x += Math.random() * 4 - 3.5;
             b.y += Math.random() * 4 - 4;
-            // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
+            // wenn Biene Canvas verlï¿½sst, dann Einflug auf gegenï¿½berliegender Seite
             if (b.x < 0) {
-                b.y = 1200;
+                b.y = 1200; //Achtung, hier wollen wir b.x
             }
             if (b.x > 1200) {
                 b.x = canvas.width;
@@ -118,14 +124,26 @@ namespace aufgabe6_blumenwiese {
         window.setTimeout(animate, 50);
 
     }
-    //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
+    //Funktion die ausgefï¿½hrt wird wenn auf das Canvas geklickt wird
     function createNewBee(): void {
-        let be: BeeData = ({ x: 270, y: 712, color: " " });
-        let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
+
+
+        //Die runden Klammern sind hier unnÃ¶tig
+        //color kÃ¶nnte hier gleich auf einen zufÃ¤lligen Wert aus dem colorBees-Array gesetzt werden.        
+        let be: BeeData = ({ x: 270, y: 712, color: "yellow" });
+
+        //Wenn als zweites Bienen-Attribut die Fluggeschwindigkeit gewÃ¤hlt wird, kÃ¶nnte diese hier berechnet und der Bienen zugewiesen werden.
+
+        //Folgender Block wird hier nicht benÃ¶tigt. Interfaces werden wie oben zu sehen initialisiert.
         be.x = 270;
         be.y = 712;
-        be.color = randomColorBee;
+        be.color = "yellow";
+        ////////////////////////////
+
+
         bees.push(be);
+
+        // n brauchen wir hier nicht mehr, da die Anzahl der Bienen jetzt auch schon durch die LÃ¤nge des bee-Arrays gegeben ist.
         n++;
     }
 
@@ -512,7 +530,7 @@ namespace aufgabe6_blumenwiese {
         crc2.closePath();
     }
     function drawBiene(_x: number, _y: number, _color: string): void {
-        //Körper
+        //Kï¿½rper
         crc2.beginPath();
         crc2.fillStyle = _color;
         crc2.moveTo(_x + 12, _y + 7);
@@ -543,7 +561,7 @@ namespace aufgabe6_blumenwiese {
         crc2.quadraticCurveTo(_x + 6, _y + 21, _x + 9, _y + 17);
         crc2.stroke();
         crc2.closePath();
-        //Flügel
+        //Flï¿½gel
         crc2.beginPath();
         crc2.strokeStyle = "#000000";
         crc2.fillStyle = "#BDEBF7";
@@ -554,7 +572,7 @@ namespace aufgabe6_blumenwiese {
         crc2.stroke();
         crc2.fill();
         crc2.closePath();
-        //Fühler
+        //Fï¿½hler
         crc2.beginPath();
         crc2.moveTo(_x + 4, _y + 8);
         crc2.strokeStyle = "#000000";
@@ -572,4 +590,3 @@ namespace aufgabe6_blumenwiese {
     }
 
 }
-
