@@ -1,29 +1,110 @@
-//Aufgabe: Aufgabe 7
+//Aufgabe: Aufgabe 6b
 //Name: Salome Weißer
 //Matrikel: 254669
-//Datum: 10.05.2017
+//Datum: 05.05.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe7_classesOoBlumenwiese {
+namespace aufgabe6_blumenwiese {
+
     window.addEventListener("load", init);
+
     let canvas: HTMLCanvasElement;
-    export let crc2: CanvasRenderingContext2D;
-    let bees: BeeData[] = [];
-    console.log("Hallo");
+    let crc2: CanvasRenderingContext2D;
     let flowersize: number = 16;
     let backgroundImage: ImageData;
-    export let colorBee: string[] = ["yellow", "orange", "red"];
-    let n: number = 10;  //10 Bienen
+    let colorBee: string[] = ["yellow", "orange", "red"];
+    let bees: BeeData[] = [];
+
+    interface BeeData {
+        x: number;  //Position
+        y: number;  //Position
+        color: string;
+        direction: boolean;
+    }
 
     function init(): void {
 
+        let n: number = 10;  //10 Bienen
 
         canvas = document.getElementsByTagName("canvas")[0];
-        console.log(canvas);
+        //console.log(canvas);
         crc2 = canvas.getContext("2d");
-        console.log(crc2);
-        console.log(crc2.canvas = canvas);
+        //console.log(crc2);
+        //console.log(crc2.canvas = canvas);
+        createBackground();
+
+
+        //Startposition der Bienen
+
+        for (let i: number = 0; i < n; i++) {
+            createNewBee();
+        }
+
+        console.log(bees);
+        window.setTimeout(animate, 50);
+        //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
+        canvas.addEventListener("click", createNewBee);
+        canvas.addEventListener("touch", createNewBee);
+    }
+//
+
+    function animate(): void {
+        //console.log("Animate called");
+        crc2.putImageData(backgroundImage, 0, 0);
+        // Schleife für Bewegung der Bienen, Zug nach links
+        for (let i: number = 0; i < bees.length; i++) {
+            let b: BeeData = bees[i];
+            let directionModifier: number;
+
+            if (b.direction == true)
+                directionModifier = +1;
+            else  //Entgegengesetzte Richtung 
+                directionModifier = -1;
+
+            b.x += (Math.random() * 4 - 3.5) * directionModifier;
+            b.y += Math.random() * 4 - 4;
+
+
+            // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
+            if (b.x < 0) {
+                console.log("links raus");
+                b.x = canvas.width;
+            }
+            if (b.x > canvas.width) {
+                console.log("rechts raus");
+                b.x = 0;
+            }
+            if (b.y < 0) {
+                console.log("oben raus");
+                b.y = canvas.height;
+            }
+            if (b.y > canvas.height) {
+                console.log("unten raus");
+                b.y = 0;
+            }
+
+            drawBiene(b.x, b.y, b.color);
+
+
+            window.setTimeout(animate, 50);
+        }
+    }
+    //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
+    function createNewBee(): void {
+        let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
+        let be: BeeData = { x: 150, y: 450, color: randomColorBee, direction: true };
+
+        if (bees.length % 5 == 0)
+            bees.push({ x: 150, y: 450, color: "", direction: false });
+        else
+            bees.push({ x: 150, y: 450, color: "", direction: true });
+
+        bees.push(be);
+
+    }
+
+    function createBackground(): void {
         drawSky(0, 0, "#65B4FF");
         drawGrassland(0, 175, "#34B21A");
         drawSun(500, 75, "#FCC631");
@@ -53,74 +134,15 @@ namespace aufgabe7_classesOoBlumenwiese {
             //berechnug von scale
             // je größer randomY desto größer Skalierungsfaktor
             //            let scal            
-            console.log("X ist " + randomX, "Y ist " + randomY, randomTulip);
             if (randomTulip == 1) {
-                drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221", 0.98);
+                drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
             }
             else {
                 drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
             }
-
             backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
         }
-
-
-        //Startposition der Bienen
-
-        for (let i: number = 0; i < n; i++) {
-            let b: BeeData = { x: 0, y: 0, color: " " };
-            let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
-            b.x = 270;
-            b.y = 712;
-            bees[i] = b;
-        }
-
-
-        window.setTimeout(animate, 50);
-        //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
-        canvas.addEventListener("click", createNewBee);
-        canvas.addEventListener("touch", createNewBee);
     }
-
-
-    function animate(): void {
-        console.log("Animate called");
-        crc2.putImageData(backgroundImage, 0, 0);
-        // Schleife für Bewegung der Bienen, Zug nach links
-        for (let i: number = 0; i < n; i++) {
-            let b: BeeData = bees[i];
-            b.x += Math.random() * 4 - 3.5;
-            b.y += Math.random() * 4 - 4;
-            // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
-            if (b.x < 0) {
-                b.y = 1200;
-            }
-            if (b.x > 1200) {
-                b.x = canvas.width;
-            }
-            if (b.y < 0) {
-                b.y = 820;
-            }
-            if (b.y > 820) {
-                b.y = canvas.height;
-            }
-
-            drawBiene(b.x, b.y, b.color);
-        }
-        window.setTimeout(animate, 50);
-
-    }
-    //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
-    function createNewBee(): void {
-        let be: BeeData = ({ x: 270, y: 712, color: " " });
-        let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
-        be.x = 270;
-        be.y = 712;
-        be.color = randomColorBee;
-        bees.push(be);
-        n++;
-    }
-
     //Sky
     function drawSky(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
@@ -237,20 +259,19 @@ namespace aufgabe7_classesOoBlumenwiese {
         crc2.stroke();
     }
     function drawFlowers(): void {
-        drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18", 1);
-        drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18", 1);
+        drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
+        drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
         drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(590, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(675, 535, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        drawTulip(280, 505, "#295E10", "#666666", "#741221", "#3F0C18", 1);
-        drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18", 1);
+        drawTulip(280, 505, "#295E10", "#666666", "#741221", "#3F0C18");
+        drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18");
         drawFlower2(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
         drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
     }
-    function drawTulip(_x: number, _y: number, _colorStem: string, _colorLeaf: string, _colorBlossom: string, _colorInner: string, scale: number): void {
+    function drawTulip(_x: number, _y: number, _colorStem: string, _colorLeaf: string, _colorBlossom: string, _colorInner: string): void {
         // stem
-        crc2.scale(scale, scale);
         crc2.beginPath();
         crc2.strokeStyle = _colorStem;
         crc2.moveTo(_x - 2, _y);
@@ -564,4 +585,3 @@ namespace aufgabe7_classesOoBlumenwiese {
     }
 
 }
-

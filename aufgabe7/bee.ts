@@ -3,6 +3,7 @@ namespace aufgabe7_classesOoBlumenwiese {
         x: number;  //Position
         y: number;  //Position
         color: string;
+        direction: boolean;
 
         constructor(_x: number, _y: number) {
             console.log("Hey, I'm Bob!");
