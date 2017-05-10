@@ -12,7 +12,7 @@ var aufgabe6_blumenwiese;
     console.log("Hallo");
     let flowersize = 16;
     let backgroundImage;
-    let colorBees = ["yellow", "orange", "red"];
+    let colorBee = ["yellow", "orange", "red"];
     let bees = [];
     let n = 10; //10 Bienen
     function init() {
@@ -60,9 +60,10 @@ var aufgabe6_blumenwiese;
         //Startposition der Bienen
         for (let i = 0; i < n; i++) {
             let b = { x: 0, y: 0, color: " " };
+            let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
             b.x = 270;
             b.y = 712;
-            b.color = "yellow";
+            b.color = randomColorBee;
             bees[i] = b;
         }
         window.setTimeout(animate, 50);
@@ -83,13 +84,13 @@ var aufgabe6_blumenwiese;
                 b.y = 1200;
             }
             if (b.x > 1200) {
-                b.x = 0;
+                b.x = canvas.width;
             }
             if (b.y < 0) {
                 b.y = 820;
             }
             if (b.y > 820) {
-                b.y = 0;
+                b.y = canvas.height;
             }
             drawBiene(b.x, b.y, b.color);
         }
@@ -97,10 +98,11 @@ var aufgabe6_blumenwiese;
     }
     //Funktion die ausgef�hrt wird wenn auf das Canvas geklickt wird
     function createNewBee() {
-        let be = ({ x: 270, y: 712, color: "yellow" });
+        let be = ({ x: 270, y: 712, color: " " });
+        let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
         be.x = 270;
         be.y = 712;
-        be.color = "yellow";
+        be.color = randomColorBee;
         bees.push(be);
         n++;
     }
