@@ -15,7 +15,6 @@ namespace aufgabe7_classesOoBlumenwiese {
     let backgroundImage: ImageData;
     let colorBee: string[] = ["yellow", "orange", "red"];
     let bees: BeeData[] = [];
-    export let directionModifier: number;
     function init(): void {
 
         let n: number = 10;  //10 Bienen
@@ -50,14 +49,12 @@ namespace aufgabe7_classesOoBlumenwiese {
             let b: BeeData = bees[i];
             
 
-            if (b.direction == true)
-                directionModifier = +1;
-            else  //Entgegengesetzte Richtung 
-                directionModifier = -1;
+            
             
             //in Bee Datei mit directionModifier s.o. export let....dM
             //Biene verlässt Canvas und fliegt wieder rein
             b.move();
+            b.moveDirection();
             
             drawBiene(b.x, b.y, b.color);
 
@@ -68,9 +65,9 @@ namespace aufgabe7_classesOoBlumenwiese {
     //Funktion die ausgeführt wird wenn auf das Canvas geklickt wird
     function createNewBee(): void {
         let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
-        let be: BeeData = { x: 150, y: 450, color: randomColorBee, direction: true };
+        let be: BeeData = new BeeData (150, 450, randomColorBee, true); //wurde verlegt in constructor, alles was mit new erstellt wird greift auf diesen zu mit seinen Parametern
 
-        be.moveDirection();
+        be.moveDirectionNew();
 
         bees.push(be);
 
