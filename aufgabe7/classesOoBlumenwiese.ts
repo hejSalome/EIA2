@@ -5,17 +5,17 @@
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe7_blumenwiese {
+namespace aufgabe7_classesOoBlumenwiese {
 
     window.addEventListener("load", init);
 
-    let canvas: HTMLCanvasElement;
+    export let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
     let flowersize: number = 16;
     let backgroundImage: ImageData;
     let colorBee: string[] = ["yellow", "orange", "red"];
     let bees: BeeData[] = [];
-
+    export let directionModifier: number;
     function init(): void {
 
         let n: number = 10;  //10 Bienen
@@ -48,34 +48,17 @@ namespace aufgabe7_blumenwiese {
         // Schleife für Bewegung der Bienen, Zug nach links
         for (let i: number = 0; i < bees.length; i++) {
             let b: BeeData = bees[i];
-            let directionModifier: number;
+            
 
             if (b.direction == true)
                 directionModifier = +1;
             else  //Entgegengesetzte Richtung 
                 directionModifier = -1;
-
+            
+            //in Bee Datei mit directionModifier s.o. export let....dM
+            //Biene verlässt Canvas und fliegt wieder rein
             b.move();
-
-
-            // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
-            if (b.x < 0) {
-                console.log("links raus");
-                b.x = canvas.width;
-            }
-            if (b.x > canvas.width) {
-                console.log("rechts raus");
-                b.x = 0;
-            }
-            if (b.y < 0) {
-                console.log("oben raus");
-                b.y = canvas.height;
-            }
-            if (b.y > canvas.height) {
-                console.log("unten raus");
-                b.y = 0;
-            }
-
+            
             drawBiene(b.x, b.y, b.color);
 
 
@@ -87,10 +70,7 @@ namespace aufgabe7_blumenwiese {
         let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
         let be: BeeData = { x: 150, y: 450, color: randomColorBee, direction: true };
 
-        if (bees.length % 5 == 0)
-            bees.push({ x: 150, y: 450, color: "", direction: false });
-        else
-            bees.push({ x: 150, y: 450, color: "", direction: true });
+        be.moveDirection();
 
         bees.push(be);
 

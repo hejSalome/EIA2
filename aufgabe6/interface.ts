@@ -40,18 +40,18 @@ namespace aufgabe6_interface {
             name: infoArr[1],
             firstname: infoArr[2],
             age: parseInt(infoArr[3]),
-            sex: parseInt(infoArr[4]) == 1,
+            sex: parseInt(infoArr[4]) == 0,
             comment: infoArr[5]
         };
 
         students.push(studi);  //pushe die Daten aus studi in die students-kartei damit ein neuer "Student" entsteht
 
         let gender: string;
-        if (parseInt(infoArr[4]) == 1) {   //Wenn die sex-info in der 4. Schublade == 1 eingetippt wurde, dann ist er männlich
-            gender = "männlich";
-        }
-        else {                      //Wurde 0 eingegeben ist er weiblich
+        if (infoArr[4] == "0") {   //Wenn die sex-info in der 4. Schublade == 1 eingetippt wurde
             gender = "weiblich";
+        }
+        if (infoArr[4] == "1") {   
+            gender = "männlich";
         }
 
         //Ausgabe
@@ -61,9 +61,11 @@ namespace aufgabe6_interface {
 
     function queryData(_matrikel: number): string {
         let studi: StudentData;
+        
         for (let i: number = 0; i < students.length; i++) {  //Schleife geht durch students und überprüft alle auf ihre Matrikelnummer
+            var gender: string = students[i].sex ? "weiblich" : "männlich";
             if (students[i].matrikel == _matrikel) {     //wenn Matrikelnummer true, dann return Data
-                return "Gespeicherte Daten zu folgender Matrikelnr.: " + students[i].matrikel + "\n\nName: " + students[i].name + "," + students[i].firstname + "\nAlter:" + students[i].age + "\nGeschlecht:" + students[i].sex + "\nKommentar:" + students[i].comment;
+                return "Gespeicherte Daten zu folgender Matrikelnr.: " + students[i].matrikel + "\n\nName: " + students[i].name + "," + students[i].firstname + "\nAlter:" + students[i].age + "\nGeschlecht:" + gender + "\nKommentar:" + students[i].comment;
             }
             else {
                 return "Diese Matrikelnummer ist nicht vorhanden.";
