@@ -38,7 +38,13 @@ var aufgabe6_interface;
             gender = "weiblich";
         }
         if (infoArr[4] == "1") {
-            gender = "m�nnlich";
+            gender = "maennlich";
+        }
+        if (infoArr[4] == " 0") {
+            gender = "weiblich";
+        }
+        if (infoArr[4] == " 1") {
+            gender = "maennlich";
         }
         //Ausgabe
         return "Deine eingegebenen Daten:\n" + "\nMatrikelnr.: " + studi.matrikel + "\nName: " + studi.name + "," + studi.firstname + "\nAlter: " + studi.age + "\nGeschlecht: " + gender + "\nKommentar: " + studi.comment;
@@ -46,7 +52,7 @@ var aufgabe6_interface;
     function queryData(_matrikel) {
         let studi;
         for (let i = 0; i < students.length; i++) {
-            var gender = students[i].sex ? "weiblich" : "m�nnlich";
+            var gender = students[i].sex ? "weiblich" : "maennlich";
             if (students[i].matrikel == _matrikel) {
                 return "Gespeicherte Daten zu folgender Matrikelnr.: " + students[i].matrikel + "\n\nName: " + students[i].name + "," + students[i].firstname + "\nAlter:" + students[i].age + "\nGeschlecht:" + gender + "\nKommentar:" + students[i].comment;
             }

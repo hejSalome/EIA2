@@ -50,8 +50,14 @@ namespace aufgabe6_interface {
         if (infoArr[4] == "0") {   //Wenn die sex-info in der 4. Schublade == 1 eingetippt wurde
             gender = "weiblich";
         }
-        if (infoArr[4] == "1") {   
-            gender = "männlich";
+        if (infoArr[4] == "1") {
+            gender = "maennlich";
+        }
+        if (infoArr[4] == " 0") {
+            gender = "weiblich";
+        }
+        if (infoArr[4] == " 1") {
+            gender = "maennlich";
         }
 
         //Ausgabe
@@ -61,9 +67,9 @@ namespace aufgabe6_interface {
 
     function queryData(_matrikel: number): string {
         let studi: StudentData;
-        
+
         for (let i: number = 0; i < students.length; i++) {  //Schleife geht durch students und überprüft alle auf ihre Matrikelnummer
-            var gender: string = students[i].sex ? "weiblich" : "männlich";
+            var gender: string = students[i].sex ? "weiblich" : "maennlich";
             if (students[i].matrikel == _matrikel) {     //wenn Matrikelnummer true, dann return Data
                 return "Gespeicherte Daten zu folgender Matrikelnr.: " + students[i].matrikel + "\n\nName: " + students[i].name + "," + students[i].firstname + "\nAlter:" + students[i].age + "\nGeschlecht:" + gender + "\nKommentar:" + students[i].comment;
             }
