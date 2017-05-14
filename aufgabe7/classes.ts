@@ -13,8 +13,8 @@ namespace aufgabe7_classes {
     export let crc2: CanvasRenderingContext2D;
     let backgroundImage: ImageData;
     let colorBee: string[] = ["yellow", "orange", "red"];
-    let bees: BeeData[] = [];
-    let flowers: FlowerData[] = [];
+    export let bees: BeeData[] = [];
+    export let flowers: FlowerData[] = [];
 
 
     function init(): void {
@@ -26,15 +26,16 @@ namespace aufgabe7_classes {
         createBackground();
 
         for (let i: number = 0; i < n; i++) {
+            let s: BeeData = new BeeData(0, 0, " ", false);
             createNewBee();
         }
 
         console.log(bees);
-//        window.setTimeout(animate, 50);
+        //        window.setTimeout(animate, 50);
         //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
         canvas.addEventListener("click", createNewBee);
         canvas.addEventListener("touch", createNewBee);
-       
+
 
     }
 
@@ -70,7 +71,7 @@ namespace aufgabe7_classes {
         drawTreeB(0, 225, "#BD721F", "#1A6E22");
         drawBienenkorb(0, 500, "#FF0000");
 
-        
+
         //flowerfield
         for (let i: number = 0; i < 30; i++) {
             let flowersize: number = 16;
@@ -81,7 +82,7 @@ namespace aufgabe7_classes {
             backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         }
-        
+
         function animate(): void {
             //console.log("Animate called");
             crc2.putImageData(backgroundImage, 0, 0);

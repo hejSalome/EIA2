@@ -9,17 +9,18 @@ var aufgabe7_classes;
     window.addEventListener("load", init);
     let backgroundImage;
     let colorBee = ["yellow", "orange", "red"];
-    let bees = [];
-    let flowers = [];
+    aufgabe7_classes.bees = [];
+    aufgabe7_classes.flowers = [];
     function init() {
         let n = 10; //10 Bienen
         aufgabe7_classes.canvas = document.getElementsByTagName("canvas")[0];
         aufgabe7_classes.crc2 = aufgabe7_classes.canvas.getContext("2d");
         createBackground();
         for (let i = 0; i < n; i++) {
+            let s = new aufgabe7_classes.BeeData(0, 0, " ", false);
             createNewBee();
         }
-        console.log(bees);
+        console.log(aufgabe7_classes.bees);
         //        window.setTimeout(animate, 50);
         //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
         aufgabe7_classes.canvas.addEventListener("click", createNewBee);
@@ -29,11 +30,11 @@ var aufgabe7_classes;
     function createNewBee() {
         let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
         let be = new aufgabe7_classes.BeeData(150, 450, randomColorBee, false);
-        if (bees.length % 5 == 0)
+        if (aufgabe7_classes.bees.length % 5 == 0)
             be.direction = false;
         else
             be.direction = true;
-        bees.push(be);
+        aufgabe7_classes.bees.push(be);
     }
     function createBackground() {
         drawSky(0, 0, "#65B4FF");
@@ -55,14 +56,14 @@ var aufgabe7_classes;
             let flowersize = 16;
             let ff = new aufgabe7_classes.FlowerData(0, 0, "", "", "", "");
             ff.setRandomFlower();
-            flowers[i] = ff;
+            aufgabe7_classes.flowers[i] = ff;
             backgroundImage = aufgabe7_classes.crc2.getImageData(0, 0, aufgabe7_classes.canvas.width, aufgabe7_classes.canvas.height);
         }
         function animate() {
             //console.log("Animate called");
             aufgabe7_classes.crc2.putImageData(backgroundImage, 0, 0);
-            for (let i = 0; i < bees.length; i++) {
-                let b = bees[i];
+            for (let i = 0; i < aufgabe7_classes.bees.length; i++) {
+                let b = aufgabe7_classes.bees[i];
                 b.move();
                 b.moveOutIn();
                 b.draw();
