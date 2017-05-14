@@ -26,7 +26,6 @@ namespace aufgabe7_classes {
         createBackground();
 
         for (let i: number = 0; i < n; i++) {
-            let s: BeeData = new BeeData(0, 0, " ", false);
             createNewBee();
         }
 

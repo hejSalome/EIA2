@@ -17,7 +17,6 @@ var aufgabe7_classes;
         aufgabe7_classes.crc2 = aufgabe7_classes.canvas.getContext("2d");
         createBackground();
         for (let i = 0; i < n; i++) {
-            let s = new aufgabe7_classes.BeeData(0, 0, " ", false);
             createNewBee();
         }
         console.log(aufgabe7_classes.bees);
