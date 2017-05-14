@@ -57,6 +57,7 @@ var aufgabe7_classes;
             ff.setRandomFlower();
             aufgabe7_classes.flowers[i] = ff;
             backgroundImage = aufgabe7_classes.crc2.getImageData(0, 0, aufgabe7_classes.canvas.width, aufgabe7_classes.canvas.height);
+            console.log(ff);
         }
         function animate() {
             //console.log("Animate called");
