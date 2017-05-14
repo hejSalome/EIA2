@@ -13,8 +13,8 @@ namespace aufgabe7_classes {
     export let crc2: CanvasRenderingContext2D;
     let backgroundImage: ImageData;
     let colorBee: string[] = ["yellow", "orange", "red"];
-    export let bees: BeeData[] = [];
-    export let flowers: FlowerData[] = [];
+    let bees: BeeData[] = [];
+    let flowers: FlowerData[] = [];
 
 
     function init(): void {
@@ -26,8 +26,11 @@ namespace aufgabe7_classes {
         createBackground();
 
         for (let i: number = 0; i < n; i++) {
+            let s: BeeData = new BeeData(0, 0, " ", false); // default-values
+          
             createNewBee();
-            
+            s.draw();
+
         }
 
         console.log(bees);
@@ -51,6 +54,7 @@ namespace aufgabe7_classes {
             be.direction = true;
 
         bees.push(be);
+        be.draw();
 
     }
 
@@ -75,13 +79,16 @@ namespace aufgabe7_classes {
         //flowerfield
         for (let i: number = 0; i < 30; i++) {
             let flowersize: number = 16;
-            let ff: FlowerData = new FlowerData(0, 0, "", "", "", "");
+            let ff: FlowerData = new FlowerData(x, y, "", "", "", "");
             ff.setRandomFlower();
             flowers[i] = ff;
 
-            backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
+            ff.drawTulip();
+            ff.drawFlower2();
             console.log(ff);
         }
+
+        backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         function animate(): void {
             //console.log("Animate called");

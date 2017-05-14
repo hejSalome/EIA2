@@ -9,17 +9,19 @@ var aufgabe7_classes;
     window.addEventListener("load", init);
     let backgroundImage;
     let colorBee = ["yellow", "orange", "red"];
-    aufgabe7_classes.bees = [];
-    aufgabe7_classes.flowers = [];
+    let bees = [];
+    let flowers = [];
     function init() {
         let n = 10; //10 Bienen
         aufgabe7_classes.canvas = document.getElementsByTagName("canvas")[0];
         aufgabe7_classes.crc2 = aufgabe7_classes.canvas.getContext("2d");
         createBackground();
         for (let i = 0; i < n; i++) {
+            let s = new aufgabe7_classes.BeeData(0, 0, " ", false); // default-values
             createNewBee();
+            s.draw();
         }
-        console.log(aufgabe7_classes.bees);
+        console.log(bees);
         //        window.setTimeout(animate, 50);
         //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
         aufgabe7_classes.canvas.addEventListener("click", createNewBee);
@@ -29,11 +31,12 @@ var aufgabe7_classes;
     function createNewBee() {
         let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
         let be = new aufgabe7_classes.BeeData(150, 450, randomColorBee, false);
-        if (aufgabe7_classes.bees.length % 5 == 0)
+        if (bees.length % 5 == 0)
             be.direction = false;
         else
             be.direction = true;
-        aufgabe7_classes.bees.push(be);
+        bees.push(be);
+        be.draw();
     }
     function createBackground() {
         drawSky(0, 0, "#65B4FF");
@@ -53,17 +56,19 @@ var aufgabe7_classes;
         //flowerfield
         for (let i = 0; i < 30; i++) {
             let flowersize = 16;
-            let ff = new aufgabe7_classes.FlowerData(0, 0, "", "", "", "");
+            let ff = new aufgabe7_classes.FlowerData(x, y, "", "", "", "");
             ff.setRandomFlower();
-            aufgabe7_classes.flowers[i] = ff;
-            backgroundImage = aufgabe7_classes.crc2.getImageData(0, 0, aufgabe7_classes.canvas.width, aufgabe7_classes.canvas.height);
+            flowers[i] = ff;
+            ff.drawTulip();
+            ff.drawFlower2();
             console.log(ff);
         }
+        backgroundImage = aufgabe7_classes.crc2.getImageData(0, 0, aufgabe7_classes.canvas.width, aufgabe7_classes.canvas.height);
         function animate() {
             //console.log("Animate called");
             aufgabe7_classes.crc2.putImageData(backgroundImage, 0, 0);
-            for (let i = 0; i < aufgabe7_classes.bees.length; i++) {
-                let b = aufgabe7_classes.bees[i];
+            for (let i = 0; i < bees.length; i++) {
+                let b = bees[i];
                 b.move();
                 b.moveOutIn();
                 b.draw();

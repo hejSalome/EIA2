@@ -21,6 +21,8 @@ var aufgabe7_classes;
             else {
                 this.drawFlower2(); //randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
             }
+            this.drawTulip();
+            this.drawFlower2();
         }
         drawTulip() {
             // stem
