@@ -78,8 +78,13 @@ namespace aufgabe7_classes {
 
         //flowerfield
         for (let i: number = 0; i < 30; i++) {
+            let x: number = (Math.random() * (720 - 550)) + 650;
+            let y: number = (Math.random() * (500 - 250)) + 310;
+            let randomColor: string = this.colors[Math.floor(Math.random() * this.colors.length)];
+            let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
             let flowersize: number = 16;
             let ff: FlowerData = new FlowerData(x, y, "", "", "", "");
+            
             ff.setRandomFlower();
             flowers[i] = ff;
 

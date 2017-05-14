@@ -55,6 +55,10 @@ var aufgabe7_classes;
         drawBienenkorb(0, 500, "#FF0000");
         //flowerfield
         for (let i = 0; i < 30; i++) {
+            let x = (Math.random() * (720 - 550)) + 650;
+            let y = (Math.random() * (500 - 250)) + 310;
+            let randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+            let randomTulip = Math.floor((Math.random() * 2)) + 1;
             let flowersize = 16;
             let ff = new aufgabe7_classes.FlowerData(x, y, "", "", "", "");
             ff.setRandomFlower();

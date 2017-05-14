@@ -9,10 +9,8 @@ namespace aufgabe7_classes {
         color4: string;  //colorInner
         randomColor: string;
         randomTulip: number;
-        colors: string;
+        colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
  
-        
-
         constructor(_x: number, _y: number, _color1: string, _color2: string, _color3: string, _color4: string) {
             this.x = _x;
             this.y = _y;
@@ -23,15 +21,8 @@ namespace aufgabe7_classes {
         }
         setRandomFlower(): void {
             
-            let x: number = (Math.random() * (720 - 550)) + 650;
-            let y: number = (Math.random() * (500 - 250)) + 310;
-            let colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
-            let randomColor: string = colors[Math.floor(Math.random() * colors.length)];
-            let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
-
-
             if (this.randomTulip == 1) {
-                this.drawTulip();   //randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
+                this.drawTulip(); 
             }
             else {
                 this.drawFlower2();   //randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);

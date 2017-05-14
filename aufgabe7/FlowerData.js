@@ -2,6 +2,7 @@ var aufgabe7_classes;
 (function (aufgabe7_classes) {
     class FlowerData {
         constructor(_x, _y, _color1, _color2, _color3, _color4) {
+            this.colors = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
             this.x = _x;
             this.y = _y;
             this.color1 = _color1;
@@ -10,13 +11,8 @@ var aufgabe7_classes;
             this.color4 = _color4;
         }
         setRandomFlower() {
-            let x = (Math.random() * (720 - 550)) + 650;
-            let y = (Math.random() * (500 - 250)) + 310;
-            let colors = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
-            let randomColor = colors[Math.floor(Math.random() * colors.length)];
-            let randomTulip = Math.floor((Math.random() * 2)) + 1;
             if (this.randomTulip == 1) {
-                this.drawTulip(); //randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
+                this.drawTulip();
             }
             else {
                 this.drawFlower2(); //randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
