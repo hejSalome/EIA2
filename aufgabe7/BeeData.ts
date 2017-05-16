@@ -1,5 +1,5 @@
 namespace aufgabe7_classes {
-    
+
     export class BeeData {
         x: number;  //Position
         y: number;  //Position
@@ -7,11 +7,19 @@ namespace aufgabe7_classes {
         direction: boolean;
 
         constructor(_x: number, _y: number, _color: string, _direction: boolean) {
+            let colorBee: string[] = ["yellow", "orange", "red"];
+            let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
 
-            this.x = _x;
-            this.y = _y;
-            this.color = _color;
+            if (bees.length % 5 == 0)
+                this.direction = false;
+            else
+                this.direction = true;
+
+            this.x = 150;
+            this.y = 450;
+            this.color = randomColorBee;
             this.direction = _direction;
+            this.draw();
         }
         draw(): void {
             //Körper
@@ -82,9 +90,8 @@ namespace aufgabe7_classes {
 
             this.x += (Math.random() * 4 - 3.5) * directionModifier;
             this.y += Math.random() * 4 - 4;
-        }
-        moveOutIn(): void {
-        // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
+
+            // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
             if (this.x < 0) {
                 console.log("links raus");
                 this.x = canvas.width;
@@ -100,8 +107,9 @@ namespace aufgabe7_classes {
             if (this.y > canvas.height) {
                 console.log("unten raus");
                 this.y = 0;
-            }    
-         
+            }
+            this.draw();
+
         }
     }
 }

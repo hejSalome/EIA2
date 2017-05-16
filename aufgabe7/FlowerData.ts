@@ -10,59 +10,58 @@ namespace aufgabe7_classes {
         randomColor: string;
         randomTulip: number;
         colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
- 
-        constructor(_x: number, _y: number, _color1: string, _color2: string, _color3: string, _color4: string) {
-            this.x = _x;
-            this.y = _y;
-            this.color1 = _color1;
-            this.color2 = _color2;
-            this.color3 = _color3;
-            this.color4 = _color4;
-        }
-        setRandomFlower(): void {
-            
-            if (this.randomTulip == 1) {
-                this.drawTulip(); 
+
+        constructor() {
+
+
+            let randomX: number = (Math.random() * (720 - 550)) + 650;
+            let randomY: number = (Math.random() * (500 - 250)) + 310;
+            let randomColor: string = this.colors[Math.floor(Math.random() * this.colors.length)];
+            let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
+            let flowersize: number = 16;
+
+            if (randomTulip == 1) {
+                this.drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
             }
             else {
-                this.drawFlower2();   //randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
+                this.drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
             }
-            this.drawTulip();
-            this.drawFlower2();
         }
+        
 
-        drawTulip(): void {
 
-            // stem
-            crc2.beginPath();
-            crc2.strokeStyle = this.color1;
-            crc2.moveTo(this.x - 2, this.y);
-            crc2.quadraticCurveTo(this.x - 2, this.y - 33, this.x, this.y - 50);
-            crc2.lineTo(this.x, this.y - 50);
-            crc2.quadraticCurveTo(this.x - 1, this.y - 50, this.x, this.y);
-            crc2.stroke();
-            crc2.closePath();
+    drawTulip(_randomX: number, _randomY: number, _color1: string, _color2: string, _randomColor: string, _color3: string): void {
 
-            //blossom
-            crc2.beginPath();
-            crc2.fillStyle = this.color2;
-            crc2.strokeStyle = this.color4;
-            //outer 
-            crc2.moveTo(this.x - 20, this.y - 75);
-            crc2.quadraticCurveTo(this.x, this.y, this.x + 20, this.y - 75);
-            crc2.lineTo(this.x, this.y - 55);
-            crc2.fill();
-            crc2.stroke();
-            //inner
-            crc2.moveTo(this.x, this.y - 55);
-            crc2.lineTo(this.x - 10, this.y - 55);
-            crc2.lineTo(this.x + 10, this.y - 55);
-            crc2.fill();
-            crc2.closePath();
-        }
+        // stem
+        crc2.beginPath();
+        crc2.strokeStyle = this.color1;
+        crc2.moveTo(this.x - 2, this.y);
+        crc2.quadraticCurveTo(this.x - 2, this.y - 33, this.x, this.y - 50);
+        crc2.lineTo(this.x, this.y - 50);
+        crc2.quadraticCurveTo(this.x - 1, this.y - 50, this.x, this.y);
+        crc2.stroke();
+        crc2.closePath();
 
-        drawFlower2(): void {
-         // stem
+        //blossom
+        crc2.beginPath();
+        crc2.fillStyle = this.color2;
+        crc2.strokeStyle = this.color4;
+        //outer 
+        crc2.moveTo(this.x - 20, this.y - 75);
+        crc2.quadraticCurveTo(this.x, this.y, this.x + 20, this.y - 75);
+        crc2.lineTo(this.x, this.y - 55);
+        crc2.fill();
+        crc2.stroke();
+        //inner
+        crc2.moveTo(this.x, this.y - 55);
+        crc2.lineTo(this.x - 10, this.y - 55);
+        crc2.lineTo(this.x + 10, this.y - 55);
+        crc2.fill();
+        crc2.closePath();
+    }
+
+    drawFlower2(_randomX: number, _randomY: number, _color1: string, _color2: string, _color3: string, _randomColor: string): void {
+        // stem
         crc2.beginPath();
         crc2.strokeStyle = this.color1;
         crc2.moveTo(this.x - 1, this.y);
@@ -173,27 +172,25 @@ namespace aufgabe7_classes {
         crc2.moveTo(this.x + 26, this.y - 96);
         crc2.arc(this.x + 26, this.y - 96, 2, 0, 2 * Math.PI);
         crc2.fill();
-        crc2.closePath();    
-        }
+        crc2.closePath();  
+        
+        this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
 
+//    FT.drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
+//    FT.drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
+//    FT.drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+//    FT.drawFlower2(590, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+//    FT.drawFlower2(675, 535, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+//    FT.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+//    FT.drawTulip(280, 505, "#295E10", "#666666", "#741221", "#3F0C18");
+//    FT.drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18");
+//    FT.drawFlower2(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+//    FT.drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+//
+//}
     }
 
 }
 
+}
 
-
-
-
-
-
-
-//    export class Flower {
-//    randomX: number;
-//    randomY: number;
-//    
-//
-//    setRandomPosition(): void {
-//    this.randomX = (Math.random() * (720 - 550)) + 650;
-//    this.randomY = (Math.random() * (500 - 250)) + 310;
-//    }
-//    }

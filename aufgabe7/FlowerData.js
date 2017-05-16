@@ -1,26 +1,21 @@
 var aufgabe7_classes;
 (function (aufgabe7_classes) {
     class FlowerData {
-        constructor(_x, _y, _color1, _color2, _color3, _color4) {
+        constructor() {
             this.colors = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
-            this.x = _x;
-            this.y = _y;
-            this.color1 = _color1;
-            this.color2 = _color2;
-            this.color3 = _color3;
-            this.color4 = _color4;
-        }
-        setRandomFlower() {
-            if (this.randomTulip == 1) {
-                this.drawTulip();
+            let randomX = (Math.random() * (720 - 550)) + 650;
+            let randomY = (Math.random() * (500 - 250)) + 310;
+            let randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+            let randomTulip = Math.floor((Math.random() * 2)) + 1;
+            let flowersize = 16;
+            if (randomTulip == 1) {
+                this.drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
             }
             else {
-                this.drawFlower2(); //randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
+                this.drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
             }
-            this.drawTulip();
-            this.drawFlower2();
         }
-        drawTulip() {
+        drawTulip(_randomX, _randomY, _color1, _color2, _randomColor, _color3) {
             // stem
             aufgabe7_classes.crc2.beginPath();
             aufgabe7_classes.crc2.strokeStyle = this.color1;
@@ -47,7 +42,7 @@ var aufgabe7_classes;
             aufgabe7_classes.crc2.fill();
             aufgabe7_classes.crc2.closePath();
         }
-        drawFlower2() {
+        drawFlower2(_randomX, _randomY, _color1, _color2, _color3, _randomColor) {
             // stem
             aufgabe7_classes.crc2.beginPath();
             aufgabe7_classes.crc2.strokeStyle = this.color1;
@@ -158,18 +153,21 @@ var aufgabe7_classes;
             aufgabe7_classes.crc2.arc(this.x + 26, this.y - 96, 2, 0, 2 * Math.PI);
             aufgabe7_classes.crc2.fill();
             aufgabe7_classes.crc2.closePath();
+            this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //    FT.drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
+            //    FT.drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
+            //    FT.drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //    FT.drawFlower2(590, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //    FT.drawFlower2(675, 535, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //    FT.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //    FT.drawTulip(280, 505, "#295E10", "#666666", "#741221", "#3F0C18");
+            //    FT.drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18");
+            //    FT.drawFlower2(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //    FT.drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //
+            //}
         }
     }
     aufgabe7_classes.FlowerData = FlowerData;
 })(aufgabe7_classes || (aufgabe7_classes = {}));
-//    export class Flower {
-//    randomX: number;
-//    randomY: number;
-//    
-//
-//    setRandomPosition(): void {
-//    this.randomX = (Math.random() * (720 - 550)) + 650;
-//    this.randomY = (Math.random() * (500 - 250)) + 310;
-//    }
-//    }
 //# sourceMappingURL=FlowerData.js.map

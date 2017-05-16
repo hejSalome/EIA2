@@ -8,35 +8,31 @@ var aufgabe7_classes;
 (function (aufgabe7_classes) {
     window.addEventListener("load", init);
     let backgroundImage;
-    let colorBee = ["yellow", "orange", "red"];
-    let bees = [];
-    let flowers = [];
+    aufgabe7_classes.bees = [];
+    aufgabe7_classes.flowers = [];
     function init() {
-        let n = 10; //10 Bienen
         aufgabe7_classes.canvas = document.getElementsByTagName("canvas")[0];
         aufgabe7_classes.crc2 = aufgabe7_classes.canvas.getContext("2d");
         createBackground();
-        for (let i = 0; i < n; i++) {
+        create10Bees();
+        for (let i = 0; i < 10; i++) {
             let s = new aufgabe7_classes.BeeData(0, 0, " ", false); // default-values
-            createNewBee();
-            s.draw();
         }
-        console.log(bees);
+        console.log(aufgabe7_classes.bees);
         //        window.setTimeout(animate, 50);
         //neue Biene erstellen wenn auf das Canvas geklickt oder getouched wird, diese hat Startposition bei Bienenstock
         aufgabe7_classes.canvas.addEventListener("click", createNewBee);
         aufgabe7_classes.canvas.addEventListener("touch", createNewBee);
     }
+    function create10Bees() {
+        for (let i = 0; i < 9; i++) {
+            createNewBee();
+        }
+    }
     //Funktion die ausgef�hrt wird wenn auf das Canvas geklickt wird
     function createNewBee() {
-        let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
-        let be = new aufgabe7_classes.BeeData(150, 450, randomColorBee, false);
-        if (bees.length % 5 == 0)
-            be.direction = false;
-        else
-            be.direction = true;
-        bees.push(be);
-        be.draw();
+        let be = new aufgabe7_classes.BeeData(150, 450, " ", false);
+        aufgabe7_classes.bees.push(be);
     }
     function createBackground() {
         drawSky(0, 0, "#65B4FF");
@@ -55,52 +51,32 @@ var aufgabe7_classes;
         drawBienenkorb(0, 500, "#FF0000");
         //flowerfield
         for (let i = 0; i < 30; i++) {
-            let x = (Math.random() * (720 - 550)) + 650;
-            let y = (Math.random() * (500 - 250)) + 310;
-            let randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
-            let randomTulip = Math.floor((Math.random() * 2)) + 1;
-            let flowersize = 16;
-            let ff = new aufgabe7_classes.FlowerData(x, y, "", "", "", "");
-            ff.setRandomFlower();
-            flowers[i] = ff;
-            ff.drawTulip();
-            ff.drawFlower2();
+            let ff = new aufgabe7_classes.FlowerData();
+            aufgabe7_classes.flowers[i] = ff;
             console.log(ff);
         }
         backgroundImage = aufgabe7_classes.crc2.getImageData(0, 0, aufgabe7_classes.canvas.width, aufgabe7_classes.canvas.height);
         function animate() {
             //console.log("Animate called");
             aufgabe7_classes.crc2.putImageData(backgroundImage, 0, 0);
-            for (let i = 0; i < bees.length; i++) {
-                let b = bees[i];
-                b.move();
-                b.moveOutIn();
-                b.draw();
+            for (let i = 0; i < aufgabe7_classes.bees.length; i++) {
+                aufgabe7_classes.bees[i].move();
                 window.setTimeout(animate, 50);
             }
         }
     }
     function drawFlowers() {
-        let t1 = new aufgabe7_classes.FlowerData(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
-        let t2 = new aufgabe7_classes.FlowerData(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
-        let t3 = new aufgabe7_classes.FlowerData(280, 505, "#295E10", "#666666", "#741221", "#3F0C18");
-        let t4 = new aufgabe7_classes.FlowerData(375, 520, "#295E10", "#666666", "#741221", "#3F0C18");
-        t1.drawTulip();
-        t2.drawTulip();
-        t3.drawTulip();
-        t4.drawTulip();
-        let f1 = new aufgabe7_classes.FlowerData(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        let f2 = new aufgabe7_classes.FlowerData(590, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        let f3 = new aufgabe7_classes.FlowerData(675, 535, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        let f4 = new aufgabe7_classes.FlowerData(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        let f5 = new aufgabe7_classes.FlowerData(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        let f6 = new aufgabe7_classes.FlowerData(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
-        f1.drawFlower2();
-        f2.drawFlower2();
-        f3.drawFlower2();
-        f4.drawFlower2();
-        f5.drawFlower2();
-        f6.drawFlower2();
+        let FT;
+        FT.drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
+        FT.drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
+        FT.drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+        FT.drawFlower2(590, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+        FT.drawFlower2(675, 535, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+        FT.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+        FT.drawTulip(280, 505, "#295E10", "#666666", "#741221", "#3F0C18");
+        FT.drawTulip(375, 520, "#295E10", "#666666", "#741221", "#3F0C18");
+        FT.drawFlower2(350, 520, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+        FT.drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
     }
     //Sky
     function drawSky(_x, _y, _fillColor) {

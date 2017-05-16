@@ -2,10 +2,17 @@ var aufgabe7_classes;
 (function (aufgabe7_classes) {
     class BeeData {
         constructor(_x, _y, _color, _direction) {
-            this.x = _x;
-            this.y = _y;
-            this.color = _color;
+            let colorBee = ["yellow", "orange", "red"];
+            let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
+            if (aufgabe7_classes.bees.length % 5 == 0)
+                this.direction = false;
+            else
+                this.direction = true;
+            this.x = 150;
+            this.y = 450;
+            this.color = randomColorBee;
             this.direction = _direction;
+            this.draw();
         }
         draw() {
             //K�rper
@@ -72,8 +79,6 @@ var aufgabe7_classes;
                 directionModifier = -1;
             this.x += (Math.random() * 4 - 3.5) * directionModifier;
             this.y += Math.random() * 4 - 4;
-        }
-        moveOutIn() {
             // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
             if (this.x < 0) {
                 console.log("links raus");
@@ -91,6 +96,7 @@ var aufgabe7_classes;
                 console.log("unten raus");
                 this.y = 0;
             }
+            this.draw();
         }
     }
     aufgabe7_classes.BeeData = BeeData;
