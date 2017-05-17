@@ -25,7 +25,7 @@ namespace aufgabe7_classes {
         create10Bees();
         document.getElementsByTagName("canvas")[0].addEventListener("click", createNewBee);
         window.setTimeout(animate, 20);
-        drawFlowers();
+      
 
         console.log(bees);
 
@@ -41,7 +41,6 @@ namespace aufgabe7_classes {
     }
 
     function createNewBee(): void {
-
         let be: BeeData = new BeeData();
         bees.push(be);
     }

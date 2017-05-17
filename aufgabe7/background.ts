@@ -15,7 +15,6 @@ namespace aufgabe7_classes {
         drawTree(0, 300, "#BD721F", "#1A6E22");
         drawTreeB(0, 225, "#BD721F", "#1A6E22");
         drawBienenkorb(0, 500);
-
     }
 
     function drawFlowerfield(): void {

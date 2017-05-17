@@ -1,7 +1,7 @@
 var aufgabe7_classes;
 (function (aufgabe7_classes) {
     class BeeData {
-        constructor(_x, _y, _color, _direction) {
+        constructor() {
             let colorBee = ["yellow", "orange", "red"];
             let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
             if (aufgabe7_classes.bees.length % 5 == 0)
@@ -11,7 +11,7 @@ var aufgabe7_classes;
             this.x = 150;
             this.y = 450;
             this.color = randomColorBee;
-            this.direction = _direction;
+            this.direction = true;
             this.draw();
         }
         draw() {

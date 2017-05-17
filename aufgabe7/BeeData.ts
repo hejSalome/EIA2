@@ -6,7 +6,7 @@ namespace aufgabe7_classes {
         color: string;
         direction: boolean;
 
-        constructor(_x: number, _y: number, _color: string, _direction: boolean) {
+        constructor() {
             let colorBee: string[] = ["yellow", "orange", "red"];
             let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
 
@@ -18,7 +18,7 @@ namespace aufgabe7_classes {
             this.x = 150;
             this.y = 450;
             this.color = randomColorBee;
-            this.direction = _direction;
+            this.direction = true;
             this.draw();
         }
         draw(): void {
