@@ -1,9 +1,9 @@
 var aufgabe7_classes;
 (function (aufgabe7_classes) {
-    class BeeData {
-        constructor() {
-            let colorBee = ["yellow", "orange", "red"];
-            let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
+    var BeeData = (function () {
+        function BeeData() {
+            var colorBee = ["yellow", "orange", "red"];
+            var randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
             if (aufgabe7_classes.bees.length % 5 == 0)
                 this.direction = false;
             else
@@ -14,7 +14,7 @@ var aufgabe7_classes;
             this.direction = true;
             this.draw();
         }
-        draw() {
+        BeeData.prototype.draw = function () {
             //K�rper
             aufgabe7_classes.crc2.beginPath();
             aufgabe7_classes.crc2.fillStyle = this.color;
@@ -70,9 +70,9 @@ var aufgabe7_classes;
             aufgabe7_classes.crc2.lineTo(this.x + 5, this.y + 3);
             aufgabe7_classes.crc2.closePath();
             aufgabe7_classes.crc2.stroke();
-        }
-        move() {
-            let directionModifier;
+        };
+        BeeData.prototype.move = function () {
+            var directionModifier;
             if (this.direction == true)
                 directionModifier = +1;
             else
@@ -97,8 +97,8 @@ var aufgabe7_classes;
                 this.y = 0;
             }
             this.draw();
-        }
-    }
+        };
+        return BeeData;
+    }());
     aufgabe7_classes.BeeData = BeeData;
 })(aufgabe7_classes || (aufgabe7_classes = {}));
-//# sourceMappingURL=BeeData.js.map
