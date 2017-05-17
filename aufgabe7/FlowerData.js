@@ -2,25 +2,22 @@ var aufgabe7_classes;
 (function (aufgabe7_classes) {
     class FlowerData {
         constructor() {
+            this.color1 = "#295E10"; //colorLeaf
+            this.color2 = "#666666"; //colorBlossom
+            this.color4 = "#741221"; //colorInner
             this.colors = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
-            let randomX = (Math.random() * (720 - 550)) + 550;
-            let randomY = (Math.random() * (500 - 250)) + 210;
-            let randomColor = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
+            this.x = (Math.random() * (720 - 550)) + 550;
+            this.y = (Math.random() * (500 - 250)) + 210;
+            this.color3 = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
             let randomTulip = Math.round((Math.random() * 2)) + 1;
-            let flowersize = 16;
-            if (randomTulip == 1) {
-                this.drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
-            }
-            else {
-                this.drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
-            }
+            this.drawTulip();
         }
-        drawTulip(_randomX, _randomY, _color1, _color2, _randomColor, _color3) {
+        drawTulip() {
             // stem
             aufgabe7_classes.crc2.beginPath();
-            aufgabe7_classes.crc2.strokeStyle = _color1;
+            aufgabe7_classes.crc2.strokeStyle = this.color1;
             aufgabe7_classes.crc2.moveTo(this.x - 2, this.y);
-            aufgabe7_classes.crc2.quadraticCurveTo(_randomX - 2, this.y - 33, this.x, this.y - 50);
+            aufgabe7_classes.crc2.quadraticCurveTo(this.x - 2, this.y - 33, this.x, this.y - 50);
             aufgabe7_classes.crc2.lineTo(this.x, this.y - 50);
             aufgabe7_classes.crc2.quadraticCurveTo(this.x - 1, this.y - 50, this.x, this.y);
             aufgabe7_classes.crc2.stroke();
@@ -42,7 +39,7 @@ var aufgabe7_classes;
             aufgabe7_classes.crc2.fill();
             aufgabe7_classes.crc2.closePath();
         }
-        drawFlower2(_randomX, _randomY, _color1, _color2, _color3, _randomColor) {
+        drawFlower2() {
             // stem
             aufgabe7_classes.crc2.beginPath();
             aufgabe7_classes.crc2.strokeStyle = this.color1;
