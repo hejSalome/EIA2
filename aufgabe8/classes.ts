@@ -1,7 +1,7 @@
-//Aufgabe: Aufgabe 7
+//Aufgabe: Aufgabe 8
 //Name: Salome Wei�er
 //Matrikel: 254669
-//Datum: 13.05.2017
+//Datum: 17.05.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
@@ -25,12 +25,8 @@ namespace aufgabe8_classes {
         create10Bees();
         document.getElementsByTagName("canvas")[0].addEventListener("click", createNewBee);
         window.setTimeout(animate, 20);
-      
-
+        
         console.log(bees);
-
-        //        canvas.addEventListener("click", createNewBee);
-        //        canvas.addEventListener("touch", createNewBee);
 
     }
 
