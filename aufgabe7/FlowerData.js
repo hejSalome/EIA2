@@ -1,21 +1,20 @@
+/// <reference path="classes.ts" />
 var aufgabe7_classes;
 (function (aufgabe7_classes) {
-    class FlowerData {
-        constructor() {
+    var FlowerData = (function () {
+        function FlowerData() {
+            this.color1 = "#295E10"; //colorStem
+            this.color2 = "#666666"; //colorLeaf
+            this.color4 = "#741221"; //colorInner
             this.colors = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
-            let randomX = (Math.random() * (720 - 550)) + 650;
-            let randomY = (Math.random() * (500 - 250)) + 310;
-            let randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
-            let randomTulip = Math.floor((Math.random() * 2)) + 1;
-            let flowersize = 16;
-            if (randomTulip == 1) {
-                this.drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
-            }
-            else {
-                this.drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
-            }
+            this.x = (Math.random() * (720 - 550)) + 550;
+            this.y = (Math.random() * (500 - 250)) + 250;
+            this.color3 = this.colors[Math.round(Math.random() * (this.colors.length - 1))];
+            var randomTulip = Math.round((Math.random() * 2)) + 1;
+            var flowersize = 16;
+            this.drawTulip();
         }
-        drawTulip(_randomX, _randomY, _color1, _color2, _randomColor, _color3) {
+        FlowerData.prototype.drawTulip = function () {
             // stem
             aufgabe7_classes.crc2.beginPath();
             aufgabe7_classes.crc2.strokeStyle = this.color1;
@@ -41,8 +40,8 @@ var aufgabe7_classes;
             aufgabe7_classes.crc2.lineTo(this.x + 10, this.y - 55);
             aufgabe7_classes.crc2.fill();
             aufgabe7_classes.crc2.closePath();
-        }
-        drawFlower2(_randomX, _randomY, _color1, _color2, _color3, _randomColor) {
+        };
+        FlowerData.prototype.drawFlower2 = function () {
             // stem
             aufgabe7_classes.crc2.beginPath();
             aufgabe7_classes.crc2.strokeStyle = this.color1;
@@ -153,7 +152,7 @@ var aufgabe7_classes;
             aufgabe7_classes.crc2.arc(this.x + 26, this.y - 96, 2, 0, 2 * Math.PI);
             aufgabe7_classes.crc2.fill();
             aufgabe7_classes.crc2.closePath();
-            this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            //this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
             //    FT.drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
             //    FT.drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
             //    FT.drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
@@ -166,8 +165,8 @@ var aufgabe7_classes;
             //    FT.drawFlower2(320, 540, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
             //
             //}
-        }
-    }
+        };
+        return FlowerData;
+    }());
     aufgabe7_classes.FlowerData = FlowerData;
 })(aufgabe7_classes || (aufgabe7_classes = {}));
-//# sourceMappingURL=FlowerData.js.map

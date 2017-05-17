@@ -1,3 +1,6 @@
+/// <reference path="FlowerData.ts" />
+/// <reference path="background.ts" />
+/// <reference path="BeeData.ts" />
 //Aufgabe: Aufgabe 7
 //Name: Salome Wei�er
 //Matrikel: 254669
@@ -22,21 +25,20 @@ var aufgabe7_classes;
         //        canvas.addEventListener("touch", createNewBee);
     }
     function create10Bees() {
-        for (let i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
             createNewBee();
         }
     }
     function createNewBee() {
-        let be = new aufgabe7_classes.BeeData();
+        var be = new aufgabe7_classes.BeeData();
         aufgabe7_classes.bees.push(be);
     }
     function animate() {
         //console.log("Animate called");
         aufgabe7_classes.crc2.putImageData(aufgabe7_classes.backgroundImage, 0, 0);
-        for (let i = 0; i < aufgabe7_classes.bees.length; i++) {
+        for (var i = 0; i < aufgabe7_classes.bees.length; i++) {
             aufgabe7_classes.bees[i].move();
         }
         window.setTimeout(animate, 20);
     }
 })(aufgabe7_classes || (aufgabe7_classes = {}));
-//# sourceMappingURL=classes.js.map

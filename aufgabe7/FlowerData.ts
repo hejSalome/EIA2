@@ -1,12 +1,14 @@
+/// <reference path="classes.ts" />
+
 namespace aufgabe7_classes {
 
     export class FlowerData {
         x: number;
         y: number;
-        color1: string;  //colorStem
-        color2: string;  //colorLeaf
+        color1: string = "#295E10";  //colorStem
+        color2: string = "#666666";  //colorLeaf
         color3: string;  //colorBlossom
-        color4: string;  //colorInner
+        color4: string =  "#741221";  //colorInner
         randomColor: string;
         randomTulip: number;
         colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
@@ -14,23 +16,18 @@ namespace aufgabe7_classes {
         constructor() {
 
 
-            let randomX: number = (Math.random() * (720 - 550)) + 650;
-            let randomY: number = (Math.random() * (500 - 250)) + 310;
-            let randomColor: string = this.colors[Math.floor(Math.random() * this.colors.length)];
-            let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
+            this.x = (Math.random() * (720 - 550)) + 550;
+            this.y = (Math.random() * (500 - 250)) + 250;
+            this.color3 = this.colors[Math.round(Math.random() * (this.colors.length - 1))];
+            let randomTulip: number = Math.round((Math.random() * 2)) + 1;
             let flowersize: number = 16;
 
-            if (randomTulip == 1) {
-                this.drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
-            }
-            else {
-                this.drawFlower2(randomX, randomY, "#295E10", "#666666", "#FCBC31", randomColor);
-            }
+            this.drawTulip()
         }
         
 
 
-    drawTulip(_randomX: number, _randomY: number, _color1: string, _color2: string, _randomColor: string, _color3: string): void {
+    drawTulip(): void {
 
         // stem
         crc2.beginPath();
@@ -60,7 +57,7 @@ namespace aufgabe7_classes {
         crc2.closePath();
     }
 
-    drawFlower2(_randomX: number, _randomY: number, _color1: string, _color2: string, _color3: string, _randomColor: string): void {
+    drawFlower2(): void {
         // stem
         crc2.beginPath();
         crc2.strokeStyle = this.color1;
@@ -174,7 +171,7 @@ namespace aufgabe7_classes {
         crc2.fill();
         crc2.closePath();  
         
-        this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+        //this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
 
 //    FT.drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
 //    FT.drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
