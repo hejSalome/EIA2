@@ -3,10 +3,10 @@ var aufgabe7_classes;
     class FlowerData {
         constructor() {
             this.colors = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
-            let randomX = (Math.random() * (720 - 550)) + 650;
-            let randomY = (Math.random() * (500 - 250)) + 310;
-            let randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
-            let randomTulip = Math.floor((Math.random() * 2)) + 1;
+            let randomX = (Math.random() * (720 - 550)) + 550;
+            let randomY = (Math.random() * (500 - 250)) + 210;
+            let randomColor = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
+            let randomTulip = Math.round((Math.random() * 2)) + 1;
             let flowersize = 16;
             if (randomTulip == 1) {
                 this.drawTulip(randomX, randomY, "#295E10", "#666666", randomColor, "#741221");
@@ -18,9 +18,9 @@ var aufgabe7_classes;
         drawTulip(_randomX, _randomY, _color1, _color2, _randomColor, _color3) {
             // stem
             aufgabe7_classes.crc2.beginPath();
-            aufgabe7_classes.crc2.strokeStyle = this.color1;
+            aufgabe7_classes.crc2.strokeStyle = _color1;
             aufgabe7_classes.crc2.moveTo(this.x - 2, this.y);
-            aufgabe7_classes.crc2.quadraticCurveTo(this.x - 2, this.y - 33, this.x, this.y - 50);
+            aufgabe7_classes.crc2.quadraticCurveTo(_randomX - 2, this.y - 33, this.x, this.y - 50);
             aufgabe7_classes.crc2.lineTo(this.x, this.y - 50);
             aufgabe7_classes.crc2.quadraticCurveTo(this.x - 1, this.y - 50, this.x, this.y);
             aufgabe7_classes.crc2.stroke();
@@ -153,7 +153,7 @@ var aufgabe7_classes;
             aufgabe7_classes.crc2.arc(this.x + 26, this.y - 96, 2, 0, 2 * Math.PI);
             aufgabe7_classes.crc2.fill();
             aufgabe7_classes.crc2.closePath();
-            this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+            // this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
             //    FT.drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
             //    FT.drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
             //    FT.drawFlower2(690, 500, "#295E10", "#666666", "#FCBC31", "#0C1A7B");

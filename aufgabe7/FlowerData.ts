@@ -1,9 +1,9 @@
 namespace aufgabe7_classes {
 
     export class FlowerData {
-        x: number;
-        y: number;
-        color1: string;  //colorStem
+        _randomX: number;
+        _randomY: number;
+   
         color2: string;  //colorLeaf
         color3: string;  //colorBlossom
         color4: string;  //colorInner
@@ -14,10 +14,10 @@ namespace aufgabe7_classes {
         constructor() {
 
 
-            let randomX: number = (Math.random() * (720 - 550)) + 650;
-            let randomY: number = (Math.random() * (500 - 250)) + 310;
-            let randomColor: string = this.colors[Math.floor(Math.random() * this.colors.length)];
-            let randomTulip: number = Math.floor((Math.random() * 2)) + 1;
+            let randomX: number = (Math.random() * (720 - 550)) + 550;
+            let randomY: number = (Math.random() * (500 - 250)) + 210;
+            let randomColor: string = this.colors[Math.floor(Math.random() *(this.colors.length - 1 ))]; //index des color arrays ist drei
+            let randomTulip: number = Math.round((Math.random() * 2)) + 1;
             let flowersize: number = 16;
 
             if (randomTulip == 1) {
@@ -34,9 +34,9 @@ namespace aufgabe7_classes {
 
         // stem
         crc2.beginPath();
-        crc2.strokeStyle = this.color1;
+        crc2.strokeStyle = _color1;
         crc2.moveTo(this.x - 2, this.y);
-        crc2.quadraticCurveTo(this.x - 2, this.y - 33, this.x, this.y - 50);
+        crc2.quadraticCurveTo(_randomX - 2, this.y - 33, this.x, this.y - 50);
         crc2.lineTo(this.x, this.y - 50);
         crc2.quadraticCurveTo(this.x - 1, this.y - 50, this.x, this.y);
         crc2.stroke();
@@ -174,7 +174,7 @@ namespace aufgabe7_classes {
         crc2.fill();
         crc2.closePath();  
         
-        this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
+       // this.drawFlower2(300, 490, "#295E10", "#666666", "#FCBC31", "#0C1A7B");
 
 //    FT.drawTulip(650, 500, "#295E10", "#666666", "#741221", "#3F0C18");
 //    FT.drawTulip(600, 515, "#295E10", "#666666", "#741221", "#3F0C18");
