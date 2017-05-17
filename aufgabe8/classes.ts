@@ -1,11 +1,11 @@
 //Aufgabe: Aufgabe 7
-//Name: Salome Weißer
+//Name: Salome Weiï¿½er
 //Matrikel: 254669
 //Datum: 13.05.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe7_classes {
+namespace aufgabe8_classes {
 
     window.addEventListener("load", init);
 

@@ -1,4 +1,4 @@
-namespace aufgabe7_classes {
+namespace aufgabe8_classes {
 
     export class BeeData {
         x: number;  //Position
@@ -22,7 +22,7 @@ namespace aufgabe7_classes {
             this.draw();
         }
         draw(): void {
-            //Körper
+            //Kï¿½rper
             crc2.beginPath();
             crc2.fillStyle = this.color;
             crc2.moveTo(this.x + 12, this.y + 7);
@@ -53,7 +53,7 @@ namespace aufgabe7_classes {
             crc2.quadraticCurveTo(this.x + 6, this.y + 21, this.x + 9, this.y + 17);
             crc2.stroke();
             crc2.closePath();
-            //Flügel
+            //Flï¿½gel
             crc2.beginPath();
             crc2.strokeStyle = "#000000";
             crc2.fillStyle = "#BDEBF7";
@@ -64,7 +64,7 @@ namespace aufgabe7_classes {
             crc2.stroke();
             crc2.fill();
             crc2.closePath();
-            //Fühler
+            //Fï¿½hler
             crc2.beginPath();
             crc2.moveTo(this.x + 4, this.y + 8);
             crc2.strokeStyle = "#000000";
@@ -91,7 +91,7 @@ namespace aufgabe7_classes {
             this.x += (Math.random() * 4 - 3.5) * directionModifier;
             this.y += Math.random() * 4 - 4;
 
-            // wenn Biene Canvas verlässt, dann Einflug auf gegenüberliegender Seite
+            // wenn Biene Canvas verlï¿½sst, dann Einflug auf gegenï¿½berliegender Seite
             if (this.x < 0) {
                 console.log("links raus");
                 this.x = canvas.width;

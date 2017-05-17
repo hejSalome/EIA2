@@ -1,4 +1,4 @@
-namespace aufgabe7_classes {
+namespace aufgabe8_classes {
 
     export class FlowerData {
         x: number;
