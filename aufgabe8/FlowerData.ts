@@ -8,18 +8,16 @@ namespace aufgabe8_classes {
         color3: string;
         color4: string = "#741221";  //colorInner
         randomColor: string;
-        randomTulip: number;
+      
         colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
 
-        constructor() {
+        constructor(_x: number, _y: number, _color1: string, _color2: string, _color3: string, _color4: string, _randomColor: string, _randomTulip: number, _colors: string) {
 
 
             this.x = (Math.random() * (720 - 550)) + 550;
             this.y = (Math.random() * (500 - 250)) + 210;
             this.color3 = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
-            let randomTulip: number = Math.round((Math.random() * 2)) + 1;
-
-            this.drawTulip();
+           
         }
 
 

@@ -1,7 +1,7 @@
 var aufgabe8_classes;
 (function (aufgabe8_classes) {
     class FlowerData {
-        constructor() {
+        constructor(_x, _y, _color1, _color2, _color3, _color4, _randomColor, _randomTulip, _colors) {
             this.color1 = "#295E10"; //colorLeaf
             this.color2 = "#666666"; //colorBlossom
             this.color4 = "#741221"; //colorInner
@@ -9,8 +9,6 @@ var aufgabe8_classes;
             this.x = (Math.random() * (720 - 550)) + 550;
             this.y = (Math.random() * (500 - 250)) + 210;
             this.color3 = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
-            let randomTulip = Math.round((Math.random() * 2)) + 1;
-            this.drawTulip();
         }
         drawTulip() {
             // stem
