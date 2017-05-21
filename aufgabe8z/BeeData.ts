@@ -1,4 +1,4 @@
-namespace aufgabe8_classes {
+namespace aufgabe8z_inheritance {
 
     export class BeeData {
         x: number;  //Position
@@ -31,7 +31,7 @@ namespace aufgabe8_classes {
             crc2.lineTo(this.x + 36, this.y + 17.5);
             crc2.quadraticCurveTo(this.x + 30, this.y + 30, this.x + 10, this.y + 20);
             crc2.lineTo(this.x + 10, this.y + 15);
-            crc2.fill(); 
+            crc2.fill();
             crc2.closePath();
             //Kopf
             crc2.beginPath();

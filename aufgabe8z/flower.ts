@@ -1,28 +1,19 @@
-namespace aufgabe8_classes {
-    export class Flower2 extends FlowerData {
-
-
-        x: number;
-        y: number;
-        color1: string = "#295E10";  //colorLeaf
-        color2: string = "#666666"; //colorBlossom
-        color3: string;
-        color4: string = "#741221";  //colorInner
-        randomColor: string;
-        randomTulip: number;
-        colors: string[] = ["#3F0C18", "#0C1A7B", "#2E86C1", "#AF7AC5"];
+namespace aufgabe8z_inheritance {
+    export class Flower extends FlowerData {
+        color1: string;  //colorLeaf
+        color2: string; //colorBlossom
+        color3: string;  //colorInner
 
         constructor(_x: number, _y: number) {
-
             super(_x, _y);
-            this.x = (Math.random() * (720 - 550)) + 550;
-            this.y = (Math.random() * (500 - 250)) + 210;
-            this.color3 = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
-            let randomTulip: number = Math.round((Math.random() * 2)) + 1;
+            this.color1 =  "#295E10";
+            this.color2 = "#666666";
+            this.color3 = "#741221";
+            //this.setRandomPosition();
+            
 
-            this.drawTulip();
+
         }
-
         draw(): void {
             // stem
             crc2.beginPath();
@@ -137,5 +128,6 @@ namespace aufgabe8_classes {
             crc2.fill();
             crc2.closePath();
         }
+
     }
 }

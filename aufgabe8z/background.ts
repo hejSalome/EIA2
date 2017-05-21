@@ -1,4 +1,4 @@
-namespace aufgabe8_classes {
+namespace aufgabe8z_inheritance {
 
     export function createBackground(): void {
         drawSky(0, 0);
@@ -11,24 +11,22 @@ namespace aufgabe8_classes {
         drawMountainE(0, 179, "#CCCCCC", "#999999");
         drawMountainF(175, 180, "#CCCCCC", "#8BAE88");
         drawRiver(475, 500, "#493A37", "#089299");
-        drawFlowerfield();
+        //drawFlowerfield();
         drawTree(0, 300, "#BD721F", "#1A6E22");
         drawTreeB(0, 225, "#BD721F", "#1A6E22");
         drawBienenkorb(0, 500);
-
     }
 
-    function drawFlowerfield(): void {
-
-        for (let i: number = 0; i < 30; i++) {
-            
-            this.color3 = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
-            let ff: FlowerData = new FlowerData(_color3, _colors);
-
-            flowers[i] = ff;
-
-            console.log(ff);
-        }
+//    function drawFlowerfield(): void {
+//
+//        for (let i: number = 0; i < 30; i++) {
+//
+//            let ff: FlowerData = new FlowerData();
+//
+//            flowers[i] = ff;
+//
+//            console.log(ff);
+//        }
 
     }
 
