@@ -22,8 +22,7 @@ namespace aufgabe8_classes {
 
         for (let i: number = 0; i < 30; i++) {
             
-            this.color3 = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
-            let ff: FlowerData = new FlowerData(_color3, _colors);
+            let ff: FlowerData = new FlowerData();
 
             flowers[i] = ff;
 
