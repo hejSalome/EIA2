@@ -16,21 +16,36 @@ namespace aufgabe8z_inheritance {
     export let flowers: FlowerData[] = [];
 
 
-    function init(): void {
-       
+    function init(_event: Event): void {
+
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        createBackground();
+        let bg: Background = new Background;
         backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
         create10Bees();
         document.getElementsByTagName("canvas")[0].addEventListener("click", createNewBee);
         window.setTimeout(animate, 20);
-        //        for (let i: number = 0; i < 10; i++) {
-        //            let s: FlowerData = new FlowerData(300, 150);
-        //            flowers.push(s);
-        //        }
+        //Tulip
+        for (let i: number = 0; i < 10; i++) {
+            let t: tulip = new tulip();
+            t.draw();
+        }
+        //Flower
+        for (let i: number = 0; i < 10; i++) {
+            let f: flower = new flower();
+            f.draw();
+        }
+
+        //Blumen im Array platzieren und ihnen eine random Position vergeben
+        for (let i: number = 0; i < 10; i++) {   //10 Blumen befinden sich im Array
+            let ff: tulip = new tulip();
+            flowers.push(ff);
+            console.log(ff);
+            flowers[i].draw();
+        }
 
         console.log(bees);
+        backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         //        canvas.addEventListener("click", createNewBee);
         //        canvas.addEventListener("touch", createNewBee);
@@ -62,13 +77,9 @@ namespace aufgabe8z_inheritance {
             //console.log("Animate called");
             crc2.putImageData(backgroundImage, 0, 0);
             for (let i: number = 0; i < bees.length - 1; i++) {
+                let be: BeeData = bees[i];
                 bees[i].move();
-                if (bees[i].stopp < 21 && bees[i].stopp != 0) {
-                    bees[i].stopp += 1;
-                }
-                if (bees[i].stopp == 20) {
-                    bees[i].stopp = 0;
-                }
+                
 
             }
             window.setTimeout(animate, 20);
