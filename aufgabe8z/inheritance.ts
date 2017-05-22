@@ -17,7 +17,7 @@ namespace aufgabe8z_inheritance {
 
 
     function init(): void {
-
+       
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         createBackground();
@@ -25,10 +25,10 @@ namespace aufgabe8z_inheritance {
         create10Bees();
         document.getElementsByTagName("canvas")[0].addEventListener("click", createNewBee);
         window.setTimeout(animate, 20);
-        for (let i: number = 0; i < 10; i++) {
-            let s: FlowerData = new FlowerData(300, 150);
-            flowers.push(s);
-        }
+        //        for (let i: number = 0; i < 10; i++) {
+        //            let s: FlowerData = new FlowerData(300, 150);
+        //            flowers.push(s);
+        //        }
 
         console.log(bees);
 
@@ -39,26 +39,41 @@ namespace aufgabe8z_inheritance {
 
     function create10Bees(): void {
         for (let i: number = 0; i < 9; i++) {
-            createNewBee();
+
+            if (i < 5) {
+                createHoneyBee();
+            }
+            else {
+                createNewBee();
+            }
         }
-    }
 
-    function createNewBee(): void {
-        let be: BeeData = new BeeData();
-        bees.push(be);
-    }
-
-    function animate(): void {
-        //console.log("Animate called");
-        crc2.putImageData(backgroundImage, 0, 0);
-        for (let i: number = 0; i < bees.length; i++) {
-            bees[i].move();
-           
-
+        function createNewBee(): void {
+            let be: BeeData = new BeeData();
+            bees.push(be);
         }
-        window.setTimeout(animate, 20);
-    }
 
-}
+        function createHoneyBee(): void {
+            let be: HoneyBeeData = new HoneyBeeData();
+            bees.push(be);
+        }
+
+        function animate(): void {
+            //console.log("Animate called");
+            crc2.putImageData(backgroundImage, 0, 0);
+            for (let i: number = 0; i < bees.length - 1; i++) {
+                bees[i].move();
+                if (bees[i].stopp < 21 && bees[i].stopp != 0) {
+                    bees[i].stopp += 1;
+                }
+                if (bees[i].stopp == 20) {
+                    bees[i].stopp = 0;
+                }
+
+            }
+            window.setTimeout(animate, 20);
+        }
+
+    }
 
 

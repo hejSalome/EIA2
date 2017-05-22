@@ -10,17 +10,18 @@ var aufgabe8z_inheritance;
     aufgabe8z_inheritance.bees = [];
     aufgabe8z_inheritance.flowers = [];
     function init() {
-        aufgabe8z_inheritance.canvas = document.getElementsByTagName("canvas")[0];
-        aufgabe8z_inheritance.crc2 = aufgabe8z_inheritance.canvas.getContext("2d");
+        let canvas;
+        canvas = document.getElementsByTagName("canvas")[0];
+        aufgabe8z_inheritance.crc2 = canvas.getContext("2d");
         aufgabe8z_inheritance.createBackground();
-        aufgabe8z_inheritance.backgroundImage = aufgabe8z_inheritance.crc2.getImageData(0, 0, aufgabe8z_inheritance.canvas.width, aufgabe8z_inheritance.canvas.height);
+        aufgabe8z_inheritance.backgroundImage = aufgabe8z_inheritance.crc2.getImageData(0, 0, canvas.width, canvas.height);
         create10Bees();
         document.getElementsByTagName("canvas")[0].addEventListener("click", createNewBee);
         window.setTimeout(animate, 20);
-        for (let i = 0; i < 10; i++) {
-            let s = new aufgabe8z_inheritance.FlowerData(300, 150);
-            aufgabe8z_inheritance.flowers.push(s);
-        }
+        //        for (let i: number = 0; i < 10; i++) {
+        //            let s: FlowerData = new FlowerData(300, 150);
+        //            flowers.push(s);
+        //        }
         console.log(aufgabe8z_inheritance.bees);
         //        canvas.addEventListener("click", createNewBee);
         //        canvas.addEventListener("touch", createNewBee);

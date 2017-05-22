@@ -5,6 +5,7 @@ namespace aufgabe8z_inheritance {
         y: number;  //Position
         color: string;
         direction: boolean;
+ 
 
         constructor() {
             let colorBee: string[] = ["yellow", "orange", "red"];
@@ -14,11 +15,12 @@ namespace aufgabe8z_inheritance {
                 this.direction = false;
             else
                 this.direction = true;
-
+            
             this.x = 150;
             this.y = 450;
             this.color = randomColorBee;
             this.direction = true;
+
             this.draw();
         }
         draw(): void {
@@ -108,7 +110,6 @@ namespace aufgabe8z_inheritance {
                 console.log("unten raus");
                 this.y = 0;
             }
-            this.draw();
 
         }
     }

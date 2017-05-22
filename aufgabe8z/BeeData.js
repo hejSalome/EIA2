@@ -96,7 +96,6 @@ var aufgabe8z_inheritance;
                 console.log("unten raus");
                 this.y = 0;
             }
-            this.draw();
         }
     }
     aufgabe8z_inheritance.BeeData = BeeData;
