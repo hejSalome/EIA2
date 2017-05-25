@@ -1,11 +1,11 @@
 var aufgabe8z_inheritance;
 (function (aufgabe8z_inheritance) {
-    class Flower extends aufgabe8z_inheritance.FlowerData {
+    class Flower extends aufgabe8z_inheritance.Superflower {
         constructor(_x, _y) {
             super(_x, _y);
-            this.color1 = "#295E10";
-            this.color2 = "#666666";
-            this.color3 = "#741221";
+            //            this.color1 =  "#295E10";
+            //            this.color2 = "#666666";
+            //            this.color3 = "#741221";
             //this.setRandomPosition();
         }
         draw() {

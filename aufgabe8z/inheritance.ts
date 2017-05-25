@@ -11,75 +11,107 @@ namespace aufgabe8z_inheritance {
 
     export let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
-    export let backgroundImage: ImageData;
-    export let bees: BeeData[] = [];
-    export let flowers: FlowerData[] = [];
+    let backgroundImage: ImageData;
+    let n: number = 10;
+    export let bees: Superbee[] = [];
+    export let flowers: Superflower[] = [];
+
 
 
     function init(_event: Event): void {
 
+        let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        let bg: Background = new Background;
+
+        let bg: background = new background;
+
+        //save canvas data
         backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        create10Bees();
-        document.getElementsByTagName("canvas")[0].addEventListener("click", createNewBee);
-        window.setTimeout(animate, 20);
+
+        //        create10Bees();
+
+
         //Tulip
-        for (let i: number = 0; i < 10; i++) {
-            let t: tulip = new tulip();
+        for (let i: number = 0; i < 20; i++) {
+            let t: Tulip = new Tulip();
             t.draw();
         }
         //Flower
         for (let i: number = 0; i < 10; i++) {
-            let f: flower = new flower();
-            f.draw();
+            let f: Flower = new Flower();
+            Flower.push(f);
         }
 
-        //Blumen im Array platzieren und ihnen eine random Position vergeben
-        for (let i: number = 0; i < 10; i++) {   //10 Blumen befinden sich im Array
-            let ff: tulip = new tulip();
-            flowers.push(ff);
-            console.log(ff);
-            flowers[i].draw();
+        for (let i: number = 0; i < n; i++) {
+            //bees fy to special flowers
+            var s: Honeybee = new Honeybee(150, 450);
+            bees.push(s);
+            //bees fly normal in left direction 
+            var n: Normalbee = new Normalbee(150, 450);
+            bees.push(n);
         }
 
         console.log(bees);
-        backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
-        //        canvas.addEventListener("click", createNewBee);
-        //        canvas.addEventListener("touch", createNewBee);
+        window.setTimeout(animate, 20);
+        canvas.addEventListener("click", createNewBee);
+        canvas.addEventListener("touch", createNewBee);
 
     }
 
-    function create10Bees(): void {
-        for (let i: number = 0; i < 9; i++) {
-
-            if (i < 5) {
-                createHoneyBee();
-            }
-            else {
-                createNewBee();
-            }
-        }
+//    function create10Bees(): void {
+//        for (let i: number = 0; i < 9; i++) {
+//
+//            if (i < 5) {
+//                createHoneyBee();
+//            }
+//            else {
+//                createNewBee();
+//            }
+//        }
+//
+//        function createNewBee(): void {
+//            let be: BeeData = new BeeData();
+//            bees.push(be);
+//        }
 
         function createNewBee(): void {
-            let be: BeeData = new BeeData();
-            bees.push(be);
-        }
-
-        function createHoneyBee(): void {
-            let be: HoneyBeeData = new HoneyBeeData();
-            bees.push(be);
+            let s: Honeybee = new Honeybee(150, 450);
+            bees.push(s);
+            n += 1;
+            console.log("new bee");
         }
 
         function animate(): void {
             //console.log("Animate called");
             crc2.putImageData(backgroundImage, 0, 0);
-            for (let i: number = 0; i < bees.length - 1; i++) {
-                let be: BeeData = bees[i];
-                bees[i].move();
-                
+            for (let k: number = 0; k < flowers.length; k++) {
+                flowers[k].draw();
+            }
+
+            for (let i: number = 0; i < bees.length; i++) {
+                let be: Superbee = bees[i];
+
+
+                // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
+                if (this.x < 0) {
+                    console.log("links raus");
+                    this.x = canvas.width;
+                }
+                if (this.x > canvas.width) {
+                    console.log("rechts raus");
+                    this.x = 0;
+                }
+                if (this.y < 0) {
+                    console.log("oben raus");
+                    this.y = canvas.height;
+                }
+                if (this.y > canvas.height) {
+                    console.log("unten raus");
+                    this.y = 0;
+                }
+                be.update();
 
             }
             window.setTimeout(animate, 20);

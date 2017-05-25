@@ -1,28 +1,24 @@
 namespace aufgabe8z_inheritance {
+    
+    export class Normalbee extends Superbee {
 
-    export class BeeData {
-        x: number;  //Position
-        y: number;  //Position
-        color: string;
-        direction: boolean;
- 
-
-        constructor() {
-            let colorBee: string[] = ["yellow", "orange", "red"];
-            let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
-
-            if (bees.length % 5 == 0)
-                this.direction = false;
-            else
-                this.direction = true;
-            
-            this.x = 150;
-            this.y = 450;
-            this.color = randomColorBee;
-            this.direction = true;
-
-            this.draw();
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
         }
+
+        //normal moving direction
+        move(): void {
+            let directionModifier: number;
+
+            if (this.direction == true)
+                directionModifier = +1;
+            else  //Entgegengesetzte Richtung 
+                directionModifier = -1;
+
+            this.x += (Math.random() * 4 - 3.5) * directionModifier;
+            this.y += Math.random() * 4 - 4;
+        }
+
         draw(): void {
             //K�rper
             crc2.beginPath();
@@ -81,36 +77,6 @@ namespace aufgabe8z_inheritance {
             crc2.closePath();
             crc2.stroke();
         }
-
-        move(): void {
-            let directionModifier: number;
-
-            if (this.direction == true)
-                directionModifier = +1;
-            else  //Entgegengesetzte Richtung 
-                directionModifier = -1;
-
-            this.x += (Math.random() * 4 - 3.5) * directionModifier;
-            this.y += Math.random() * 4 - 4;
-
-            // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
-            if (this.x < 0) {
-                console.log("links raus");
-                this.x = canvas.width;
-            }
-            if (this.x > canvas.width) {
-                console.log("rechts raus");
-                this.x = 0;
-            }
-            if (this.y < 0) {
-                console.log("oben raus");
-                this.y = canvas.height;
-            }
-            if (this.y > canvas.height) {
-                console.log("unten raus");
-                this.y = 0;
-            }
-
-        }
     }
 }
+

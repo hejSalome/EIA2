@@ -1,18 +1,18 @@
 var aufgabe8z_inheritance;
 (function (aufgabe8z_inheritance) {
-    class BeeData {
-        constructor() {
-            let colorBee = ["yellow", "orange", "red"];
-            let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
-            if (aufgabe8z_inheritance.bees.length % 5 == 0)
-                this.direction = false;
+    class Normalbee extends aufgabe8z_inheritance.Superbee {
+        constructor(_x, _y) {
+            super(_x, _y);
+        }
+        //normal moving direction
+        move() {
+            let directionModifier;
+            if (this.direction == true)
+                directionModifier = +1;
             else
-                this.direction = true;
-            this.x = 150;
-            this.y = 450;
-            this.color = randomColorBee;
-            this.direction = true;
-            this.draw();
+                directionModifier = -1;
+            this.x += (Math.random() * 4 - 3.5) * directionModifier;
+            this.y += Math.random() * 4 - 4;
         }
         draw() {
             //K�rper
@@ -71,33 +71,7 @@ var aufgabe8z_inheritance;
             aufgabe8z_inheritance.crc2.closePath();
             aufgabe8z_inheritance.crc2.stroke();
         }
-        move() {
-            let directionModifier;
-            if (this.direction == true)
-                directionModifier = +1;
-            else
-                directionModifier = -1;
-            this.x += (Math.random() * 4 - 3.5) * directionModifier;
-            this.y += Math.random() * 4 - 4;
-            // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
-            if (this.x < 0) {
-                console.log("links raus");
-                this.x = aufgabe8z_inheritance.canvas.width;
-            }
-            if (this.x > aufgabe8z_inheritance.canvas.width) {
-                console.log("rechts raus");
-                this.x = 0;
-            }
-            if (this.y < 0) {
-                console.log("oben raus");
-                this.y = aufgabe8z_inheritance.canvas.height;
-            }
-            if (this.y > aufgabe8z_inheritance.canvas.height) {
-                console.log("unten raus");
-                this.y = 0;
-            }
-        }
     }
-    aufgabe8z_inheritance.BeeData = BeeData;
+    aufgabe8z_inheritance.Normalbee = Normalbee;
 })(aufgabe8z_inheritance || (aufgabe8z_inheritance = {}));
-//# sourceMappingURL=BeeData.js.map
+//# sourceMappingURL=Normalbee.js.map

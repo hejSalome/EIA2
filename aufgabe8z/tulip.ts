@@ -1,13 +1,8 @@
-namespace aufgabe8_classes {
-    export class Tulip extends FlowerData {
+namespace aufgabe8z_inheritance {
+    export class Tulip extends Superflower {
 
-        constructor(_x: number, _y: number, _color3: string, _colors: string) {
-            super( _color3, _colors);
-            console.log("Create tulip");
-            this.x = (Math.random() * (720 - 550)) + 550;
-            this.y = (Math.random() * (500 - 250)) + 210;
-            this.color3 = this.colors[Math.floor(Math.random() * (this.colors.length - 1))]; //index des color arrays ist drei
-            this.draw();
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
 
 
         }
@@ -26,8 +21,8 @@ namespace aufgabe8_classes {
 
             //blossom
             crc2.beginPath();
-            crc2.fillStyle = this.color2;
-            crc2.strokeStyle = this.color4;
+            crc2.fillStyle = this.colors;
+            crc2.strokeStyle = this.color3;
             //outer 
             crc2.moveTo(this.x - 20, this.y - 75);
             crc2.quadraticCurveTo(this.x, this.y, this.x + 20, this.y - 75);

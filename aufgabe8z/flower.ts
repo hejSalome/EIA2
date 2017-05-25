@@ -1,14 +1,12 @@
 namespace aufgabe8z_inheritance {
-    export class Flower extends FlowerData {
-        color1: string;  //colorLeaf
-        color2: string; //colorBlossom
-        color3: string;  //colorInner
+    export class Flower extends Superflower {
+  
 
         constructor(_x: number, _y: number) {
             super(_x, _y);
-            this.color1 =  "#295E10";
-            this.color2 = "#666666";
-            this.color3 = "#741221";
+//            this.color1 =  "#295E10";
+//            this.color2 = "#666666";
+//            this.color3 = "#741221";
             //this.setRandomPosition();
             
 
