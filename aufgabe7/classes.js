@@ -1,3 +1,6 @@
+/// <reference path="FlowerData.ts" />
+/// <reference path="background.ts" />
+/// <reference path="BeeData.ts" />
 //Aufgabe: Aufgabe 7
 //Name: Salome Wei�er
 //Matrikel: 254669

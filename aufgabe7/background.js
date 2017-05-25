@@ -18,8 +18,8 @@ var aufgabe7_classes;
     }
     aufgabe7_classes.createBackground = createBackground;
     function drawFlowerfield() {
-        for (let i = 0; i < 30; i++) {
-            let ff = new aufgabe7_classes.FlowerData();
+        for (var i = 0; i < 30; i++) {
+            var ff = new aufgabe7_classes.FlowerData();
             aufgabe7_classes.flowers[i] = ff;
             console.log(ff);
         }
@@ -241,4 +241,3 @@ var aufgabe7_classes;
         aufgabe7_classes.crc2.closePath();
     }
 })(aufgabe7_classes || (aufgabe7_classes = {}));
-//# sourceMappingURL=background.js.map

@@ -1,5 +1,9 @@
+/// <reference path="FlowerData.ts" />
+/// <reference path="background.ts" />
+/// <reference path="BeeData.ts" />
+
 //Aufgabe: Aufgabe 7
-//Name: Salome Weißer
+//Name: Salome Weiï¿½er
 //Matrikel: 254669
 //Datum: 13.05.2017
 //    
@@ -50,8 +54,6 @@ namespace aufgabe7_classes {
         crc2.putImageData(backgroundImage, 0, 0);
         for (let i: number = 0; i < bees.length; i++) {
             bees[i].move();
-
-
         }
         window.setTimeout(animate, 20);
     }
