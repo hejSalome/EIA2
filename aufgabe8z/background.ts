@@ -1,13 +1,10 @@
 namespace aufgabe8z_inheritance {
-    
+
     export class Background {
-        
+
         constructor() {
-            //sky
-            crc2.fillStyle = "#65B4FF";
-            crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-           
             
+            this.drawSky(0, 0);
             this.drawGrassland(0, 175);
             this.drawSun(500, 75);
             this.drawMountainA(80, 175, "#CCCCCC", "#666666");
@@ -22,19 +19,12 @@ namespace aufgabe8z_inheritance {
             this.drawTreeB(0, 225, "#BD721F", "#1A6E22");
             this.drawBienenkorb(0, 500);
         }
-
-        //    function drawFlowerfield(): void {
-        //
-        //        for (let i: number = 0; i < 30; i++) {
-        //
-        //            let ff: FlowerData = new FlowerData();
-        //
-        //            flowers[i] = ff;
-        //
-        //            console.log(ff);
-        //        }
-
-
+ 
+        drawSky(_x: number, _y: number): void {
+            crc2.fillStyle = "#65B4FF";
+            crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+            }
+        
         drawGrassland(_x: number, _y: number): void {
             crc2.beginPath();
             crc2.fillStyle = "#34B21A";
@@ -257,4 +247,3 @@ namespace aufgabe8z_inheritance {
     }
 
 }
-       
