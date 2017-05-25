@@ -2,8 +2,8 @@ namespace aufgabe8z_inheritance {
     export class Flower extends Superflower {
   
 
-        constructor(_x: number, _y: number) {
-            super(_x, _y);
+        constructor() {
+            super();
 //            this.color1 =  "#295E10";
 //            this.color2 = "#666666";
 //            this.color3 = "#741221";

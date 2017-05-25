@@ -1,8 +1,13 @@
 namespace aufgabe8z_inheritance {
-
-    export class background(): void {
+    
+    export class Background {
+        
         constructor() {
-            this.drawSky(0, 0);
+            //sky
+            crc2.fillStyle = "#65B4FF";
+            crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+           
+            
             this.drawGrassland(0, 175);
             this.drawSun(500, 75);
             this.drawMountainA(80, 175, "#CCCCCC", "#666666");
@@ -32,14 +37,7 @@ namespace aufgabe8z_inheritance {
 
 
 
-        drawSky(_x: number, _y: number): void {
-            crc2.beginPath();
-            crc2.fillStyle = "#65B4FF";
-            crc2.fillRect(_x, _y, canvas.width, 175);
-            crc2.stroke();
-            crc2.closePath();
-        }
-
+   
         drawGrassland(_x: number, _y: number): void {
             crc2.beginPath();
             crc2.fillStyle = "#34B21A";
@@ -48,7 +46,7 @@ namespace aufgabe8z_inheritance {
             crc2.closePath();
         }
 
-        function drawSun(_x: number, _y: number): void {
+        drawSun(_x: number, _y: number): void {
             crc2.beginPath();
             crc2.fillStyle = "#FCC631";
             crc2.arc(_x, _y, 25, 0 * Math.PI, 2 * Math.PI);
@@ -56,7 +54,7 @@ namespace aufgabe8z_inheritance {
             crc2.closePath();
         }
         //mountain range
-        function drawMountainA(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        drawMountainA(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
@@ -68,7 +66,7 @@ namespace aufgabe8z_inheritance {
             crc2.stroke();
             //draw a mountain around the coordinates (_x, _y);
         }
-        function drawMountainB(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        drawMountainB(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
@@ -79,7 +77,7 @@ namespace aufgabe8z_inheritance {
             crc2.fill();
             crc2.stroke();
         }
-        function drawMountainC(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        drawMountainC(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
@@ -90,7 +88,7 @@ namespace aufgabe8z_inheritance {
             crc2.fill();
             crc2.stroke();
         }
-        function drawMountainD(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        drawMountainD(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
@@ -103,7 +101,7 @@ namespace aufgabe8z_inheritance {
             crc2.fill();
             crc2.stroke();
         }
-        function drawMountainE(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        drawMountainE(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
@@ -114,7 +112,7 @@ namespace aufgabe8z_inheritance {
             crc2.fill();
             crc2.stroke();
         }
-        function drawMountainF(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        drawMountainF(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
@@ -127,7 +125,7 @@ namespace aufgabe8z_inheritance {
             crc2.stroke();
         }
 
-        function drawRiver(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        drawRiver(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
@@ -147,7 +145,7 @@ namespace aufgabe8z_inheritance {
         }
 
 
-        function drawTree(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
+        drawTree(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
             crc2.beginPath();
             crc2.fillStyle = _colorBranch;
             crc2.strokeStyle = _colorBranch;
@@ -174,7 +172,7 @@ namespace aufgabe8z_inheritance {
             crc2.stroke();
             crc2.fill();
         }
-        function drawTreeB(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
+        drawTreeB(_x: number, _y: number, _colorBranch: string, _colorLeaf: string): void {
             crc2.beginPath();
             crc2.fillStyle = _colorBranch;
             crc2.strokeStyle = _colorBranch;
@@ -203,7 +201,7 @@ namespace aufgabe8z_inheritance {
             crc2.stroke();
             crc2.fill();
         }
-        function drawBienenkorb(_x: number, _y: number): void {
+        drawBienenkorb(_x: number, _y: number): void {
             //Holzablage
             crc2.beginPath();
             crc2.fillStyle = "#753C1E";
@@ -262,3 +260,4 @@ namespace aufgabe8z_inheritance {
     }
 
 }
+       

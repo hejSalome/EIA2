@@ -9,7 +9,7 @@ namespace aufgabe8z_inheritance {
         colors: string;
     
 
-        constructor(_x: number, _y: number) {
+        constructor() {
             this.setRandomPosition();
             this.setRandomColor();
 

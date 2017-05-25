@@ -1,10 +1,8 @@
 namespace aufgabe8z_inheritance {
     export class Tulip extends Superflower {
 
-        constructor(_x: number, _y: number) {
-            super(_x, _y);
-
-
+        constructor() {
+            super();
         }
 
         draw(): void {

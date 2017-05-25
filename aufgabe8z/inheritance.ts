@@ -20,11 +20,11 @@ namespace aufgabe8z_inheritance {
 
     function init(_event: Event): void {
 
-        let canvas: HTMLCanvasElement;
+      
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
-        let bg: background = new background;
+        let bg: Background = new Background;
 
         //save canvas data
         backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
@@ -35,21 +35,21 @@ namespace aufgabe8z_inheritance {
         //Tulip
         for (let i: number = 0; i < 20; i++) {
             let t: Tulip = new Tulip();
-            t.draw();
+            flowers.push(t);
         }
         //Flower
         for (let i: number = 0; i < 10; i++) {
             let f: Flower = new Flower();
-            Flower.push(f);
+            flowers.push(f);
         }
 
         for (let i: number = 0; i < n; i++) {
             //bees fy to special flowers
-            var s: Honeybee = new Honeybee(150, 450);
-            bees.push(s);
+            var hb: Honeybee = new Honeybee(150, 450);
+            bees.push(hb);
             //bees fly normal in left direction 
-            var n: Normalbee = new Normalbee(150, 450);
-            bees.push(n);
+            let nb: Normalbee = new Normalbee(150, 450);
+            bees.push(nb);
         }
 
         console.log(bees);

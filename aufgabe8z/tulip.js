@@ -1,8 +1,8 @@
 var aufgabe8z_inheritance;
 (function (aufgabe8z_inheritance) {
     class Tulip extends aufgabe8z_inheritance.Superflower {
-        constructor(_x, _y) {
-            super(_x, _y);
+        constructor() {
+            super();
         }
         draw() {
             // stem
