@@ -12,7 +12,7 @@ var aufgabe8z_inheritance;
             this.draw();
         }
         setRandomStyle() {
-            let colorBee = ["yellow", "orange", "red"];
+            let colorBee = ["#FFCFC4", "orange", "red"];
             let randomColorBee = colorBee[Math.floor(Math.random() * colorBee.length)];
             this.color = randomColorBee;
             if (aufgabe8z_inheritance.bees.length % 5 == 0)

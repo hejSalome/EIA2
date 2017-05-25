@@ -38,7 +38,7 @@ namespace aufgabe8z_inheritance {
             flowers.push(t);
         }
         //Flower
-        for (let i: number = 0; i < 10; i++) {
+        for (let i: number = 0; i < 20; i++) {
             let f: Flower = new Flower();
             flowers.push(f);
         }
@@ -59,22 +59,6 @@ namespace aufgabe8z_inheritance {
         canvas.addEventListener("touch", createNewBee);
 
     }
-
-//    function create10Bees(): void {
-//        for (let i: number = 0; i < 9; i++) {
-//
-//            if (i < 5) {
-//                createHoneyBee();
-//            }
-//            else {
-//                createNewBee();
-//            }
-//        }
-//
-//        function createNewBee(): void {
-//            let be: BeeData = new BeeData();
-//            bees.push(be);
-//        }
 
         function createNewBee(): void {
             let s: Honeybee = new Honeybee(150, 450);

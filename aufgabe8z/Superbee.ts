@@ -22,7 +22,7 @@ namespace aufgabe8z_inheritance {
         
         setRandomStyle(): void {
             
-            let colorBee: string[] = ["yellow", "orange", "red"];
+            let colorBee: string[] = ["#FFCFC4", "orange", "red"];
             let randomColorBee: string = colorBee[Math.floor(Math.random() * colorBee.length)];
             this.color = randomColorBee;
             if (bees.length % 5 == 0)

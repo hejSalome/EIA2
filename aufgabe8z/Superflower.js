@@ -12,13 +12,12 @@ var aufgabe8z_inheritance;
             //abstract
         }
         setRandomPosition() {
-            this.x = (Math.random() * (720 - 550)) + 550;
+            this.x = (Math.random() * (720 - 470)) + 470;
             this.y = (Math.random() * (500 - 250)) + 210;
         }
         setRandomColor() {
             let colors = [
-                "#c94dff", "#8db0f2", "#e68a00"
-            ];
+                "#C41B0A", "#6DCADE", "#A983C4"];
             this.colors = colors[Math.floor(Math.random() * colors.length)];
         }
     }

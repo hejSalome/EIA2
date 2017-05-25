@@ -24,7 +24,7 @@ var aufgabe8z_inheritance;
             aufgabe8z_inheritance.flowers.push(t);
         }
         //Flower
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             let f = new aufgabe8z_inheritance.Flower();
             aufgabe8z_inheritance.flowers.push(f);
         }
@@ -41,21 +41,6 @@ var aufgabe8z_inheritance;
         aufgabe8z_inheritance.canvas.addEventListener("click", createNewBee);
         aufgabe8z_inheritance.canvas.addEventListener("touch", createNewBee);
     }
-    //    function create10Bees(): void {
-    //        for (let i: number = 0; i < 9; i++) {
-    //
-    //            if (i < 5) {
-    //                createHoneyBee();
-    //            }
-    //            else {
-    //                createNewBee();
-    //            }
-    //        }
-    //
-    //        function createNewBee(): void {
-    //            let be: BeeData = new BeeData();
-    //            bees.push(be);
-    //        }
     function createNewBee() {
         let s = new aufgabe8z_inheritance.Honeybee(150, 450);
         aufgabe8z_inheritance.bees.push(s);

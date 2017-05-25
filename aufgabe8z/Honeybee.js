@@ -71,13 +71,13 @@ var aufgabe8z_inheritance;
             aufgabe8z_inheritance.crc2.stroke();
         }
         move() {
-            let xDiff = this.xTarget - this.x - 30;
-            let yDiff = this.yTarget - this.y - 60;
+            let xDiff = this.xTarget - this.x - 20;
+            let yDiff = this.yTarget - this.y - 70;
             if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
                 this.setTargetFlower();
             else {
-                this.x += xDiff * 0.02; //Aktion und neues target um 0.02 verlangsamen
-                this.y += yDiff * 0.02;
+                this.x += xDiff * 0.03; //Aktion und neues target um 0.02 verlangsamen
+                this.y += yDiff * 0.03;
             }
         }
     }

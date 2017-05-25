@@ -82,13 +82,13 @@ namespace aufgabe8z_inheritance {
         }
 
         move(): void {
-            let xDiff: number = this.xTarget - this.x - 30;
-            let yDiff: number = this.yTarget - this.y - 60;
+            let xDiff: number = this.xTarget - this.x - 20;
+            let yDiff: number = this.yTarget - this.y - 70;
             if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
                 this.setTargetFlower();
             else {
-                this.x += xDiff * 0.02; //Aktion und neues target um 0.02 verlangsamen
-                this.y += yDiff * 0.02;
+                this.x += xDiff * 0.03; //Aktion und neues target um 0.02 verlangsamen
+                this.y += yDiff * 0.03;
             }
         }
     }

@@ -35,9 +35,6 @@ namespace aufgabe8z_inheritance {
         //        }
 
 
-
-
-   
         drawGrassland(_x: number, _y: number): void {
             crc2.beginPath();
             crc2.fillStyle = "#34B21A";

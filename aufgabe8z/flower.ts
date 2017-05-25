@@ -1,16 +1,8 @@
 namespace aufgabe8z_inheritance {
     export class Flower extends Superflower {
-  
 
         constructor() {
             super();
-//            this.color1 =  "#295E10";
-//            this.color2 = "#666666";
-//            this.color3 = "#741221";
-            //this.setRandomPosition();
-            
-
-
         }
         draw(): void {
             // stem
