@@ -78,23 +78,7 @@ namespace aufgabe8z_inheritance {
                 let be: Superbee = bees[i];
 
 
-                // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
-                if (this.x < 0) {
-                    console.log("links raus");
-                    this.x = canvas.width;
-                }
-                if (this.x > canvas.width) {
-                    console.log("rechts raus");
-                    this.x = 0;
-                }
-                if (this.y < 0) {
-                    console.log("oben raus");
-                    this.y = canvas.height;
-                }
-                if (this.y > canvas.height) {
-                    console.log("unten raus");
-                    this.y = 0;
-                }
+               
                 be.update();
 
             }

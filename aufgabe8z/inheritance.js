@@ -55,23 +55,6 @@ var aufgabe8z_inheritance;
         }
         for (let i = 0; i < aufgabe8z_inheritance.bees.length; i++) {
             let be = aufgabe8z_inheritance.bees[i];
-            // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
-            if (this.x < 0) {
-                console.log("links raus");
-                this.x = aufgabe8z_inheritance.canvas.width;
-            }
-            if (this.x > aufgabe8z_inheritance.canvas.width) {
-                console.log("rechts raus");
-                this.x = 0;
-            }
-            if (this.y < 0) {
-                console.log("oben raus");
-                this.y = aufgabe8z_inheritance.canvas.height;
-            }
-            if (this.y > aufgabe8z_inheritance.canvas.height) {
-                console.log("unten raus");
-                this.y = 0;
-            }
             be.update();
         }
         window.setTimeout(animate, 20);

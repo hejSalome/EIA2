@@ -24,7 +24,7 @@ var aufgabe8z_inheritance;
             //abstract
         }
         move() {
-            //abstract 
+            // abstract
         }
     }
     aufgabe8z_inheritance.Superbee = Superbee;

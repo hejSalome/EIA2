@@ -13,6 +13,23 @@ var aufgabe8z_inheritance;
                 directionModifier = -1;
             this.x += (Math.random() * 4 - 3.5) * directionModifier;
             this.y += Math.random() * 4 - 4;
+            // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
+            if (this.x < 0) {
+                console.log("links raus");
+                this.x = aufgabe8z_inheritance.canvas.width;
+            }
+            if (this.x > aufgabe8z_inheritance.canvas.width) {
+                console.log("rechts raus");
+                this.x = 0;
+            }
+            if (this.y < 0) {
+                console.log("oben raus");
+                this.y = aufgabe8z_inheritance.canvas.height;
+            }
+            if (this.y > aufgabe8z_inheritance.canvas.height) {
+                console.log("unten raus");
+                this.y = 0;
+            }
         }
         draw() {
             //K�rper

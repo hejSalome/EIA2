@@ -1,5 +1,5 @@
 namespace aufgabe8z_inheritance {
-    
+
     export class Normalbee extends Superbee {
 
         constructor(_x: number, _y: number) {
@@ -17,6 +17,24 @@ namespace aufgabe8z_inheritance {
 
             this.x += (Math.random() * 4 - 3.5) * directionModifier;
             this.y += Math.random() * 4 - 4;
+
+            // wenn Biene Canvas verl�sst, dann Einflug auf gegen�berliegender Seite
+            if (this.x < 0) {
+                console.log("links raus");
+                this.x = canvas.width;
+            }
+            if (this.x > canvas.width) {
+                console.log("rechts raus");
+                this.x = 0;
+            }
+            if (this.y < 0) {
+                console.log("oben raus");
+                this.y = canvas.height;
+            }
+            if (this.y > canvas.height) {
+                console.log("unten raus");
+                this.y = 0;
+            }
         }
 
         draw(): void {

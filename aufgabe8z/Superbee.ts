@@ -36,7 +36,8 @@ namespace aufgabe8z_inheritance {
         }
 
         move(): void {
-          //abstract 
+             // abstract
+
 
         }
     }
