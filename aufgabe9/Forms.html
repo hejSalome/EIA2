@@ -2,181 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>FormElements</title>
-<link rel="stylesheet" href="Forms.css" type="text/css" media="screen"/>
+<title>Forms</title>
+<link rel="stylesheet" href="Forms.css" type="text/css" media="screen" />
 <script src="Forms.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://fonts.googleapis.com/css?family=Barrio"
+	rel="stylesheet">
 </head>
 <body>
-<!-- -->
-<p> Get your ice cream! </p>
+	<!-- -->
+	<p>Get your ice cream!</p>
 	<fieldset id="checkbox">
-		<legend> Flavour </legend>
-<!-- Chocolate -->
-		<input type="checkbox" name="Chocolate" value="chocolate" id="chocolate"/>
-		<label for="check1">Chocolate</label>
-		Bowls
-		<input type="number" name="ChocolateBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Vanille -->
-		<input type="checkbox" name="Vanille" value="vanille" id="vanille"/>
-		<label for="vanille">Vanille</label>
-		Bowls
-		<input type="number" name="VanilleBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Strawberry -->
-		<input type="checkbox" name="Strawberry" value="strawberry" id="strawberry"/>
-		<label for="strawberry">Strawberry</label>
-		Bowls
-		<input type="number" name="StrawberryBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Blueberry -->
-		<input type="checkbox" name="Blueberry" value="blueberry" id="blueberry"/>
-		<label for="blueberry">Blueberry</label>
-		Bowls
-		<input type="number" name="BlueberryBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Raspberry -->
-		<input type="checkbox" name="Raspberry" value="raspberry" id="raspberry"/>
-		<label for="raspberry">Raspberry</label>
-		Bowls
-		<input type="number" name="RaspberryBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Mango -->
-		<input type="checkbox" name="Mango" value="mango" id="mango"/>
-		<label for="mango">Mango</label>
-		Bowls
-		<input type="number" name="MangoBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Peppermint -->
-		<input type="checkbox" name="Peppermint" value="peppermint" id="peppermint"/>
-		<label for="peppermint">Peppermint</label>
-		Bowls
-		<input type="number" name="PeppermintBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Walnut -->
-		<input type="checkbox" name="Walnut" value="walnut" id="walnut"/>
-		<label for="walnut">Walnut</label>
-		Bowls
-		<input type="number" name="WalnutBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Coconut -->
-		<input type="checkbox" name="Coconut" value="coconut" id="coconut"/>
-		<label for="cocnut">Coconut</label>
-		Bowls
-		<input type="number" name="CoconutBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Pistachio -->
-		<input type="checkbox" name="Pistachio" value="pistachio" id="pistachio"/>
-		<label for="pistachio">Pistachio</label>
-		Bowls
-		<input type="number" name="PistachioBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Cookies -->
-		<input type="checkbox" name="Cookies" value="cookies" id="cookies"/>
-		<label for="cookies">Cookies</label>
-		Bowls
-		<input type="number" name="CookiesBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-<!-- Brownie -->
-		<input type="checkbox" name="Brownie" value="brownie" id="brownie"/>
-		<label for="brownie">Brownie</label>
-		Bowls
-		<input type="number" name="BrownieBowls" step="1" min="0" max="10" value="0"/>
-		<hr/>
-	</fieldset>
-		<fieldset id="radio">
-		<legend> Form </legend>
-		<input type="radio" name="Waffle" value="waffle" id="waffle" />
-		<label for="waffle">Waffle</label>
-		<input type="radio" name="Cup" value="cup" id="cup"/>
-		<label for="waffle">Cup</label>
-	</fieldset>
-	<fieldset id="text">
+		<legend> FLAVOUR </legend>
+		<!-- Chocolate -->
+		<input type="checkbox" name="Chocolate" value="chocolate"
+			class="chocolate" id="chocolate" /> <label for="check1">Chocolate</label>
+		<!--  mit for wird auf id des Elements zugegriffen --> <input type="number"
+			name="ChocolateBowls" step="1" min="0" max="10" value="0"
+			class="chocolate" />
+        <hr />
+		<!-- Vanille -->
+		<input type="checkbox" name="Vanille" value="vanille" class="vanille"
+			id="vanille" /> <label for="vanille">Vanille</label> <input
+			type="number" name="VanilleBowls" step="1" min="0" max="10" value="0"
+			class="vanille" />
+		<hr />
+		<!-- Strawberry -->
+		<input type="checkbox" name="Strawberry" value="strawberry"
+			id="strawberry" /> <label for="strawberry">Strawberry</label> <input
+			type="number" name="StrawberryBowls" step="1" min="0" max="10"
+			value="0" />
+		<hr />
+		<!-- Blueberry -->
+		<input type="checkbox" name="Blueberry" value="blueberry"
+			id="blueberry" /> <label for="blueberry">Blueberry</label> <input
+			type="number" name="BlueberryBowls" step="1" min="0" max="10"
+			value="0" />
+		<hr />
+		<!-- Mango -->
+		<input type="checkbox" name="Mango" value="mango" id="mango" /> <label
+			for="mango">Mango</label> <input type="number" name="MangoBowls"
+			step="1" min="0" max="10" value="0" />
+		<hr />
+		<!-- Walnut -->
+		<input type="checkbox" name="Walnut" value="walnut" id="walnut" /> <label
+			for="walnut">Walnut</label> <input type="number" name="WalnutBowls"
+			step="1" min="0" max="10" value="0" />
+		<hr />
 
-		Simple
-		<input type="text" name="Text" placeholder="type here" required/>
+	</fieldset>
+
+	<fieldset id="checkbox">
+		<legend> TOPPING </legend>
+		<input type="checkbox" name="Cream" value="cream" id="cream" /> <label
+			for="cream">Cream</label> <input type="checkbox"
+			name="Chocolatesauce" value="chocolatesauce" id="chocolatesauce" /> <label
+			for="chocolatesauce">Chocolate sauce</label> <input type="checkbox"
+			name="Chocolatesplits" value="chocolatesplits" id="chocolatesplits" />
+		<label for="chocolatesplits">Chocolate splits</label> <input
+			type="checkbox" name="Strawberries" value="strawberries"
+			id="strawberries" /> <label for="strawberries">Strawberries</label>
+	</fieldset>
+	<fieldset id="radio">
+		<legend> CONTAINER </legend>
+		<input type="radio" name="Containergroup" value="waffle" id="waffle" />
+		<label for="waffle">Waffle</label> <input type="radio"
+			name="Containergroup" value="cup" id="cup" /> <label for="cup">Cup</label>
+
+	</fieldset>
+	<fieldset>
+		<button name="Prüfen" type="button" id="checkOrder">
+			Bestellung prüfen</button>
+
+
+		<button name="Next" type="submit" id="nextButton">NEXT</button>
+	</fieldset>
+	
+	<fieldset id="customerInfo">
+		<legend> CUSTOMER INFO </legend>
+		Name
+		<input type="text" name="Text" placeholder="Firstname" required/>
+		<input type="text" name="Text" placeholder="Surename" required/>
 		<hr/>
-		Password
-		<input type="password" name="Password" placeholder="type password here"/>
-		<hr/>
-		Pattern
-		<input type="text" name="Pattern" pattern="[0-9]{3}" placeholder="use RegEx"/>
+		Adress
+		<input type="text" name="Adress" placeholder="Streetname and number" required/>
+		<input type="text" name="Adress" placeholder="Postal code" required/>
+		<input type="text" name="Adress" placeholder="City" required/>
+		<input type="text" name="Adress" placeholder="Country" required/>
 		<hr/>
 		Mail
-		<input type="email" name="Mail" placeholder="place @ between"/>
+		<input type="email" name="Mail" placeholder="place @ between" required/>
 		<hr/>
-		Url
-		<input type="url" name="Url" placeholder="start with http:"/>
-		<hr/>
-		Area
+		Comment
 		<textarea name="Area" cols="30" rows="3" placeholder="long text here"></textarea>
 	</fieldset>
-<!-- -->
-	<fieldset id="radio">
-		<legend> Radiobutton Group </legend>
-		<input type="radio" name="Radiogroup" value="radio1" id="radio1" />
-		<label for="radio1">Radio Button 1</label>
-		<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
-		<label for="radio2">Radio Button 2</label>
-		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
-		<label for="radio3">Radio Button 3</label>
-	</fieldset>
-<!-- -->
-	<fieldset id="checkbox">
-		<legend> Checkbox Group </legend>
-		<input type="checkbox" name="Checkbox1" value="check1" id="check1"/>
-		<label for="check1">Checkbox 1</label>
-		<input type="checkbox" name="Checkbox2" value="check2" id="check2"/>
-		<label for="check2">Checkbox 2</label>
-		<input type="checkbox" name="Checkbox3" value="check3" id="check3"/>
-		<label for="check3">Checkbox 3</label>
-	</fieldset>
-<!-- -->
-	<fieldset id="select">
-		<legend> Selection &amp; Interaction </legend>
-		Slider
-		<input type="range" name="Slider" min="0" max="1" step="0.1" value="0"/>
-		<hr/>
-		Stepper
-		<input type="number" name="Stepper" step="0.1" min="-1" max="1" value="0"/>
-		<hr/>
-		Datalist
-		<input type="text" name="Datalist" list="options" placeholder="what to buy?"/>
-		<datalist id="options">
-			<option value="Butter"> </option>
-			<option value="Milk"> </option>
-			<option value="Flour"> </option>
-			<option value="Sugar"> </option>
-			<option value="Eggs"> </option>
-			<option value="Salt"> </option>
-			<option value="Bread"> </option>
-		</datalist>
-		<hr/>
-		Select Box
-		<select name="Select" id="select">
-			<optgroup label="OptGroup1"></optgroup>
-			<option value="option1">First Option</option>
-			<option value="option2" selected>Second Option</option>
-			<optgroup label="OptGroup2"></optgroup>
-			<option value="option3">Third Option</option>
-			<option value="option4">Fourth Option</option>
-		</select>
-		<hr/>
-		Button
-		<button name="Button" type="button">Click me!</button>
-	</fieldset>
-<!-- -->
-	<fieldset id="output">
-		<legend> Output </legend>
-		Output
-		<output name="out">---	Here's a result</output>
-		<hr/>
-		Progress
-		<progress value="0" max="1"> </progress>
-		<hr/>
-		Meter
-		<meter value="0" min="-1" max="1"> </meter>
-	</fieldset>
-<!-- -->
+
+	<!-- -->
 </body>
 </html>
