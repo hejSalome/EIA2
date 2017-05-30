@@ -1,4 +1,6 @@
 namespace aufgabe9_Forms {
+    
+    export 
     window.addEventListener("load", init);
     //    flavours = document.getElementById("flavour"); //auf Boxen zugreifen 
     let flavours: string = ["Chocolate", "Vanille", "Strawberry", "Blueberry"];
