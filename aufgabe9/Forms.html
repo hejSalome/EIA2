@@ -16,10 +16,10 @@
 		<!-- Chocolate -->
 		<input type="checkbox" name="Chocolate" value="chocolate"
 			class="chocolate" id="chocolate" /> <label for="check1">Chocolate</label>
-		<!--  mit for wird auf id des Elements zugegriffen --> <input type="number"
-			name="ChocolateBowls" step="1" min="0" max="10" value="0"
-			class="chocolate" />
-        <hr />
+		<!--  mit for wird auf id des Elements zugegriffen -->
+		<input type="number" name="ChocolateBowls" step="1" min="0" max="10"
+			value="0" class="chocolate" />
+		<hr />
 		<!-- Vanille -->
 		<input type="checkbox" name="Vanille" value="vanille" class="vanille"
 			id="vanille" /> <label for="vanille">Vanille</label> <input
@@ -55,12 +55,12 @@
 		<legend> TOPPING </legend>
 		<input type="checkbox" name="Cream" value="cream" id="cream" /> <label
 			for="cream">Cream</label> <input type="checkbox"
-			name="Chocolatesauce" value="chocolatesauce" id="chocolatesauce" /> <label
-			for="chocolatesauce">Chocolate sauce</label> <input type="checkbox"
-			name="Chocolatesplits" value="chocolatesplits" id="chocolatesplits" />
-		<label for="chocolatesplits">Chocolate splits</label> <input
-			type="checkbox" name="Strawberries" value="strawberries"
-			id="strawberries" /> <label for="strawberries">Strawberries</label>
+			name="Chocolatesauce" value="chocolatesauce" id="chocolatesauce" />
+		<label for="chocolatesauce">Chocolate sauce</label> <input
+			type="checkbox" name="Chocolatesplits" value="chocolatesplits"
+			id="chocolatesplits" /> <label for="chocolatesplits">Chocolate
+			splits</label> <input type="checkbox" name="Strawberries"
+			value="strawberries" id="strawberries" /> <label for="strawberries">Strawberries</label>
 	</fieldset>
 	<fieldset id="radio">
 		<legend> CONTAINER </legend>
@@ -76,24 +76,30 @@
 
 		<button name="Next" type="submit" id="nextButton">NEXT</button>
 	</fieldset>
-	
+
 	<fieldset id="customerInfo">
 		<legend> CUSTOMER INFO </legend>
-		Name
-		<input type="text" name="Text" placeholder="Firstname" required/>
-		<input type="text" name="Text" placeholder="Surename" required/>
-		<hr/>
-		Adress
-		<input type="text" name="Adress" placeholder="Streetname and number" required/>
-		<input type="text" name="Adress" placeholder="Postal code" required/>
-		<input type="text" name="Adress" placeholder="City" required/>
-		<input type="text" name="Adress" placeholder="Country" required/>
-		<hr/>
-		Mail
-		<input type="email" name="Mail" placeholder="place @ between" required/>
-		<hr/>
+		Name <input type="text" name="Text" placeholder="Firstname" required />
+		<input type="text" name="Text" placeholder="Surename" required />
+		<hr />
+		Adress <input type="text" name="Adress"
+			placeholder="Streetname and number" required /> <input type="text"
+			name="Adress" placeholder="Postal code" required /> <input
+			type="text" name="Adress" placeholder="City" required /> <input
+			type="text" name="Adress" placeholder="Country" required />
+		<hr />
+		Mail <input type="email" name="Mail" placeholder="place @ between"
+			required />
+		<hr />
 		Comment
 		<textarea name="Area" cols="30" rows="3" placeholder="long text here"></textarea>
+	</fieldset>
+	<fieldset id="shipping">
+		<legend>SHIPPING</legend>
+		<input type="radio" name="Shipping" value="Express" id="express" /> <label
+			for="express">Express</label> <input type="radio" name="Shipping"
+			value="Premium" id="premium" /> <label for="premium">Premium</label> <input type="radio" name="Shipping"
+			value="Standard" id="standard" /> <label for="standard">Standard</label>
 	</fieldset>
 
 	<!-- -->

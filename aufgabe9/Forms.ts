@@ -6,6 +6,9 @@ namespace aufgabe9_Forms {
     let toppings: string = ["Cream", "Chocolate Sauce", "Chocolate Splits", "Strawberries"];
     let fieldset: HTMLFieldSetElement;
     let inputs: HTMLInputElement[] = [];
+    let bowlPrice: number = 1;
+    let toppingPrice: number = 0.5;
+    let sum: number = 0;
 
 
     function init(_event: Event): void {
@@ -65,8 +68,8 @@ namespace aufgabe9_Forms {
         input.type = "number";
         input.min = "0";
         input.value = "0";
-        fieldset.appendChild(label);
-        inputs.push(input);
+        //    fieldset.appendChild(label);
+        //     inputs.push(input);
 
     }
 
@@ -81,7 +84,5 @@ namespace aufgabe9_Forms {
             state = true;
             document.getElementById("customerInfo").style.display = "block";
         }
-    }
-
     }
 
