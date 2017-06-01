@@ -2,10 +2,15 @@ namespace aufgabe9_Forms {
 
     window.addEventListener("load", init);
     //    flavours = document.getElementById("flavour"); //auf Boxen zugreifen 
-    let flavours: string = ["Chocolate", "Vanille", "Strawberry", "Blueberry", "Mango", "Walnut"];
-    let toppings: string = ["Cream", "Chocolate Sauce", "Chocolate Splits", "Strawberries"];
-    let container: string = ["Waffle", "Cup"];
+    // Array für alle Sorten, die in meiner Konditorei angeboten werden sollen
+    let flavours: string[] = ["Chocolate", "Vanille", "Strawberry", "Blueberry", "Mango", "Walnut"];
+    let toppings: string[] = ["Cream", "Chocolate Sauce", "Chocolate Splits", "Strawberries"];
+    let container: string[] = ["Waffle", "Cup"];
+    
+    // Das Fieldset in dem alle Inputs für die verschiedenen Kuchen angeordnet werden sollen.
     let fieldset: HTMLFieldSetElement;
+    
+    // Array in dem alle inputs für die Sorten untergebracht werden
     let inputs: HTMLInputElement[] = [];
     let bowlPrice: number = 1;
     let toppingPrice: number = 0.5;
@@ -49,8 +54,8 @@ namespace aufgabe9_Forms {
             }
         }
     }
-
     function createInputs(): void {
+        // Erstelle pro Sorte Eis einen Input
         for (let i: number = 0; i < flavours.length; i++) {
             console.log(flavours[i]);
             createInput(flavours[i]);
@@ -59,11 +64,13 @@ namespace aufgabe9_Forms {
     }
 
     function createInput(_flavour: string): void {
+        // Ein Label ist ein Text den man anklicken kann um damit den Input auszulösen
         let label: HTMLLabelElement = document.createElement("label");
         let input: HTMLInputElement = document.createElement("input");
 
         label.innerText = _flavour;
         label.appendChild(input);
+        // Die Art des Inputs wird über den Typ definiert
         input.type = "number";
         input.min = "0";
         input.value = "0";
@@ -73,6 +80,7 @@ namespace aufgabe9_Forms {
     }
 
     function createContainers(): void {
+        //Erstelle pro Container ein Input
         for (let i: number = 0; i < container.length; i++) {
             console.log(container[i]);
             createContainer(container[i]);
@@ -94,6 +102,11 @@ namespace aufgabe9_Forms {
             containerField.appendChild(label);
             inputs.push(input);
 
+        }
+        
+        function checkOrder(): void {
+        document.getElementByI("checkOrder").innerHTML = "checkOrder     
+        
         }
 
         // Wenn sich etwas ändert, summiere die Werte aller inputs auf und gebe
@@ -121,9 +134,9 @@ namespace aufgabe9_Forms {
         //        }
         //    }
     }
-    function showInfo(): void {
-        let customerInfo = 
-    
-}
+//    function showInfo(): void {
+//        let customerInfo = 
+//    
+//}
 
 }
