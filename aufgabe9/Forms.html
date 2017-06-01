@@ -11,6 +11,7 @@
 <body>
 	<!-- -->
 	<p>Get your ice cream!</p>
+	<form>
 	<fieldset id="checkbox">
 		<legend> FLAVOUR </legend>
 		<!-- Chocolate -->
@@ -73,9 +74,12 @@
 		<button name="Prüfen" type="button" id="checkOrder">
 			Bestellung prüfen</button>
 
-
-		<button name="Next" type="submit" id="nextButton">NEXT</button>
+    <label>
+    <output id= "showInfo"></output>
+    </label>
+		<button name="Next" type="button" id="nextButton">NEXT</button>
 	</fieldset>
+	</form>
 
 	<fieldset id="customerInfo">
 		<legend> CUSTOMER INFO </legend>
@@ -100,6 +104,9 @@
 			for="express">Express</label> <input type="radio" name="Shipping"
 			value="Premium" id="premium" /> <label for="premium">Premium</label> <input type="radio" name="Shipping"
 			value="Standard" id="standard" /> <label for="standard">Standard</label>
+	</fieldset>
+	<fieldset>
+		<button name="Submit" type="submit" id="submitButton">SUBMIT</button>
 	</fieldset>
 
 	<!-- -->

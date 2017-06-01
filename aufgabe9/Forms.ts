@@ -4,6 +4,7 @@ namespace aufgabe9_Forms {
     //    flavours = document.getElementById("flavour"); //auf Boxen zugreifen 
     let flavours: string = ["Chocolate", "Vanille", "Strawberry", "Blueberry", "Mango", "Walnut"];
     let toppings: string = ["Cream", "Chocolate Sauce", "Chocolate Splits", "Strawberries"];
+    let container: string = ["Waffle", "Cup"];
     let fieldset: HTMLFieldSetElement;
     let inputs: HTMLInputElement[] = [];
     let bowlPrice: number = 1;
@@ -35,9 +36,6 @@ namespace aufgabe9_Forms {
         //*/ note: this == _event.currentTarget in an event-handler
         if (this.id == "checkbox")
             console.log("Changed " + target.name + " to " + target.checked);
-
-
-
     }
 
     function change(_event: Event): void {
@@ -54,6 +52,7 @@ namespace aufgabe9_Forms {
 
     function createInputs(): void {
         for (let i: number = 0; i < flavours.length; i++) {
+            console.log(flavours[i]);
             createInput(flavours[i]);
 
         }
@@ -68,21 +67,63 @@ namespace aufgabe9_Forms {
         input.type = "number";
         input.min = "0";
         input.value = "0";
-        //    fieldset.appendChild(label);
-        //     inputs.push(input);
+        fieldset.appendChild(label);
+        inputs.push(input);
 
     }
 
-    var state: boolean = false;
-    document.getElementById("nextButton").addEventListener("click", next);
-    function next(): void {
-        if (state == true) {
-            state = false;
-            document.getElementById("customerInfo").style.display = "none";
-        }
-        else {
-            state = true;
-            document.getElementById("customerInfo").style.display = "block";
-        }
-    }
+    function createContainers(): void {
+        for (let i: number = 0; i < container.length; i++) {
+            console.log(container[i]);
+            createContainer(container[i]);
 
+
+        }
+
+        function createContainer(_container: string): void {
+            let containerField: HTMLFieldSetElement = document.createElement("fieldset");
+            containerField.id = "radio";
+            let label: HTMLLabelElement = document.createElement("label");
+            let input: HTMLInputElement = document.createElement("input");
+
+            label.innerText = _container;
+            label.appendChild(input);
+            input.type = "radio";
+            input.value = "waffle";
+            input.value = "cup";
+            containerField.appendChild(label);
+            inputs.push(input);
+
+        }
+
+        // Wenn sich etwas ändert, summiere die Werte aller inputs auf und gebe
+        // das Ergebnis auf der Konsole aus
+        function change(): void {
+            let sum: number = 0;
+            for (let i: number = 0; i < inputs.length; i++) {
+                sum += parseInt(inputs[i].value);
+            }
+
+            console.log(sum);
+        }
+
+
+        //    function next(): void {
+        //        var state: boolean = false;
+        //        document.getElementById("nextButton").addEventListener("click", next);
+        //        if (state == true) {
+        //            state = false;
+        //            document.getElementById("customerInfo").style.display = "none";
+        //        }
+        //        else {
+        //            state = true;
+        //            document.getElementById("customerInfo").style.display = "block";
+        //        }
+        //    }
+    }
+    function showInfo(): void {
+        let customerInfo = 
+    
+}
+
+}
