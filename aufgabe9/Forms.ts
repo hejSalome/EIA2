@@ -105,7 +105,7 @@ namespace aufgabe9_Forms {
         }
         
         function checkOrder(): void {
-        document.getElementByI("checkOrder").innerHTML = "checkOrder     
+        document.getElementById("checkOrder").innerHTML = "checkOrder";     
         
         }
 

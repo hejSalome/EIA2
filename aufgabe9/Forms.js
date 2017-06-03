@@ -84,6 +84,9 @@ var aufgabe9_Forms;
             containerField.appendChild(label);
             inputs.push(input);
         }
+        function checkOrder() {
+            document.getElementById("checkOrder").innerHTML = "checkOrder";
+        }
         // Wenn sich etwas ändert, summiere die Werte aller inputs auf und gebe
         // das Ergebnis auf der Konsole aus
         function change() {
