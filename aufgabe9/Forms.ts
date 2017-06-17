@@ -11,56 +11,43 @@ namespace aufgabe9_Forms {
     //    flavours = document.getElementById("flavour"); //auf Boxen zugreifen 
     // Array für alle Sorten, die in meiner Konditorei angeboten werden sollen
     let flavours: string[] = ["Chocolate", "Vanille", "Strawberry", "Blueberry", "Mango", "Walnut"];
-    let toppings: string[] = ["Cream", "Chocolate Sauce", "Chocolate Splits", "Strawberries"];
+    let special: string[] = ["Cream", "Chocolate Sauce", "Chocolate Splits", "Strawberries"];
     let container: string[] = ["Waffle", "Cup"];
-    
+
     // Das Fieldset in dem alle Inputs für die verschiedenen Kuchen angeordnet werden sollen.
     let fieldset: HTMLFieldSetElement;
-    
+
     // Array in dem alle inputs für die Sorten untergebracht werden
     let inputs: HTMLInputElement[] = [];
-    let bowlPrice: number = 1;
-    let toppingPrice: number = 0.5;
-    let sum: number = 0;
+    let inputToppings: HTMLInputElement[] = [];
+    let inputContainer: HTMLInputElement[] = [];
+    let order: HTMLElement;
 
 
     function init(_event: Event): void {
-        document.getElementsByTagName("fieldset")[0].addEventListener("change", change);
-        console.log("Init");
-        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-
-        for (let i: number = 0; i < fieldsets.length; i++) {
-            let fieldset: HTMLFieldSetElement = fieldsets[i];
-            fieldset.addEventListener("change", handleChange);
-        }
-
         fieldset = document.getElementsByTagName("fieldset")[0];
-        createInputs();
         fieldset.addEventListener("change", change);
+        createInputs();
+        createRadios();
+        createCheckboxes();
 
-        //funktion wenn click dann Number in Selector auf 1 springen 
+
+        //auf IDs zugreifen für jedes einzelne fieldset
+        let flavourIceCream: HTMLElement = document.getElementById("flavours");
+        let toppings: HTMLElement = document.getElementById("ConeCup");
+        let special: HTMLElement = document.getElementById("special");
+        let shoppingCard: HTMLElement = document.getElementById("shoppingCard");
+
+        //Shopping Card fieldsets
+        flavourIceCream.addEventListener("change", change);
+        toppings.addEventListener("change", change);
+        special.addEventListener("change", change);
+
+        order = document.getElementById("proofOrder");
+        order.addEventListener("click", proof);
+
     }
 
-    function handleChange(_event: Event): void {
-
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        console.log("Changed " + target.name + " to " + target.value);
-        //*/ note: this == _event.currentTarget in an event-handler
-        if (this.id == "checkbox")
-            console.log("Changed " + target.name + " to " + target.checked);
-    }
-
-    function change(_event: Event): void {
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        if (target.type == "checkbox") {
-            let input: HTMLInputElement = <HTMLInputElement>document.getElementsByClassName(target.className)[1]; //an der Stelle Null, nur ein Element
-            if (target.checked) {
-                input.disabled = false;
-            } else {
-                input.disabled = true;
-            }
-        }
-    }
     function createInputs(): void {
         // Erstelle pro Sorte Eis einen Input
         for (let i: number = 0; i < flavours.length; i++) {
@@ -69,7 +56,6 @@ namespace aufgabe9_Forms {
 
         }
     }
-
     function createInput(_flavour: string): void {
         // Ein Label ist ein Text den man anklicken kann um damit den Input auszulösen
         let label: HTMLLabelElement = document.createElement("label");
@@ -81,69 +67,222 @@ namespace aufgabe9_Forms {
         input.type = "number";
         input.min = "0";
         input.value = "0";
+
         fieldset.appendChild(label);
         inputs.push(input);
 
     }
 
-    function createContainers(): void {
-        //Erstelle pro Container ein Input
+    function createRadios(): void {
         for (let i: number = 0; i < container.length; i++) {
             console.log(container[i]);
-            createContainer(container[i]);
-
-
+            createRadio(container[i]);
         }
-
-        function createContainer(_container: string): void {
-            let containerField: HTMLFieldSetElement = document.createElement("fieldset");
-            containerField.id = "radio";
-            let label: HTMLLabelElement = document.createElement("label");
-            let input: HTMLInputElement = document.createElement("input");
-
-            label.innerText = _container;
-            label.appendChild(input);
-            input.type = "radio";
-            input.value = "waffle";
-            input.value = "cup";
-            containerField.appendChild(label);
-            inputs.push(input);
-
-        }
-        
-        function checkOrder(): void {
-        document.getElementById("checkOrder").innerHTML = "checkOrder";     
-        
-        }
-
-        // Wenn sich etwas ändert, summiere die Werte aller inputs auf und gebe
-        // das Ergebnis auf der Konsole aus
-        function change(): void {
-            let sum: number = 0;
-            for (let i: number = 0; i < inputs.length; i++) {
-                sum += parseInt(inputs[i].value);
-            }
-
-            console.log(sum);
-        }
-
-
-        //    function next(): void {
-        //        var state: boolean = false;
-        //        document.getElementById("nextButton").addEventListener("click", next);
-        //        if (state == true) {
-        //            state = false;
-        //            document.getElementById("customerInfo").style.display = "none";
-        //        }
-        //        else {
-        //            state = true;
-        //            document.getElementById("customerInfo").style.display = "block";
-        //        }
-        //    }
     }
-//    function showInfo(): void {
-//        let customerInfo = 
-//    
-//}
 
+    function createRadio(_container: string): void {
+        let containerField: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementById("ConeCup");
+
+        let label: HTMLLabelElement = document.createElement("label");
+        let input: HTMLInputElement = document.createElement("input");
+        label.htmlFor = _container;
+
+        label.textContent = _container;
+        label.appendChild(input);
+        label.id = _container;
+        input.type = "radio";
+        input.value = "radio1";
+        input.id = _container;
+        input.name = "Container";
+        input.required = true;
+
+        containerField.appendChild(input);
+        containerField.appendChild(label);
+        inputs.push(input);
+        // console.log(inputContainer);
+
+    }
+
+
+    function createCheckboxes(): void {
+        for (let i: number = 0; i < special.length; i++) {
+            console.log(special[i]);
+            createCheckbox(special[i]);
+        }
+    }
+
+    //Erzeugung der Checkboxes
+    function createCheckbox(_special: string): void {
+        let containerField: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementById("Special");
+
+        let input: HTMLInputElement = document.createElement("input");
+        let label: HTMLLabelElement = document.createElement("label");
+        //label wird der Checkbox zugewiesen, damit dieser auch anklickbar ist
+        label.htmlFor = _special;
+
+        label.textContent = _special;
+        label.appendChild(input);
+        label.id = _special;
+        input.type = "checkbox";
+        input.value = "checkbox1";
+        input.id = _special;
+        input.name = "darbietung";
+        input.required = true;
+
+        //An das Fieldset werden die zuvor definierten Daten angehängt
+        containerField.appendChild(input);
+        containerField.appendChild(label);
+        inputToppings.push(input);
+        console.log(inputToppings);
+    }
+
+
+
+    function change(): void {
+        let sum: number = 0;
+        //Innerhalb der Array-Länge der Eissorten wird die Summe um 1€ hochgezählt
+        for (let i: number = 0; i < inputs.length; i++) {
+            sum += parseInt(inputs[i].value);
+        }
+        //Innerhalb der Array-Länge der Toppings wird die Summe um 0,5€ hochgezählt
+        for (let i: number = 0; i < inputToppings.length; i++) {
+            if (inputToppings[i].checked)
+            { sum += 0.5; }
+        }
+        //Innerhalb der Array-Länge der inputCone wird die Summe um 1€ hochgezählt
+        for (let i: number = 0; i < inputContainer.length; i++) {
+            if (inputContainer[i].checked)
+            { sum += 0; }
+        }
+        changeShoppingcard(sum);
+    }
+
+    function changeShoppingcard(_sum: number): void {
+        //Variable, um eine Übersicht der ausgewählten Produkte in Form einer Liste anzeigen zu lassen
+        let selectedProducts: HTMLElement = document.getElementById("productlist");
+        //Zu Beginn muss dieses Feld leer sein
+        selectedProducts.innerText = "";
+
+        //Anzeige der Eissorte in der Bestellübersicht
+        for (let i: number = 0; i < inputs.length; i++) {
+            if (parseInt(inputs[i].value) > 0) {
+                selectedProducts.innerText += flavours[i] + ": " + (parseInt(inputs[i].value) * 1) + "€" + "\n";
+            }
+        }
+
+        //Anzeige der Toppings in der Bestellübersicht
+        for (let i: number = 0; i < inputToppings.length; i++) {
+            if (inputToppings[i].checked) {
+                selectedProducts.innerText += special[i] + ": " + " 1,50€" + "\n";
+            }
+        }
+
+        //Anzeige, ob Waffel oder Becher gewählt wurde
+        for (let i: number = 0; i < inputContainer.length; i++) {
+            if (inputContainer[i].checked) {
+                selectedProducts.innerText += container[i] + "\n";
+            }
+        }
+        //Ausgabe der Summe
+        let summeHtml: HTMLElement = document.getElementById("total");
+        summeHtml.innerText = "Sum: " + _sum.toString() + "€";
+    }
+
+    //Funktion, welche die Kundendaten überprüft
+    function proof(): void {
+        //Korrektur-Kommentar, welcher erscheint, sobald eine Eingabe nicht gültig ist
+        let comment: string[] = ["Check input/n: \n"];
+        let firstname: HTMLInputElement = <HTMLInputElement>document.getElementById("firstname");
+        let name: HTMLInputElement = <HTMLInputElement>document.getElementById("name");
+        let street: HTMLInputElement = <HTMLInputElement>document.getElementById("street");
+        let PLZ: HTMLInputElement = <HTMLInputElement>document.getElementById("PLZ");
+        let city: HTMLInputElement = <HTMLInputElement>document.getElementById("city");
+        let mail: HTMLInputElement = <HTMLInputElement>document.getElementById("mail");
+        let delivery: HTMLInputElement = <HTMLInputElement>document.getElementById("delivery");
+        let numberOfIce: number = 0;
+        let containers: number = 0;
+
+        //Fallunterscheidung    
+        //Überprüfung des Vornamens
+        if (firstname.validity.valid == false) {
+            comment.push("- Vorname \n");
+            firstname.style.backgroundColor = "#ff5c33";
+        }
+        else {
+            firstname.style.backgroundColor = "#a6a6a6";
+        }
+
+        //Überprüfung des Nachnamens
+        if (name.validity.valid == false) {
+            comment.push("- Nachname \n");
+            name.style.backgroundColor = "#ff5c33";
+        }
+        else {
+            name.style.backgroundColor = "#a6a6a6";
+        }
+
+        //Überprüfung der Straße
+        if (street.validity.valid == false) {
+            comment.push("- Straße \n");
+            street.style.backgroundColor = "#ff5c33";
+        }
+        else {
+            street.style.backgroundColor = "#a6a6a6";
+        }
+
+        //Überprüfung der Postleitzahl
+        if (PLZ.validity.valid == false) {
+            comment.push("- Postleitzahl \n");
+            PLZ.style.backgroundColor = "#ff5c33";
+        }
+        else {
+            PLZ.style.backgroundColor = "#a6a6a6";
+        }
+
+        //Überprüfung des Ortes
+        if (city.validity.valid == false) {
+            comment.push("- City \n");
+            city.style.backgroundColor = "#ff5c33";
+        }
+        else {
+            city.style.backgroundColor = "#a6a6a6";
+        }
+
+        //Überprüfung der E-Mail
+        if (mail.validity.valid == false) {
+            comment.push("- Email \n");
+            mail.style.backgroundColor = "#ff5c33";
+        }
+        else {
+            mail.style.backgroundColor = "#a6a6a6";
+        }
+
+        //Überprüfung der Lieferoptionen
+        if (delivery.value != "Express" && delivery.value != "Standard")
+            comment.push("- Shipping options \n");
+
+        for (let i: number = 0; i < inputs.length; i++) {
+            if (parseInt(inputs[i].value) > 0)
+                numberOfIce += 1;
+        }
+        if (numberOfIce == 0)
+            comment.push("- Sort\n");
+
+        for (let i: number = 0; i < inputContainer.length; i++) {
+            if (inputContainer[i].checked)
+                containers += 1;
+        }
+
+        if (containers == 0)
+            comment.push("- Waffle or Cup?");
+
+        if (comment.length > 1) {
+            for (let i: number = 0; i < comment.length; i++)
+                comment.push();
+            alert(comment.join(""));
+        }
+        else {
+            alert("Thank you for your order!");
+        }
+    }
 }
