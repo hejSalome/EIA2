@@ -16,7 +16,7 @@ var aufgabe9_Forms;
     // Array in dem alle inputs für die Sorten untergebracht werden
     let inputs = [];
     let inputToppings = [];
-    let inputContainer = [];
+    let inputCone = [];
     let order;
     function init(_event) {
         fieldset = document.getElementsByTagName("fieldset")[0];
@@ -27,7 +27,7 @@ var aufgabe9_Forms;
         //auf IDs zugreifen für jedes einzelne fieldset
         let flavourIceCream = document.getElementById("flavours");
         let toppings = document.getElementById("ConeCup");
-        let special = document.getElementById("special");
+        let special = document.getElementById("Special");
         let shoppingCard = document.getElementById("shoppingCard");
         //Shopping Card fieldsets
         flavourIceCream.addEventListener("change", change);
@@ -120,8 +120,8 @@ var aufgabe9_Forms;
             }
         }
         //Innerhalb der Array-Länge der inputCone wird die Summe um 1€ hochgezählt
-        for (let i = 0; i < inputContainer.length; i++) {
-            if (inputContainer[i].checked) {
+        for (let i = 0; i < inputCone.length; i++) {
+            if (inputCone[i].checked) {
                 sum += 0;
             }
         }
@@ -141,12 +141,12 @@ var aufgabe9_Forms;
         //Anzeige der Toppings in der Bestellübersicht
         for (let i = 0; i < inputToppings.length; i++) {
             if (inputToppings[i].checked) {
-                selectedProducts.innerText += special[i] + ": " + " 1,50€" + "\n";
+                selectedProducts.innerText += special[i] + ": " + " 0,50€" + "\n";
             }
         }
         //Anzeige, ob Waffel oder Becher gewählt wurde
-        for (let i = 0; i < inputContainer.length; i++) {
-            if (inputContainer[i].checked) {
+        for (let i = 0; i < inputCone.length; i++) {
+            if (inputCone[i].checked) {
                 selectedProducts.innerText += container[i] + "\n";
             }
         }
@@ -225,8 +225,8 @@ var aufgabe9_Forms;
         }
         if (numberOfIce == 0)
             comment.push("- Sort\n");
-        for (let i = 0; i < inputContainer.length; i++) {
-            if (inputContainer[i].checked)
+        for (let i = 0; i < inputCone.length; i++) {
+            if (inputCone[i].checked)
                 containers += 1;
         }
         if (containers == 0)

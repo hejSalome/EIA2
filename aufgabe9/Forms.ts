@@ -20,7 +20,7 @@ namespace aufgabe9_Forms {
     // Array in dem alle inputs für die Sorten untergebracht werden
     let inputs: HTMLInputElement[] = [];
     let inputToppings: HTMLInputElement[] = [];
-    let inputContainer: HTMLInputElement[] = [];
+    let inputCone: HTMLInputElement[] = [];
     let order: HTMLElement;
 
 
@@ -35,7 +35,7 @@ namespace aufgabe9_Forms {
         //auf IDs zugreifen für jedes einzelne fieldset
         let flavourIceCream: HTMLElement = document.getElementById("flavours");
         let toppings: HTMLElement = document.getElementById("ConeCup");
-        let special: HTMLElement = document.getElementById("special");
+        let special: HTMLElement = document.getElementById("Special");
         let shoppingCard: HTMLElement = document.getElementById("shoppingCard");
 
         //Shopping Card fieldsets
@@ -150,8 +150,8 @@ namespace aufgabe9_Forms {
             { sum += 0.5; }
         }
         //Innerhalb der Array-Länge der inputCone wird die Summe um 1€ hochgezählt
-        for (let i: number = 0; i < inputContainer.length; i++) {
-            if (inputContainer[i].checked)
+        for (let i: number = 0; i < inputCone.length; i++) {
+            if (inputCone[i].checked)
             { sum += 0; }
         }
         changeShoppingcard(sum);
@@ -173,13 +173,13 @@ namespace aufgabe9_Forms {
         //Anzeige der Toppings in der Bestellübersicht
         for (let i: number = 0; i < inputToppings.length; i++) {
             if (inputToppings[i].checked) {
-                selectedProducts.innerText += special[i] + ": " + " 1,50€" + "\n";
+                selectedProducts.innerText += special[i] + ": " + " 0,50€" + "\n";
             }
         }
 
         //Anzeige, ob Waffel oder Becher gewählt wurde
-        for (let i: number = 0; i < inputContainer.length; i++) {
-            if (inputContainer[i].checked) {
+        for (let i: number = 0; i < inputCone.length; i++) {
+            if (inputCone[i].checked) {
                 selectedProducts.innerText += container[i] + "\n";
             }
         }
@@ -268,8 +268,8 @@ namespace aufgabe9_Forms {
         if (numberOfIce == 0)
             comment.push("- Sort\n");
 
-        for (let i: number = 0; i < inputContainer.length; i++) {
-            if (inputContainer[i].checked)
+        for (let i: number = 0; i < inputCone.length; i++) {
+            if (inputCone[i].checked)
                 containers += 1;
         }
 
