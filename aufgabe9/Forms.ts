@@ -152,7 +152,7 @@ namespace aufgabe9_Forms {
         //Innerhalb der Array-Länge der inputCone wird die Summe um 1€ hochgezählt
         for (let i: number = 0; i < inputCone.length; i++) {
             if (inputCone[i].checked)
-            { sum += 0; }
+            { sum += 0; }        
         }
         changeShoppingcard(sum);
     }
