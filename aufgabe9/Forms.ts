@@ -10,7 +10,7 @@ namespace aufgabe9_Forms {
     window.addEventListener("load", init);
     //    flavours = document.getElementById("flavour"); //auf Boxen zugreifen 
     // Array für alle Sorten, die in meiner Konditorei angeboten werden sollen
-    let flavours: string[] = ["Chocolate", "Vanille", "Strawberry", "Blueberry", "Mango", "Walnut"];
+    let sorts: string[] = ["Chocolate", "Vanille", "Strawberry", "Blueberry", "Mango", "Walnut"];
     let special: string[] = ["Cream", "Chocolate Sauce", "Chocolate Splits", "Strawberries"];
     let container: string[] = ["Waffle", "Cup"];
 
@@ -26,20 +26,21 @@ namespace aufgabe9_Forms {
 
     function init(_event: Event): void {
         fieldset = document.getElementsByTagName("fieldset")[0];
-        fieldset.addEventListener("change", change);
         createInputs();
         createRadios();
         createCheckboxes();
+        fieldset.addEventListener("change", change);
+
 
 
         //auf IDs zugreifen für jedes einzelne fieldset
-        let flavourIceCream: HTMLElement = document.getElementById("flavours");
+        let sortsOfIcecream: HTMLElement = document.getElementById("flavours");
         let toppings: HTMLElement = document.getElementById("ConeCup");
         let special: HTMLElement = document.getElementById("Special");
-        let shoppingCard: HTMLElement = document.getElementById("shoppingCard");
+        let shoppingCard: HTMLElement = document.getElementById("shoppingcard");
 
         //Shopping Card fieldsets
-        flavourIceCream.addEventListener("change", change);
+        sortsOfIcecream.addEventListener("change", change);
         toppings.addEventListener("change", change);
         special.addEventListener("change", change);
 
@@ -50,18 +51,18 @@ namespace aufgabe9_Forms {
 
     function createInputs(): void {
         // Erstelle pro Sorte Eis einen Input
-        for (let i: number = 0; i < flavours.length; i++) {
-            console.log(flavours[i]);
-            createInput(flavours[i]);
+        for (let i: number = 0; i < sorts.length; i++) {
+            console.log(sorts[i]);
+            createInput(sorts[i]);
 
         }
     }
-    function createInput(_flavour: string): void {
+    function createInput(_sorts: string): void {
         // Ein Label ist ein Text den man anklicken kann um damit den Input auszulösen
         let label: HTMLLabelElement = document.createElement("label");
         let input: HTMLInputElement = document.createElement("input");
 
-        label.innerText = _flavour;
+        label.innerText = _sorts;
         label.appendChild(input);
         // Die Art des Inputs wird über den Typ definiert
         input.type = "number";
@@ -152,7 +153,7 @@ namespace aufgabe9_Forms {
         //Innerhalb der Array-Länge der inputCone wird die Summe um 1€ hochgezählt
         for (let i: number = 0; i < inputCone.length; i++) {
             if (inputCone[i].checked)
-            { sum += 0; }        
+            { sum += 0; }
         }
         changeShoppingcard(sum);
     }
@@ -166,7 +167,7 @@ namespace aufgabe9_Forms {
         //Anzeige der Eissorte in der Bestellübersicht
         for (let i: number = 0; i < inputs.length; i++) {
             if (parseInt(inputs[i].value) > 0) {
-                selectedProducts.innerText += flavours[i] + ": " + (parseInt(inputs[i].value) * 1) + "€" + "\n";
+                selectedProducts.innerText += sorts[i] + ": " + (parseInt(inputs[i].value) * 1) + "€" + "\n";
             }
         }
 
