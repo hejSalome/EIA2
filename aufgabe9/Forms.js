@@ -1,3 +1,7 @@
+// Aufgabe 9
+//Name: Salome Weisser
+//Matrikel: 254669
+//Datum: 03.06.2017
 var aufgabe9;
 (function (aufgabe9) {
     window.addEventListener("load", init);
