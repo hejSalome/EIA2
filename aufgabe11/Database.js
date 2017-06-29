@@ -5,11 +5,11 @@
  */
 const Mongo = require("mongodb");
 console.log("Database starting");
-let databaseURL = "mongodb://localhost:27017/Test";
+let databaseURL = "mongodb://hejSalome:lgo96suS@ds139122.mlab.com:39122/coding2semester";
 let db;
 let students;
 if (process.env.NODE_ENV == "production")
-    databaseURL = "mongodb://username:password@hostname:port/database";
+    databaseURL = "mongodb://hejSalome:lgo96suS@ds139122.mlab.com:39122/coding2semester";
 Mongo.MongoClient.connect(databaseURL, handleConnect);
 function handleConnect(_e, _db) {
     if (_e)
