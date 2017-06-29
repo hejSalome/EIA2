@@ -23,7 +23,7 @@ var aufgabe11;
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:8100?" + _query, true);
+        xhr.open("GET", "http://localhost:8100?" + _query, true); //Verbindung wird geöffnet; true steht dafür dass es asynchron ist
         //xhr.open("GET", "https://eia2-servertest.herokuapp.com?color=" + _color, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
