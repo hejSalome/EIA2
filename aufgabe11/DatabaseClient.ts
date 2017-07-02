@@ -8,6 +8,7 @@ namespace aufgabe11 {
         let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("search");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
     }
 
     function insert(_event: Event): void {
@@ -25,6 +26,10 @@ namespace aufgabe11 {
         sendRequest(query, handleFindResponse);
     }
 
+    function search (_event: Event): void {
+        let name: HTMLInputElement = <HTMLInputElement>document.getElementById("nameSearch");
+        let matrikel: HTMLInputElement = <HTMLInputElement>document.getElementById("matrikelSearch");
+        }
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         //xhr.open("GET", "http://localhost:8100?" + _query, true); //Verbindung wird geöffnet; true steht dafür dass es asynchron ist
