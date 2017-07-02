@@ -29,7 +29,13 @@ namespace aufgabe11 {
     function search (_event: Event): void {
         let name: HTMLInputElement = <HTMLInputElement>document.getElementById("nameSearch");
         let matrikel: HTMLInputElement = <HTMLInputElement>document.getElementById("matrikelSearch");
-        }
+        let query: string = "command=search";
+        query += "&name=" + name.value;
+        query += "&matrikel=" + matrikel.value;
+        sendRequest(query, handleSearchResponse);
+    
+    }
+    
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         //xhr.open("GET", "http://localhost:8100?" + _query, true); //Verbindung wird geöffnet; true steht dafür dass es asynchron ist
@@ -54,4 +60,14 @@ namespace aufgabe11 {
             console.log(responseAsJson);
         }
     }
+    
+   function handleSearchResponse(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            let responseAsJson: JSON = JSON.parse(xhr.response);
+            console.log(responseAsJson);
+            }
+        }
 }
