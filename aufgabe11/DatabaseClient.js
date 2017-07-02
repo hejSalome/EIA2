@@ -5,8 +5,10 @@ var aufgabe11;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
+        let searchButton = document.getElementById("search");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -21,10 +23,18 @@ var aufgabe11;
         let query = "command=find";
         sendRequest(query, handleFindResponse);
     }
+    function search(_event) {
+        let name = document.getElementById("nameSearch");
+        let matrikel = document.getElementById("matrikelSearch");
+        let query = "command=search";
+        query += "&name=" + name.value;
+        query += "&matrikel=" + matrikel.value;
+        sendRequest(query, handleSearchResponse);
+    }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:8100?" + _query, true); //Verbindung wird geöffnet; true steht dafür dass es asynchron ist
-        //xhr.open("GET", "https://coding2semester.herokuapp.com/" + _color, true);
+        //xhr.open("GET", "http://localhost:8100?" + _query, true); //Verbindung wird geöffnet; true steht dafür dass es asynchron ist
+        xhr.open("GET", "https://coding2semester.herokuapp.com/" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
     }
@@ -35,6 +45,15 @@ var aufgabe11;
         }
     }
     function handleFindResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let output = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            let responseAsJson = JSON.parse(xhr.response);
+            console.log(responseAsJson);
+        }
+    }
+    function handleSearchResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             let output = document.getElementsByTagName("textarea")[0];
