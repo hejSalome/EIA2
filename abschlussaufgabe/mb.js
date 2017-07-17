@@ -9,62 +9,62 @@ var abschlussaufgabe_mb;
     window.addEventListener("load", init);
     let canvas;
     let crc2;
-    let x = [];
-    let y = [];
-    let n = 4; //1 Box
+    let analyser;
+    let random = Math.random;
+    let circles = [];
+    let auswahlBox;
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         placeMusicboxImage();
-        // drawMusicBox();
-        for (var i = 0; i < n; i++) {
-            x[i] = 270;
-            y[i] = 712;
-        }
-        // let img = document.getElementById("musicbox");
-        // crc2.drawImage(img, 10, 10, 150, 180);
-        // mit Klick auf musicbox erscheinen Option Boxes
     }
-    function placeMusicboxImage() {
-        let musicboxImage = new Image();
-        musicboxImage.src = "img/JBLgo.jpg";
-        document.body.appendChild(musicboxImage);
-        crc2.drawImage(musicboxImage, 0, 0, 700, 700, 20, 350, 200, 200);
-    }
-    // drawMusicBox.addEventListener("click", createOptionBoxes);
-    // drawMusicBox.addEventListener("touch", createOptionBoxes);
     //// MusicBox und Auswahl ///   
-    function drawMusicBox() {
+    let musicboxImage = new Image();
+    function placeMusicboxImage() {
+        musicboxImage.src = "img/JBLgo.jpg";
+        // document.body.appendChild(musicboxImage);
+        crc2.drawImage(musicboxImage, 0, 0, 600, 700, 20, 300, 200, 200);
+    }
+    canvas.addEventListener("click", playAudio);
+    canvas.addEventListener("touch", playAudio);
+    function playAudio() {
+        //    
+    }
+    //Kreise zeichnen und Frequenz zeichnen 
+    function draw() {
+        requestAnimationFrame(draw);
+        let frequencyData = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(frequencyData);
+        crc2.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 1; i < circles.length; i++) {
+            circles[i].radius = frequencyData[i] * 2;
+            circles[i].y = circles[i].y > canvas.height ? 0 : circles[i].y + 1;
+            circles[i].draw();
+        }
+        for (let i = 1; i < frequencyData.length; i += 10) {
+            crc2.fillStyle = "rgb" + "grey" + "," + getRandomColor() + "," + getRandomColor() + ")";
+            crc2.fillRect(i + 500, canvas.height - frequencyData[i] * 2, 10, canvas.height);
+            crc2.strokeRect(i + 500, canvas.height - frequencyData[i] * 2, 20, canvas.height);
+        }
+    }
+    function getRandomColor() {
+        return random() * 150;
+    }
+    function Circle() {
+        this.x = random() * canvas.width;
+        this.y = random() * canvas.height;
+        this.radius = random() * 100 + 50;
+        this.color = "rgb(" + getRandomColor() + "," + getRandomColor() + "," + getRandomColor() + ")";
+    }
+    Circle.prototype.draw = function () {
+        let that = this;
+        crc2.save();
         crc2.beginPath();
-        crc2.fillStyle = "yellow";
-        crc2.fillRect(50, 300, 250, 200);
-        crc2.stroke();
-        crc2.closePath();
-    }
-    //Funktion die ausgef�hrt wird wenn auf das die MusikBox geklickt wird 
-    // Musikbox an 
-    // Boxen erstellen zur Auswahl des Musik Genres
-    function createOptionBoxes(_event) {
-        x.push(100);
-        y.push(200);
-        n = n + 1;
-        drawOptionBox1(100, 100);
-        drawOptionBox2(100, 200);
-    }
-    // Boxen zeichnen zur Auswahl des Musik Genres
-    function drawOptionBox1(_x, _y) {
-        crc2.beginPath();
-        crc2.fillStyle = "grey";
-        crc2.fillRect(20, 20, 20, 50);
-        crc2.stroke();
-        crc2.closePath();
-    }
-    function drawOptionBox2(_x, _y) {
-        crc2.beginPath();
-        crc2.fillStyle = "green";
-        crc2.fillRect(20, 20, 20, 50);
-        crc2.stroke();
-        crc2.closePath();
-    }
+        crc2.globalAlpha = random() / 2 + 0.3;
+        crc2.arc(that.x, that.y, that.radius, 0, Math.PI * 2);
+        crc2.fillStyle = this.color;
+        crc2.fill();
+        crc2.restore();
+    };
 })(abschlussaufgabe_mb || (abschlussaufgabe_mb = {}));
 //# sourceMappingURL=mb.js.map

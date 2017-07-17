@@ -87,6 +87,56 @@ namespace aufgabeEIA {
     //
     //    }
 
+// // mit Klick auf musicbox erscheinen Option Boxes
+//    document.addEventListener("click", showOptionBoxes);
+//    document.addEventListener("touch", showOptionBoxes);
+//
+//    function showOptionBoxes(): void {
+//      
+//        musicboxImage.addEventListener("click", showBoxes);
+//        
+//       }
+//    box = <NodeListOf<HTMLDivElement>>document.getElementsByClassName("optionBox");
+//    function 
+//            placeMusicboxImage.addEventListener("click", createOptionBoxes);
+//            placeMusicboxImage.addEventListener("click", createOptionBoxes);
+//            // drawMusicBox.addEventListener("touch", createOptionBoxes);
+//
+//
+//            //Funktion die ausgef�hrt wird wenn auf das die MusikBox geklickt wird 
+//            // Musikbox an 
+//            // Boxen erstellen zur Auswahl des Musik Genres
+//
+//            function createOptionBoxes(_event: Event): void {
+//                x.push(100);
+//                y.push(200);
+//                n = n + 1;
+//                drawOptionBox1(100, 100);
+//                drawOptionBox2(100, 200);
+//            }
+//
+//    // Boxen zeichnen zur Auswahl des Musik Genres
+//    function drawOptionBox1(_x: number, _y: number): void {
+//                crc2.beginPath();
+//                crc2.fillStyle = "grey";
+//                crc2.fillRect(20, 20, 20, 50);
+//                crc2.stroke();
+//                crc2.closePath();
+//            }
+//    function drawOptionBox2(_x: number, _y: number): void {
+//                crc2.beginPath();
+//                crc2.fillStyle = "green";
+//                crc2.fillRect(20, 20, 20, 50);
+//                crc2.stroke();
+//                crc2.closePath();
+//            }
+
+    //Klick auf Box 1 oder Box 2//
+    //Musik an//
+
+    // drawOptionBox1.addEventListener("click", playHouseMusic);
+    //  drawOptionBox2.addEventListener("touch", playHouseMusic);
+
 
 
     function playAudio(): void {
@@ -137,7 +187,7 @@ namespace aufgabeEIA {
 
 
     function getRandomColor(): number {
-        return random() * 150 >> 0;
+        return random() * 150 0;
     }
 
     function Circle(): void {
