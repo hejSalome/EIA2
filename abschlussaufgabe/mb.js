@@ -26,10 +26,10 @@ var abschlussaufgabe_mb;
         // mit Klick auf musicbox erscheinen Option Boxes
     }
     function placeMusicboxImage() {
-        let musicboxImage = new Image(200, 200);
+        let musicboxImage = new Image();
         musicboxImage.src = "img/JBLgo.jpg";
         document.body.appendChild(musicboxImage);
-        crc2.drawImage(musicboxImage, 10, 100, 0, 50);
+        crc2.drawImage(musicboxImage, 0, 0, 700, 700, 20, 350, 200, 200);
     }
     // drawMusicBox.addEventListener("click", createOptionBoxes);
     // drawMusicBox.addEventListener("touch", createOptionBoxes);
