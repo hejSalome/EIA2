@@ -98,7 +98,7 @@ var aufgabeEIA;
         for (let i = 1; i < freqByteData.length; i += 10) {
             crc2.fillStyle = "rgb" + "grey" + "," + getRandomColor() + "," + getRandomColor() + ")";
             crc2.fillRect(i + 500, canvas.height - freqByteData[i] * 2, 10, canvas.height);
-            crc2.strokeRect(i + 500, canvas.height - freqByteData[i] * 2, 10, canvas.height);
+            crc2.strokeRect(i + 500, canvas.height - freqByteData[i] * 2, 20, canvas.height);
         }
     }
     function getRandomColor() {

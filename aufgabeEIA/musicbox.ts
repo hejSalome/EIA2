@@ -7,89 +7,90 @@
 
 
 namespace aufgabeEIA {
-    let analyser: any, canvas: HTMLCanvasElement, crc2: CanvasRenderingContext2D , random: () => number = Math.random, circles: any[] = [];
+    let analyser: any, canvas: HTMLCanvasElement, crc2: CanvasRenderingContext2D, random: () => number = Math.random, circles: any[] = [];
 
-    
-    
+
+
     let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
     canvas = document.getElementsByTagName("canvas")[0];
     crc2 = canvas.getContext("2d");
-window.onload = function(): void {
-    
-    
-    canvas = document.createElement("canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    document.body.appendChild(canvas);
-    crc2 = canvas.getContext("2d");
-    
-    playAudio();
-    
-    for (let i: number = 0; i < 10; i++) {
-        circles[i] = new Circle();
-        circles[i].draw();
-    }
-    draw();
-};
+    window.onload = function(): void {
 
-//    window.addEventListener("load", init);
-//
-//    let analyser, canvas, ctx, random = Math.random, circles = [];
-//
-//    let canvas: HTMLCanvasElement;
-//    canvas = Math.random, circles = [];
-//    let crc2: CanvasRenderingContext2D;
-//    crc2 = canvas.getContext("2d");
-//
-//
-//    function init(): void {
-//
-//        // create Canvas
-//        //        canvas = document.createElement("canvas");
-//        //        canvas.width = window.innerWidth;
-//        //        canvas.height = window.innerHeight;
-//        //        docuy.appendChild(canvas);
-//
-//        // create JBL Image
-//        let musicboxImage: HTMLImageElement = new Image();
-//        musicboxImage.src = "img/JBLgo.jpg";
-//        musicboxImage.width = window.innerWidth - 800;
-//        document.body.appendChild(musicboxImage);
-//
-//        musicboxImage.addEventListener("click", musicboxOn);
-//        drawSelectionBox(0, 0, "#753C1E");
-//
-//        setupWebAudio();
-//
-//        for (var i = 0; i < 20; i++) {
-//            circles[i] = new Circle();
-//            circles[i].draw();
-//        }
-//        draw();
-//    }
-//
-//
-//    function musicboxOn(): void {
-//        drawSelectionBox(100, 100, "#753C1E");
-//        drawSelectionBox(200, 100, "#753C1E");
-//        drawSelectionBox(300, 100, "#753C1E");
-//    }
-//
-//    function drawSelectionBox(_x: number, _y: number, _fillStyle: string): void {
-//
-//        crc2.beginPath();
-//        crc2.fillStyle = "#753C1E";
-//        crc2.fillRect(_x, _y, 175, 15);
-//        crc2.fill();
-//        crc2.closePath();
-//
-//    }
+
+        canvas = document.createElement("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        document.body.appendChild(canvas);
+        crc2 = canvas.getContext("2d");
+
+        playAudio();
+
+        for (let i: number = 0; i < 10; i++) {
+            circles[i] = new Circle();
+            circles[i].draw();
+        }
+        draw();
+        drawMusicbox();
+    };
+
+    //    window.addEventListener("load", init);
+    //
+    //    let analyser, canvas, ctx, random = Math.random, circles = [];
+    //
+    //    let canvas: HTMLCanvasElement;
+    //    canvas = Math.random, circles = [];
+    //    let crc2: CanvasRenderingContext2D;
+    //    crc2 = canvas.getContext("2d");
+    //
+    //
+    //    function init(): void {
+    //
+    //        // create Canvas
+    //        //        canvas = document.createElement("canvas");
+    //        //        canvas.width = window.innerWidth;
+    //        //        canvas.height = window.innerHeight;
+    //        //        docuy.appendChild(canvas);
+    //
+    //        // create JBL Image
+    //        let musicboxImage: HTMLImageElement = new Image();
+    //        musicboxImage.src = "img/JBLgo.jpg";
+    //        musicboxImage.width = window.innerWidth - 800;
+    //        document.body.appendChild(musicboxImage);
+    //
+    //        musicboxImage.addEventListener("click", musicboxOn);
+    //        drawSelectionBox(0, 0, "#753C1E");
+    //
+    //        setupWebAudio();
+    //
+    //        for (var i = 0; i < 20; i++) {
+    //            circles[i] = new Circle();
+    //            circles[i].draw();
+    //        }
+    //        draw();
+    //    }
+    //
+    //
+    //    function musicboxOn(): void {
+    //        drawSelectionBox(100, 100, "#753C1E");
+    //        drawSelectionBox(200, 100, "#753C1E");
+    //        drawSelectionBox(300, 100, "#753C1E");
+    //    }
+    //
+    //    function drawSelectionBox(_x: number, _y: number, _fillStyle: string): void {
+    //
+    //        crc2.beginPath();
+    //        crc2.fillStyle = "#753C1E";
+    //        crc2.fillRect(_x, _y, 175, 15);
+    //        crc2.fill();
+    //        crc2.closePath();
+    //
+    //    }
 
 
 
     function playAudio(): void {
-        let audio: HTMLElement = document.createElement("audio");
+        let audio: HTMLAudioElement = document.createElement("audio");
         audio.src = "audio/WillGriggsOnFire.mp3";
         audio.controls = "true";
         document.body.appendChild(audio);
@@ -118,9 +119,22 @@ window.onload = function(): void {
         for (let i: number = 1; i < freqByteData.length; i += 10) {
             crc2.fillStyle = "rgb" + "grey" + "," + getRandomColor() + "," + getRandomColor() + ")";
             crc2.fillRect(i + 500, canvas.height - freqByteData[i] * 2, 10, canvas.height);
-            crc2.strokeRect(i + 500, canvas.height - freqByteData[i] * 2, 10, canvas.height);
+            crc2.strokeRect(i + 500, canvas.height - freqByteData[i] * 2, 20, canvas.height);
         }
+
     }
+    function drawMusicbox(): void {
+
+        let freqByteData: Uint8Array = new Uint8Array(analyser.frequencyBinCount);
+
+        for (let i: number = 1; i < freqByteData.length; i += 2) {
+            crc2.fillStyle = "yellow";
+            crc2.fillRect(i + 100, canvas.height - freqByteData[i] * 2, 10, canvas.height);
+            crc2.strokeRect(i + 100, canvas.height - freqByteData[i] * 2, 20, canvas.height);
+        }
+
+    }
+
 
     function getRandomColor(): number {
         return random() * 150 >> 0;
@@ -134,7 +148,7 @@ window.onload = function(): void {
     }
 
     Circle.prototype.draw = function(): void {
-      
+
         crc2.save();
         crc2.beginPath();
         crc2.globalAlpha = random() / 3 + 0.2;
@@ -146,4 +160,4 @@ window.onload = function(): void {
 
 
 
-
+}
