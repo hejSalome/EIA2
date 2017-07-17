@@ -21,9 +21,10 @@ namespace abschlussaufgabe {
     //    export let surprise: SurpriseData[] = [];
     //   let songs[] = document.getElementById("player")   
 
-    window.onload = function(): void {
+    // Option 2 image 
+  //  window.onload = function(): void {
 
-// Option 2 image  
+ 
 //        let img = document.getElementById("musicbox");
 //        crc2.drawImage(img, 10, 10, 150, 180);
 //    };

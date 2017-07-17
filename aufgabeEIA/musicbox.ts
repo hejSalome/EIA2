@@ -6,8 +6,8 @@
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
 
-namespace aufgabeEIA 
-    let analyser: any, canvas: HTMLCanvasElement, crc2: CanvasRenderingContext2D , random: any = Math.random, circles [] = [];
+namespace aufgabeEIA {
+    let analyser: any, canvas: HTMLCanvasElement, crc2: CanvasRenderingContext2D , random: () => number = Math.random, circles: any[] = [];
 
 window.onload = function(): void {
     canvas = document.createElement("canvas");
@@ -81,15 +81,15 @@ window.onload = function(): void {
 
 
     function playAudio(): void {
-        let audio = document.createElement("audio");
+        let audio: HTMLElement = document.createElement("audio");
         audio.src = "audio/WillGriggsOnFire.mp3";
         audio.controls = "true";
         document.body.appendChild(audio);
         audio.style.width = window.innerWidth + "px";
 
-        let audioContext = new AudioContext();
+        let audioContext: AudioContext = new AudioContext();
         analyser = audioContext.createAnalyser();
-        let source = audioContext.createMediaElementSource(audio);
+        let source: MediaElementAudioSourceNode = audioContext.createMediaElementSource(audio);
         source.connect(analyser);
         analyser.connect(audioContext.destination);
         audio.play();
@@ -97,7 +97,7 @@ window.onload = function(): void {
 
     function draw(): void {
         requestAnimationFrame(draw);
-        let freqByteData = new Uint8Array(analyser.frequencyBinCount);
+        let freqByteData: Uint8Array = new Uint8Array(analyser.frequencyBinCount);
         analyser.getByteFrequencyData(freqByteData);
         crc2.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -114,7 +114,7 @@ window.onload = function(): void {
         }
     }
 
-    function getRandomColor(): {
+    function getRandomColor(): number {
         return random() * 150 >> 0;
     }
 
@@ -137,5 +137,5 @@ window.onload = function(): void {
     };
 
 
-}
+
 

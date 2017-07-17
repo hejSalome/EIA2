@@ -15,7 +15,7 @@ var aufgabeEIA;
         crc2 = canvas.getContext("2d");
         playAudio();
         for (let i = 0; i < 10; i++) {
-            //  circles[i] = new Circle();
+            circles[i] = new Circle();
             circles[i].draw();
         }
         draw();
@@ -75,7 +75,7 @@ var aufgabeEIA;
     function playAudio() {
         let audio = document.createElement("audio");
         audio.src = "audio/WillGriggsOnFire.mp3";
-        //  audio.controls = "true";
+        audio.controls = "true";
         document.body.appendChild(audio);
         audio.style.width = window.innerWidth + "px";
         let audioContext = new AudioContext();
@@ -102,7 +102,7 @@ var aufgabeEIA;
         }
     }
     function getRandomColor() {
-        //  return random() * 150 >> 0;
+          return random() * 150 >> 0;
     }
     function Circle() {
         this.x = random() * canvas.width;
