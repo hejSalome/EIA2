@@ -12,6 +12,8 @@ namespace abschlussaufgabe {
 
     export let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
+    canvas = document.getElementsByTagName("canvas")[0];
+    crc2 = canvas.getContext("2d");
     // export let backgroundImage: ImageData;
     //    export let musicbox: MusicBox[] = [];
     //    export let house: HouseData[] = [];
@@ -19,25 +21,30 @@ namespace abschlussaufgabe {
     //    export let surprise: SurpriseData[] = [];
     //   let songs[] = document.getElementById("player")   
 
+    window.onload = function(): void {
+
+// Option 2 image  
+//        let img = document.getElementById("musicbox");
+//        crc2.drawImage(img, 10, 10, 150, 180);
+//    };
     
     function init(): void {
 
-        canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
 
 
+   // Option 1 Image 
 
-        function placeMusicboxImage(): void {
-            let musicboxImage = new Image();
-            musicboxImage.src = "img/JBLgo.jpg";
-            crc2.drawImage(musicboxImage, 100, 100, 100, 50);
-        }
+                function placeMusicboxImage(): void {
+                    let musicboxImage = new Image();
+                    musicboxImage.src = "img/JBLgo.jpg";
+                    crc2.drawImage(musicboxImage, 100, 0, 50);
+                }
 
         
         //  drawOptionBox(50, 50);
-        //   backgroundImage = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        document.getElementsByTagName("img")[0].addEventListener("click", musicBoxOn);
-        document.getElementsByTagName("img")[0].addEventListener("touchstart", musicBoxOn);
+
+        // document.getElementsByTagName("img")[0].addEventListener("click", musicBoxOn);
+        // document.getElementsByTagName("img")[0].addEventListener("touchstart", musicBoxOn);
 
         //Playlist erstellen 
         let rockabye: HTMLAudioElement = new Audio("audio/CleanBanditRockabye.mp3");
