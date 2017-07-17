@@ -15,7 +15,8 @@ var abschlussaufgabe_mb;
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        drawMusicBox(0, 0);
+        placeMusicboxImage();
+        // drawMusicBox();
         for (var i = 0; i < n; i++) {
             x[i] = 270;
             y[i] = 712;
@@ -23,11 +24,17 @@ var abschlussaufgabe_mb;
         // let img = document.getElementById("musicbox");
         // crc2.drawImage(img, 10, 10, 150, 180);
         // mit Klick auf musicbox erscheinen Option Boxes
-        document.getElementById("musicbox").addEventListener("click", createOptionBoxes);
-        document.getElementById("musicbox").addEventListener("touch", createOptionBoxes);
     }
+    function placeMusicboxImage() {
+        let musicboxImage = new Image(200, 200);
+        musicboxImage.src = "img/JBLgo.jpg";
+        document.body.appendChild(musicboxImage);
+        crc2.drawImage(musicboxImage, 10, 100, 0, 50);
+    }
+    // drawMusicBox.addEventListener("click", createOptionBoxes);
+    // drawMusicBox.addEventListener("touch", createOptionBoxes);
     //// MusicBox und Auswahl ///   
-    function drawMusicBox(_x, _y) {
+    function drawMusicBox() {
         crc2.beginPath();
         crc2.fillStyle = "yellow";
         crc2.fillRect(50, 300, 250, 200);
@@ -38,15 +45,23 @@ var abschlussaufgabe_mb;
     // Musikbox an 
     // Boxen erstellen zur Auswahl des Musik Genres
     function createOptionBoxes(_event) {
-        x.push(170);
-        y.push(212);
+        x.push(100);
+        y.push(200);
         n = n + 1;
-        drawOptionBox(100, 100);
+        drawOptionBox1(100, 100);
+        drawOptionBox2(100, 200);
     }
     // Boxen zeichnen zur Auswahl des Musik Genres
-    function drawOptionBox(_x, _y) {
+    function drawOptionBox1(_x, _y) {
         crc2.beginPath();
         crc2.fillStyle = "grey";
+        crc2.fillRect(20, 20, 20, 50);
+        crc2.stroke();
+        crc2.closePath();
+    }
+    function drawOptionBox2(_x, _y) {
+        crc2.beginPath();
+        crc2.fillStyle = "green";
         crc2.fillRect(20, 20, 20, 50);
         crc2.stroke();
         crc2.closePath();

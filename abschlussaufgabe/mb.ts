@@ -22,9 +22,10 @@ namespace abschlussaufgabe_mb {
     function init(_event: Event): void {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
+        
+        placeMusicboxImage();
 
-
-        drawMusicBox();
+        // drawMusicBox();
 
         for (var i: number = 0; i < n; i++) {
             x[i] = 270;
@@ -38,8 +39,18 @@ namespace abschlussaufgabe_mb {
         // mit Klick auf musicbox erscheinen Option Boxes
 
     }
-    drawMusicBox.addEventListener("click", createOptionBoxes);
-    drawMusicBox.addEventListener("touch", createOptionBoxes);
+
+
+    function placeMusicboxImage(): void {
+        let musicboxImage: HTMLImageElement = new Image(200, 200);
+        musicboxImage.src = "img/JBLgo.jpg";
+        document.body.appendChild(musicboxImage);
+        
+        crc2.drawImage(musicboxImage, 10, 100, 0, 50);
+    }
+
+    // drawMusicBox.addEventListener("click", createOptionBoxes);
+    // drawMusicBox.addEventListener("touch", createOptionBoxes);
 
 
 
@@ -57,20 +68,36 @@ namespace abschlussaufgabe_mb {
     // Boxen erstellen zur Auswahl des Musik Genres
 
     function createOptionBoxes(_event: Event): void {
-        x.push(170);
-        y.push(212);
+        x.push(100);
+        y.push(200);
         n = n + 1;
-        drawOptionBox(100, 100);
+        drawOptionBox1(100, 100);
+        drawOptionBox2(100, 200);
     }
 
     // Boxen zeichnen zur Auswahl des Musik Genres
-    function drawOptionBox(_x: number, _y: number): void {
+    function drawOptionBox1(_x: number, _y: number): void {
         crc2.beginPath();
         crc2.fillStyle = "grey";
         crc2.fillRect(20, 20, 20, 50);
         crc2.stroke();
         crc2.closePath();
     }
+    function drawOptionBox2(_x: number, _y: number): void {
+        crc2.beginPath();
+        crc2.fillStyle = "green";
+        crc2.fillRect(20, 20, 20, 50);
+        crc2.stroke();
+        crc2.closePath();
+    }
+
+    //Klick auf Box 1 oder Box 2//
+    //Musik an//
+
+    // drawOptionBox1.addEventListener("click", playHouseMusic);
+    //  drawOptionBox2.addEventListener("touch", playHouseMusic);
+
+
 
 
 

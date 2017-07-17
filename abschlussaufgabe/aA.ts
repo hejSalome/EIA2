@@ -27,8 +27,8 @@ namespace abschlussaufgabe {
     
     function init(_event: Event): void {
 
-       // placeMusicboxImage(0, 0);
-        drawMusicbox(0, 0);
+       placeMusicboxImage(0, 0);
+      //  drawMusicbox(0, 0);
             
         //  drawOptionBox(50, 50);
 
@@ -61,12 +61,12 @@ namespace abschlussaufgabe {
         }
  
         
-        //Option 1 
-//        function placeMusicboxImage(_x: number, _y: number): void {
-//            let musicboxImage: HTMLImageElement = new Image();
-//            musicboxImage.src = "img/JBLgo.jpg";
-//            crc2.drawImage(musicboxImage, 100, 0, 50);
-//        }
+      //  Option 1 
+        function placeMusicboxImage(_x: number, _y: number): void {
+            let musicboxImage: HTMLImageElement = new Image();
+            musicboxImage.src = "img/JBLgo.jpg";
+            crc2.drawImage(musicboxImage, 100, 0, 50);
+       }
 
 
         //Song abspielen mit click / touch auf Play- Button 
@@ -107,14 +107,7 @@ namespace abschlussaufgabe {
 //        //
 //    }
 
-    function drawMusicbox(_x: number, _y: number): void {
-        crc2.beginPath();
-        crc2.fillStyle = "yellow";
-        crc2.fillRect(10, 10, 20, 20);
-        crc2.stroke();
-        crc2.closePath();
-        
-    }
+   
 
     // Boxen zeichnen zur Auswahl des Musik Genres
 //    function drawOptionBox(_x: number, _y: number): void {
