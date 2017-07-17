@@ -6,8 +6,8 @@ namespace aufgabe8_classes {
         drawSun(500, 75);
         drawMountainA(80, 175, "#CCCCCC", "#666666");
         drawMountainB(600, 175, "#CCCCCC", "#999999");
-        drawMountainC(390, 176, "#CCCCCC", "#666666");
-        drawMountainD(190, 178, "#CCCCCC", "#999999");
+        drawMountainC(390, 176, "#CCCCCC", "#666666        drawMountainD(190, 178, "#CCCCCC", "#999999");
+");
         drawMountainE(0, 179, "#CCCCCC", "#999999");
         drawMountainF(175, 180, "#CCCCCC", "#8BAE88");
         drawRiver(475, 500, "#493A37", "#089299");
