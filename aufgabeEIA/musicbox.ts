@@ -9,7 +9,15 @@
 namespace aufgabeEIA {
     let analyser: any, canvas: HTMLCanvasElement, crc2: CanvasRenderingContext2D , random: () => number = Math.random, circles: any[] = [];
 
+    
+    
+    let canvas: HTMLCanvasElement;
+    export let crc2: CanvasRenderingContext2D;
+    canvas = document.getElementsByTagName("canvas")[0];
+    crc2 = canvas.getContext("2d");
 window.onload = function(): void {
+    
+    
     canvas = document.createElement("canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
