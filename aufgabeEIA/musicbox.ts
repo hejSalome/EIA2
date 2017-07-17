@@ -187,7 +187,7 @@ namespace aufgabeEIA {
 
 
     function getRandomColor(): number {
-        return random() * 150 0;
+        return random() * 150 0s;
     }
 
     function Circle(): void {
