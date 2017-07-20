@@ -7,74 +7,63 @@
 var aufgabeEIA;
 (function (aufgabeEIA) {
     let analyser, canvas, crc2, random = Math.random, circles = [];
+    
+    // mit Klick auf Canvas (Musicbox) wird Audio abgespielt und Kreise werden gezeichnet
+    canvas.addEventListener("click", playAudio);
+    canvas.addEventListener("touch", playAudio);
+    canvas.addEventListener("click", draw);
+    canvas.addEventListener("touch", draw);
+    
     window.onload = function () {
         canvas = document.createElement("canvas");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         document.body.appendChild(canvas);
         crc2 = canvas.getContext("2d");
-        playAudio();
+     
         for (let i = 0; i < 10; i++) {
             circles[i] = new Circle();
             circles[i].draw();
         }
-        draw();
+      // draw();
+        //// MusicBox ///   
+        let musicboxImage = new Image();
+        function placeMusicboxImage() {
+            musicboxImage.src = "img/JBLgo.jpg";
+            // document.body.appendChild(musicboxImage);
+            crc2.drawImage(musicboxImage, 0, 0, 600, 700, 20, 300, 200, 200);
+        }
     };
-    //    window.addEventListener("load", init);
-    //
-    //    let analyser, canvas, ctx, random = Math.random, circles = [];
-    //
-    //    let canvas: HTMLCanvasElement;
-    //    canvas = Math.random, circles = [];
-    //    let crc2: CanvasRenderingContext2D;
-    //    crc2 = canvas.getContext("2d");
-    //
-    //
-    //    function init(): void {
-    //
-    //        // create Canvas
-    //        //        canvas = document.createElement("canvas");
-    //        //        canvas.width = window.innerWidth;
-    //        //        canvas.height = window.innerHeight;
-    //        //        docuy.appendChild(canvas);
-    //
-    //        // create JBL Image
-    //        let musicboxImage: HTMLImageElement = new Image();
-    //        musicboxImage.src = "img/JBLgo.jpg";
-    //        musicboxImage.width = window.innerWidth - 800;
-    //        document.body.appendChild(musicboxImage);
-    //
-    //        musicboxImage.addEventListener("click", musicboxOn);
-    //        drawSelectionBox(0, 0, "#753C1E");
-    //
-    //        setupWebAudio();
-    //
-    //        for (var i = 0; i < 20; i++) {
-    //            circles[i] = new Circle();
-    //            circles[i].draw();
-    //        }
-    //        draw();
-    //    }
-    //
-    //
-    //    function musicboxOn(): void {
-    //        drawSelectionBox(100, 100, "#753C1E");
-    //        drawSelectionBox(200, 100, "#753C1E");
-    //        drawSelectionBox(300, 100, "#753C1E");
-    //    }
-    //
-    //    function drawSelectionBox(_x: number, _y: number, _fillStyle: string): void {
-    //
-    //        crc2.beginPath();
-    //        crc2.fillStyle = "#753C1E";
-    //        crc2.fillRect(_x, _y, 175, 15);
-    //        crc2.fill();
-    //        crc2.closePath();
-    //
-    //    }
+    
+
+  
+
+    //Playlist erstellen 
+    let audio = document.createElement("audio");
+    let willGriggs = new Audio("audio/WillGriggsOnFire.mp3");
+    let rockabye = new Audio("audio/CleanBanditRockabye.mp3");
+    let sweetDreams = new Audio("audio/SweetDreamsRemix.mp3");
+    let playlist = [willGriggs, rockabye, sweetDreams];
+    let current = null;
+    let nbr = 0;
+    
+    function playSound() {
+    	
+    	
+        if (current === null || current.ended) {
+            // nächster Song
+            current = playlist[nbr++];
+            // falls letzte Song in Array, dann loop
+            if (nbr >= playlist.length)
+                nbr = 0;
+            // von vorne beginnen
+            current.currentTime = 0;
+            current.play();
+        }
+    }
     function playAudio() {
         let audio = document.createElement("audio");
-        audio.src = "audio/WillGriggsOnFire.mp3";
+        audio.src = playSound;
         audio.controls = "true";
         document.body.appendChild(audio);
         audio.style.width = window.innerWidth + "px";
