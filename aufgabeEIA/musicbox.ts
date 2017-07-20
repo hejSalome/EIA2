@@ -17,6 +17,7 @@ namespace abschlussaufgabe_mb {
     // mit Klick auf Canvas (Musicbox) wird Audio abgespielt und Kreise werden gezeichnet
 
 
+    function init(_event: Event): void {
 
     function Circle(): void {
         this.x = random() * canvas.width;
