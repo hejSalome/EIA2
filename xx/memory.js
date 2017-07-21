@@ -20,7 +20,7 @@ var xx_memory;
         canvas.style.visibility = "hidden";
         for (let i = 0; i < 9; i++) {
             for (let u = 0; u < 2; u++) {
-                let pic = new Picture(i);
+                let pic = new xx_memory.Picture(i);
                 xx_memory.allpictures.push(pic);
             }
         }
@@ -117,22 +117,6 @@ var xx_memory;
         }
         else {
             setTimeout(getPictures, 50, _p);
-        }
-    }
-    class Picture {
-        constructor(_n) {
-            this.src = "images/pic" + _n + ".jpg";
-        }
-        place(_random, _i) {
-            let picdiv = document.getElementById("picture");
-            let div = document.createElement("div");
-            let img = document.createElement("img");
-            img.src = this.src;
-            img.style.width = "150px";
-            img.style.height = "150px";
-            div.appendChild(img);
-            picdiv.appendChild(div);
-            xx_memory.allpictures.splice(_random, 1);
         }
     }
     class Background {
