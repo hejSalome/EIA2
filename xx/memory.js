@@ -1,53 +1,37 @@
 var xx_memory;
 (function (xx_memory) {
     window.addEventListener("load", init);
-    let canvas;
-    canvas = document.getElementsByTagName("canvas")[0];
-    canvas.style.visibility = "visible";
-    // export let musicbox: Musicbox[] = [];
+    let crc;
     let allpictures = [];
     let allbackgrounds = [];
     let shownpictures = [];
-    let n = 0;
     function init() {
         document.getElementById("start").addEventListener("click", startMemory);
     }
     function startMemory() {
         document.getElementById("start").style.visibility = "hidden";
         document.getElementById("button").style.zIndex = "0";
-        show();
+        let canvas = document.getElementsByTagName("canvas")[0];
+        canvas.style.visibility = "visible";
+        start();
     }
     function createPictures() {
         let canvas = document.getElementsByTagName("canvas")[0];
         canvas.style.visibility = "hidden";
         for (let i = 0; i < 9; i++) {
             for (let u = 0; u < 2; u++) {
-                let source = "images/pic" + i + ".jpg";
-                let picnumber = i;
-                let pic = { src: source, pair: picnumber };
+                let pic = new Picture(i);
                 allpictures.push(pic);
             }
         }
-        placePictures();
+        placePics();
     }
-    function placePictures() {
+    function placePics() {
         for (let i = 0; i < 18; i++) {
             let random = Math.round(Math.random() * (allpictures.length - 1) + 0);
-            let picdiv = document.getElementById("picture");
-            let backgrounddiv = document.getElementById("background");
-            let div = document.createElement("div");
-            let background = document.createElement("div");
-            let img = document.createElement("img");
-            img.src = allpictures[random].src;
-            img.style.width = "150px";
-            img.style.height = "150px";
-            div.appendChild(img);
-            picdiv.appendChild(div);
-            background.id = String(i);
-            background.addEventListener("click", showPicture);
-            backgrounddiv.appendChild(background);
-            allbackgrounds.push(backgrounddiv);
-            allpictures.splice(random, 1);
+            allpictures[random].place(random, i);
+            let div = new Background(i);
+            allbackgrounds.push(div);
         }
     }
     function showPicture(_event) {
@@ -73,10 +57,10 @@ var xx_memory;
             }
         }
         if (alreadygone == 18) {
-            setTimeout(endMemory, 1000);
+            setTimeout(endGame, 1000);
         }
     }
-    function endMemory() {
+    function endGame() {
         let picdiv = document.getElementById("picture");
         let backgrounddiv = document.getElementById("background");
         while (picdiv.firstChild) {
@@ -114,18 +98,52 @@ var xx_memory;
     function clearShownPictures() {
         shownpictures.length = 0;
     }
-    //CANVAS
-    function show() {
-        let r = 0;
-        changeRadius(r);
+    function start() {
+        let canvas;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.style.visibility = "visible";
+        crc = canvas.getContext("2d");
+        let p = 0;
+        getPictures(p);
     }
-    function changeRadius(_r) {
-        _r += 20;
-        if (_r > 200) {
+    function getPictures(_p) {
+        _p += 20;
+        if (_p > 200) {
             setTimeout(createPictures, 300);
         }
         else {
-            setTimeout(changeRadius, 50, _r);
+            setTimeout(getPictures, 50, _p);
+        }
+    }
+    //CLASSES
+    class Picture {
+        constructor(_n) {
+            this.src = "images/pic" + _n + ".jpg";
+        }
+        place(_random, _i) {
+            let picdiv = document.getElementById("picture");
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            img.src = this.src;
+            img.style.width = "150px";
+            img.style.height = "150px";
+            div.appendChild(img);
+            picdiv.appendChild(div);
+            allpictures.splice(_random, 1);
+        }
+    }
+    xx_memory.Picture = Picture;
+    class Background {
+        constructor(_i) {
+            this.id = String(_i);
+            this.place();
+        }
+        place() {
+            let backgrounddiv = document.getElementById("background");
+            let background = document.createElement("div");
+            background.addEventListener("click", showPicture);
+            background.id = this.id;
+            backgrounddiv.appendChild(background);
         }
     }
 })(xx_memory || (xx_memory = {}));
