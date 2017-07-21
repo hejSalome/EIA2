@@ -2,8 +2,7 @@ namespace xx_memory {
 
     window.addEventListener("load", init);
     //Deklaration
-    
-    export let crc: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
     export let allpictures: Picture[] = [];
     let allbackgrounds: Background[] = [];
     let showedpictures: number[] = [];
@@ -11,6 +10,8 @@ namespace xx_memory {
         document.getElementById("start").addEventListener("click", startMemory);
         document.getElementById("start").addEventListener("touch", startMemory);
     }
+    
+  
     function startMemory(): void {
         document.getElementById("start").style.visibility = "hidden";
         document.getElementById("button").style.zIndex = "0";
@@ -112,7 +113,7 @@ namespace xx_memory {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.style.visibility = "visible";
-        crc = canvas.getContext("2d");
+        crc2 = canvas.getContext("2d");
         let p: number = 0;
         getPictures(p);
     }

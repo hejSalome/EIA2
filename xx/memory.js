@@ -106,7 +106,7 @@ var xx_memory;
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.style.visibility = "visible";
-        xx_memory.crc = canvas.getContext("2d");
+        xx_memory.crc2 = canvas.getContext("2d");
         let p = 0;
         getPictures(p);
     }
