@@ -1,18 +1,42 @@
+body {
+	background-color: #000000;
+}
 
-#start{
-    font-family: 'Poiret One', cursive;
+canvas {
+	position: absolute;
+	margin-left: -20px;
+	padding-left: 10%;
+}
+
+#start {
+	font-family: 'Poiret One', cursive;
 	font-size: 25pt;
-	font-weight: bold;
+	color: #FFC51B; font-weight : bold;
 	position: relative;
+	padding-left: 100px;
+	padding-top: 50px;
 	visibility: visible;
 	border: none;
 	background-color: Transparent;
-	cursor:pointer;
+	cursor: pointer;
+	font-weight: bold;
 }
+
+p {
+	color: ##FFC51B;
+	font-family: 'Poiret One', cursive;
+	font-size: 20pt;
+	color: #FFC51B;
+	position: relative;
+	visibility: visible;
+	padding-left: 300px;
+}
+
 button:active {
 	outline: none;
 }
-#button{
+
+#button {
 	z-index: 1000;
 	position: absolute;
 	margin-left: -180px;
@@ -20,32 +44,32 @@ button:active {
 	height: 530px;
 	text-align: center;
 }
-#picture, #background{
+
+#picture, #background {
 	position: absolute;
 	margin-left: -50px;
-	padding-left: 25%;
-	padding-right: 25%;
-	width: 1050px;
+	padding-left: 15%;
+	padding-right: 2%; 
+	width : 1050px;
 	height: 530px;
+	width: 1050px
 }
-canvas{
-	position: absolute;
-	margin-left: -20px;
-	padding-left: 10%;
-}
-#background{
+
+#background {
 	z-index: 100;
 }
-#background > div{
-	background-color: #D3477C;
+
+#background>div {
+	background-color: #FFC51B;
 	width: 150px;
 	height: 150px;
 	float: left;
-	border: 5px solid #FFFFFF;
+	border: 5px solid #000000;
 }
-#picture > div{
+
+#picture>div {
 	float: left;
 	height: 150px;
 	width: 150px;
-	border: 5px solid #FFFFFF;
+	border: 5px solid #000000;
 }

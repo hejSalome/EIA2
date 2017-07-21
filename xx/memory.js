@@ -1,12 +1,12 @@
 var xx_memory;
 (function (xx_memory) {
     window.addEventListener("load", init);
-    let crc;
     let allpictures = [];
     let allbackgrounds = [];
-    let shownpictures = [];
+    let showedpictures = [];
     function init() {
         document.getElementById("start").addEventListener("click", startMemory);
+        document.getElementById("start").addEventListener("touch", startMemory);
     }
     function startMemory() {
         document.getElementById("start").style.visibility = "hidden";
@@ -35,20 +35,28 @@ var xx_memory;
         }
     }
     function showPicture(_event) {
-        if (shownpictures.length == 2) {
+        if (showedpictures.length == 2) {
             coverPictures();
-            clearShownPictures();
+            deleteShowedPictures();
         }
         let selected = _event.target;
         selected.style.visibility = "hidden";
         let fieldnumber = parseInt(selected.id);
-        shownpictures.push(fieldnumber);
-        if (shownpictures.length == 2) {
+        showedpictures.push(fieldnumber);
+        if (showedpictures.length == 2) {
             checkIfPair();
         }
-        checkIfLastPair();
+        checkStatus();
     }
-    function checkIfLastPair() {
+    function checkIfPair() {
+        let allimgs = document.getElementsByTagName("img");
+        let img1 = allimgs[showedpictures[0]];
+        let img2 = allimgs[showedpictures[1]];
+        if (img1.src == img2.src) {
+            deleteMatch();
+        }
+    }
+    function checkStatus() {
         let alldivs = document.getElementsByTagName("div");
         let alreadygone = 0;
         for (let i = 0; i < alldivs.length; i++) {
@@ -72,22 +80,18 @@ var xx_memory;
         document.getElementById("start").style.visibility = "visible";
         document.getElementById("button").style.zIndex = "100";
     }
-    function checkIfPair() {
-        let allimgs = document.getElementsByTagName("img");
-        let img1 = allimgs[shownpictures[0]];
-        let img2 = allimgs[shownpictures[1]];
-        if (img1.src == img2.src) {
-            removePair();
-        }
-    }
-    function removePair() {
+    //if two pictures are the same --> delete them
+    function deleteMatch() {
         let alldivs = document.getElementsByTagName("div");
-        let div1 = alldivs[shownpictures[0] + 2];
-        let div2 = alldivs[shownpictures[1] + 2];
-        div1.style.backgroundColor = "#ffffff";
+        let div1 = alldivs[showedpictures[0] + 2];
+        let div2 = alldivs[showedpictures[1] + 2];
+        div1.style.backgroundColor = "#000000";
+        //removeEventListener!
         div1.removeEventListener("click", showPicture);
-        div2.style.backgroundColor = "#ffffff";
+        div1.removeEventListener("touch", showPicture);
+        div2.style.backgroundColor = "#000000";
         div2.removeEventListener("click", showPicture);
+        div2.removeEventListener("touch", showPicture);
     }
     function coverPictures() {
         let alldivs = document.getElementsByTagName("div");
@@ -95,14 +99,14 @@ var xx_memory;
             alldivs[i].style.visibility = "visible";
         }
     }
-    function clearShownPictures() {
-        shownpictures.length = 0;
+    function deleteShowedPictures() {
+        showedpictures.length = 0;
     }
     function start() {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.style.visibility = "visible";
-        crc = canvas.getContext("2d");
+        xx_memory.crc = canvas.getContext("2d");
         let p = 0;
         getPictures(p);
     }
