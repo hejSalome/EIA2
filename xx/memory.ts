@@ -4,7 +4,7 @@ namespace xx_memory {
     //Deklaration
     
     export let crc: CanvasRenderingContext2D;
-    let allpictures: Picture[] = [];
+    export let allpictures: Picture[] = [];
     let allbackgrounds: Background[] = [];
     let showedpictures: number[] = [];
     function init(): void {
@@ -127,9 +127,7 @@ namespace xx_memory {
         }
     }
 
-    //CLASSES
-
-    export class Picture {
+    class Picture {
         src: string;
         constructor(_n: number) {
             this.src = "images/pic" + _n + ".jpg";
@@ -159,6 +157,7 @@ namespace xx_memory {
             let backgrounddiv: HTMLDivElement = <HTMLDivElement>document.getElementById("background");
             let background: HTMLDivElement = document.createElement("div");
             background.addEventListener("click", showPicture);
+            background.addEventListener("touch", showPicture);
             background.id = this.id;
             backgrounddiv.appendChild(background);
         }
