@@ -48,14 +48,11 @@ namespace abschlussaufgabe_MM {
             }
         }
         
-        //zeichnet Musikbox
-        addMusicbox();
+    
     }
-    function addMusicbox(): void {
+    
 
-        let m: Musicbox = new MusicboxYellow(x, y, colorStripes, colorMusicbox);
-        musicbox.push(m);
-    }
+
 
     //Spielstarten
     function startMemory(): void {
