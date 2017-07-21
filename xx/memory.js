@@ -128,7 +128,6 @@ var xx_memory;
             let backgrounddiv = document.getElementById("background");
             let background = document.createElement("div");
             background.addEventListener("click", showPicture);
-            background.addEventListener("touch", showPicture);
             background.id = this.id;
             backgrounddiv.appendChild(background);
         }

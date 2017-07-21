@@ -127,7 +127,6 @@ namespace xx_memory {
         }
     }
 
-  
     class Background {
         id: string;
         constructor(_i: number) {
@@ -138,7 +137,6 @@ namespace xx_memory {
             let backgrounddiv: HTMLDivElement = <HTMLDivElement>document.getElementById("background");
             let background: HTMLDivElement = document.createElement("div");
             background.addEventListener("click", showPicture);
-            background.addEventListener("touch", showPicture);
             background.id = this.id;
             backgrounddiv.appendChild(background);
         }
