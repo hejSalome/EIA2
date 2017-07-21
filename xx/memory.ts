@@ -1,5 +1,5 @@
 
-namespace memory_memory {
+namespace xx_memory {
     window.addEventListener("load", init);
 
     //Deklaration
@@ -7,7 +7,7 @@ namespace memory_memory {
     let canvas: HTMLCanvasElement;
     canvas = document.getElementsByTagName("canvas")[0];
     canvas.style.visibility = "visible";
-    export let musicbox: Musicbox[] = [];
+   // export let musicbox: Musicbox[] = [];
     let allpictures: Picture[] = [];
     let allbackgrounds: HTMLDivElement[] = [];
     let shownpictures: number[] = [];
@@ -15,33 +15,7 @@ namespace memory_memory {
     function init(): void {
         document.getElementById("start").addEventListener("click", startMemory);
 
-
-        //Playlist erstellen 
-        let willGriggs: HTMLAudioElement = new Audio("audio/WillGriggsOnFire.mp3");
-        let rockabye: HTMLAudioElement = new Audio("audio/CleanBanditRockabye.mp3");
-        let sweetDreams: HTMLAudioElement = new Audio("audio/SweetDreamsRemix.mp3");
-
-        let playlist: HTMLAudioElement[] = [willGriggs, rockabye, sweetDreams];
-        let current: HTMLAudioElement = null;
-        let nbr: number = 0;
-
-
-        function playSound(): void {
-            if (current === null || current.ended) {
-                // nächster Song
-                current = playlist[nbr++];
-
-                // falls letzte Song in Array, dann loop
-                if (nbr >= playlist.length)
-                    nbr = 0;
-
-                // von vorne beginnen
-                current.currentTime = 0;
-                current.play();
-            }
         }
-
-    }
 
 
 
@@ -134,9 +108,9 @@ namespace memory_memory {
         let alldivs: NodeListOf<HTMLDivElement> = document.getElementsByTagName("div");
         let div1: HTMLDivElement = alldivs[shownpictures[0] + 2];
         let div2: HTMLDivElement = alldivs[shownpictures[1] + 2];
-        div1.style.backgroundColor = "#000000";
+        div1.style.backgroundColor = "#ffffff";
         div1.removeEventListener("click", showPicture);
-        div2.style.backgroundColor = "#000000";
+        div2.style.backgroundColor = "#ffffff";
         div2.removeEventListener("click", showPicture);
     }
     function coverPictures(): void {

@@ -1,35 +1,16 @@
-var memory_memory;
-(function (memory_memory) {
+var xx_memory;
+(function (xx_memory) {
     window.addEventListener("load", init);
     let canvas;
     canvas = document.getElementsByTagName("canvas")[0];
     canvas.style.visibility = "visible";
-    memory_memory.musicbox = [];
+    // export let musicbox: Musicbox[] = [];
     let allpictures = [];
     let allbackgrounds = [];
     let shownpictures = [];
     let n = 0;
     function init() {
         document.getElementById("start").addEventListener("click", startMemory);
-        //Playlist erstellen 
-        let willGriggs = new Audio("audio/WillGriggsOnFire.mp3");
-        let rockabye = new Audio("audio/CleanBanditRockabye.mp3");
-        let sweetDreams = new Audio("audio/SweetDreamsRemix.mp3");
-        let playlist = [willGriggs, rockabye, sweetDreams];
-        let current = null;
-        let nbr = 0;
-        function playSound() {
-            if (current === null || current.ended) {
-                // nächster Song
-                current = playlist[nbr++];
-                // falls letzte Song in Array, dann loop
-                if (nbr >= playlist.length)
-                    nbr = 0;
-                // von vorne beginnen
-                current.currentTime = 0;
-                current.play();
-            }
-        }
     }
     function startMemory() {
         document.getElementById("start").style.visibility = "hidden";
@@ -119,9 +100,9 @@ var memory_memory;
         let alldivs = document.getElementsByTagName("div");
         let div1 = alldivs[shownpictures[0] + 2];
         let div2 = alldivs[shownpictures[1] + 2];
-        div1.style.backgroundColor = "#000000";
+        div1.style.backgroundColor = "#ffffff";
         div1.removeEventListener("click", showPicture);
-        div2.style.backgroundColor = "#000000";
+        div2.style.backgroundColor = "#ffffff";
         div2.removeEventListener("click", showPicture);
     }
     function coverPictures() {
@@ -147,5 +128,5 @@ var memory_memory;
             setTimeout(changeRadius, 50, _r);
         }
     }
-})(memory_memory || (memory_memory = {}));
+})(xx_memory || (xx_memory = {}));
 //# sourceMappingURL=memory.js.map

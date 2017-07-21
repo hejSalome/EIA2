@@ -1,10 +1,6 @@
-body {
-		background-color: #000000;
-	
-}
+
 #start{
     font-family: 'Poiret One', cursive;
-    color:  #FFDA1B;
 	font-size: 25pt;
 	font-weight: bold;
 	position: relative;
@@ -19,20 +15,19 @@ button:active {
 #button{
 	z-index: 1000;
 	position: absolute;
-	margin-left: -120px;
+	margin-left: -180px;
 	width: 1050px;
 	height: 530px;
 	text-align: center;
 }
 #picture, #background{
 	position: absolute;
-	margin-left: -100px;
+	margin-left: -50px;
 	padding-left: 20%;
 	width: 1050px;
 	height: 530px;
 }
 canvas{
-
 	position: absolute;
 	margin-left: -20px;
 	padding-left: 10%;
@@ -41,15 +36,15 @@ canvas{
 	z-index: 80;
 }
 #background > div{
-	background-color:#C04982;
+	background-color: #D3477C;
 	width: 150px;
 	height: 150px;
 	float: left;
-	border: 5px solid #000000;
+	border: 5px solid #FFFFFF;
 }
 #picture > div{
 	float: left;
 	height: 150px;
 	width: 150px;
-	border: 5px solid #000000;
+	border: 5px solid #FFFFFF;
 }
